@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1747525414.35703 "/home/sav/Desktop/uni/erasmus/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1747525414.50087 0
+["pdflatex"] 1747527458.92458 "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1747527459.05598 0
   "/etc/texmf/web2c/texmf.cnf" 1747524569.02472 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/sav/Desktop/uni/erasmus/Progetti_Latex/Reti_Telecomunicazioni/main.tex" 1747525414.13362 276 5142be5eee1b2c1d316c5987faec58b4 ""
+  "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" 1747527458.69019 281 abc3630a89c60254bc46081cc72ca22a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -37,9 +37,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1747524572.05252 75955 f78456fd1308dc295dc476a68e28d85b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1747524580 6800790 f6bb22424d468a476879bed434660748 ""
-  "main.aux" 1747525414.47365 307 87b1aabe54bfddbd9d3d3796c3b8c349 "pdflatex"
-  "main.tex" 1747525414.13362 276 5142be5eee1b2c1d316c5987faec58b4 ""
-  "main.toc" 1747525414.47365 117 98e10862b2f09319e48511e8853b4af1 "pdflatex"
+  "main.aux" 1747527459.03318 307 87b1aabe54bfddbd9d3d3796c3b8c349 "pdflatex"
+  "main.tex" 1747527458.69019 281 abc3630a89c60254bc46081cc72ca22a ""
+  "main.toc" 1747527459.03318 117 98e10862b2f09319e48511e8853b4af1 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
