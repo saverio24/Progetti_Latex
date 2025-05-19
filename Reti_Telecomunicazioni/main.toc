@@ -1,2 +1,21 @@
-\contentsline {chapter}{\numberline {1}Modello Ibrido}{2}{}%
-\contentsline {section}{\numberline {1.1}ISO OSI}{2}{}%
+\contentsline {chapter}{\numberline {1}Conoscenze di base}{2}{}%
+\contentsline {section}{\numberline {1.1}Informatica}{2}{}%
+\contentsline {subsection}{\numberline {1.1.1}Conversione binario esadecimale}{2}{}%
+\contentsline {subsection}{\numberline {1.1.2}Tipologia reti}{2}{}%
+\contentsline {subsubsection}{Nodi e rami}{3}{}%
+\contentsline {paragraph}{Modalità di invio dati}{4}{}%
+\contentsline {subsubsection}{Reti di accesso e reti di trasporto}{4}{}%
+\contentsline {subsection}{\numberline {1.1.3}Da analogico a digitale}{4}{}%
+\contentsline {section}{\numberline {1.2}Matematica}{5}{}%
+\contentsline {subsection}{\numberline {1.2.1}Distribuzione di Poisson}{5}{}%
+\contentsline {section}{\numberline {1.3}Fisica}{5}{}%
+\contentsline {subsection}{\numberline {1.3.1}Comunicazione radio, cablata e ottica}{5}{}%
+\contentsline {paragraph}{Pro e contro del canale radio}{5}{}%
+\contentsline {paragraph}{Canale radio e ostacoli fisici}{6}{}%
+\contentsline {paragraph}{Mezzi guidati}{6}{}%
+\contentsline {section}{\numberline {1.4}Reti di telecomunicazioni - basi}{7}{}%
+\contentsline {subsection}{\numberline {1.4.1}Commutazione di circuito e commutazione di pacchetto}{7}{}%
+\contentsline {paragraph}{Commutazione di circuito}{7}{}%
+\contentsline {paragraph}{Commutazione di pacchetto}{7}{}%
+\contentsline {subsection}{\numberline {1.4.2}Ritardo end-to-end}{8}{}%
+\contentsline {chapter}{\numberline {2}Architetture di protocolli e ISO-OSI}{10}{}%
