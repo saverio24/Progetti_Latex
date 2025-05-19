@@ -65,6 +65,9 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 OUTPUT main.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT ./capitoli/Conoscenze_di_base.tex
+INPUT ./capitoli/Conoscenze_di_base.tex
+INPUT capitoli/Conoscenze_di_base.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
@@ -88,6 +91,9 @@ INPUT ./images/e2e_packet_switching.png
 INPUT ./images/e2e_packet_switching.png
 INPUT ./images/e2e_packet_switching.png
 INPUT ./images/e2e_packet_switching.png
+INPUT ./capitoli/Architetture_di_protocolli_e_ISO-OSI.tex
+INPUT ./capitoli/Architetture_di_protocolli_e_ISO-OSI.tex
+INPUT capitoli/Architetture_di_protocolli_e_ISO-OSI.tex
 INPUT main.aux
 INPUT /home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb

@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1747677856.36758 "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1747677857.22676 0
+["pdflatex"] 1747678169.55942 "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1747678170.45667 0
   "/etc/texmf/web2c/texmf.cnf" 1747524569.02472 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1747671928 11524 a33806c433029dfb39d2cc7abf3679fd ""
-  "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" 1747677855.33277 13785 e57fe16de0b9a1beb804f81828b1423d ""
+  "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" 1747678100.62641 425 2e4d7b3050d9b71e54c2f527dc86b4a2 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -44,13 +44,15 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1747524572.05252 75955 f78456fd1308dc295dc476a68e28d85b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1747524580 6800790 f6bb22424d468a476879bed434660748 ""
+  "capitoli/Architetture_di_protocolli_e_ISO-OSI.tex" 1747678168.47961 15 0a12e57228b6eac0eab7e95e7efa62c1 ""
+  "capitoli/Conoscenze_di_base.tex" 1747678100.54441 13458 38a128f631e17713fcb5f3cc2cfe3af0 ""
   "images/canali_comunicazione.png" 1747675970.15243 258796 bea563665a18ff0eaf538418cf6e16ed ""
   "images/e2e_circuit_switching.png" 1747676914.25513 223902 f8c6516b957f75583c017a6ea9695697 ""
   "images/e2e_packet_switching.png" 1747676934.87725 283783 3952a2162de92195f7c83632fa559bd8 ""
   "images/pacchetto_generico.png" 1747676288.93583 44169 725147edc1ddfa5233a2a54d2dcd252a ""
-  "main.aux" 1747677857.19691 3437 f9c5f8ade312511aaf078cd6ee851dce "pdflatex"
-  "main.tex" 1747677855.33277 13785 e57fe16de0b9a1beb804f81828b1423d ""
-  "main.toc" 1747677857.19791 1451 294e47e871583715875277688418e6e2 "pdflatex"
+  "main.aux" 1747678170.42776 3533 8f9b7dba48edf6bdfbac80e3c5ed520b "pdflatex"
+  "main.tex" 1747678100.62641 425 2e4d7b3050d9b71e54c2f527dc86b4a2 ""
+  "main.toc" 1747678170.42776 1506 939e52602443b209e9ddd84dc42eaad4 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
