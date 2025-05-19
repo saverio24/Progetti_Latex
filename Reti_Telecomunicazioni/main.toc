@@ -7,7 +7,8 @@
 \contentsline {subsubsection}{Reti di accesso e reti di trasporto}{4}{}%
 \contentsline {subsection}{\numberline {1.1.3}Da analogico a digitale}{4}{}%
 \contentsline {section}{\numberline {1.2}Matematica}{5}{}%
-\contentsline {subsection}{\numberline {1.2.1}Distribuzione di Poisson}{5}{}%
+\contentsline {subsection}{\numberline {1.2.1}Aritmetica a 2 - XOR}{5}{}%
+\contentsline {subsection}{\numberline {1.2.2}Distribuzione di Poisson}{5}{}%
 \contentsline {section}{\numberline {1.3}Fisica}{5}{}%
 \contentsline {subsection}{\numberline {1.3.1}Comunicazione radio, cablata e ottica}{5}{}%
 \contentsline {paragraph}{Pro e contro del canale radio}{5}{}%
@@ -18,5 +19,17 @@
 \contentsline {paragraph}{Commutazione di circuito}{7}{}%
 \contentsline {paragraph}{Commutazione di pacchetto}{7}{}%
 \contentsline {subsection}{\numberline {1.4.2}Ritardo end-to-end}{8}{}%
-\contentsline {chapter}{\numberline {2}Architetture di protocolli e ISO-OSI}{10}{}%
-\contentsline {section}{\numberline {2.1}PROVA}{10}{}%
+\contentsline {chapter}{\numberline {2}Architetture di protocolli}{10}{}%
+\contentsline {section}{\numberline {2.1}Modello ISO-OSI}{10}{}%
+\contentsline {subsection}{\numberline {2.1.1}Introduzione}{10}{}%
+\contentsline {subsubsection}{Entità e pacchetti}{12}{}%
+\contentsline {subsection}{\numberline {2.1.2}Segmentazione e riassemblaggio}{12}{}%
+\contentsline {subsubsection}{Incapsulamento e decapsulamento}{12}{}%
+\contentsline {section}{\numberline {2.2}Modello ibrido}{13}{}%
+\contentsline {subsection}{\numberline {2.2.1}Enc/decapsulation dati nel modello ibrido}{14}{}%
+\contentsline {subsection}{\numberline {2.2.2}Comunicazione tra sistemi}{14}{}%
+\contentsline {section}{\numberline {2.3}Modello TCP/IP}{15}{}%
+\contentsline {chapter}{\numberline {3}Livello 4 trasporto - TCP}{16}{}%
+\contentsline {chapter}{\numberline {4}Livello 3 rete - IP}{17}{}%
+\contentsline {chapter}{\numberline {5}Livello 3 rete - algoritmi di routing}{18}{}%
+\contentsline {chapter}{\numberline {6}Livello 2 data link - Ethernet}{19}{}%
