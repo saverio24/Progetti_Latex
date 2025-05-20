@@ -4,15 +4,23 @@ Il modello ISO-OSI è un modello di riferimento per la progettazione e l'impleme
 
 ISO OSI non ha un numero fisso di livelli, è importante capire la logica dei livelli che devono comporre un modello iso osi ma il numero specifico dei livelli può variare a seconda della necessità.
 
-Il modello più comune di ISO-OSI è composto da sette livelli, ognuno dei quali svolge funzioni specifiche e comunica con i livelli superiori e inferiori. I sette livelli sono:
 \begin{enumerate}
     \item \textbf{Livello fisico}: si occupa della trasmissione dei dati attraverso il mezzo fisico (cavi, fibre ottiche, onde radio, ecc.). Definisce le caratteristiche elettriche e meccaniche dei dispositivi di rete.
     \item \textbf{Livello di collegamento dati}: gestisce la comunicazione tra i dispositivi sulla stessa rete locale. Si occupa della rilevazione e correzione degli errori, del controllo del flusso e dell'indirizzamento fisico (MAC).
     \item \textbf{Livello di rete}: si occupa dell'instradamento dei pacchetti tra reti diverse. Utilizza indirizzi logici (come gli indirizzi IP) per identificare i dispositivi sulla rete e determina il percorso migliore per inviare i dati.
-    \item \textbf{Livello di trasporto}: garantisce la consegna affidabile dei dati tra i dispositivi. Si occupa della segmentazione dei dati, del controllo degli errori e del controllo del flusso. I protocolli più comuni a questo livello sono TCP e UDP.
+    \item \textbf{Livello di trasporto}: garantisce la consegna affidabile dei dati tra i dispositivi. Si occupa della segmentazione dei dati, del controllo degli errori e del controllo del flusso. I protocolli TCP e UDP.
+        \begin{multicols}{2}
+            \begin{itemize}
+                \item Multiplexing e demultiplexing
+                \item Indirizzamento delle unità dei dati (SAP)
+                \item Controllo di flusso end-to-end 
+                \item Segmentazione e riassemblaggio delle unità dati
+                \item Controllo errori end-to-end
+            \end{itemize}
+        \end{multicols}
     \item \textbf{Livello di sessione}: gestisce le sessioni di comunicazione tra i dispositivi. Si occupa dell'apertura, della chiusura e del mantenimento delle sessioni, nonché della sincronizzazione dei dati.
     \item \textbf{Livello di presentazione}: si occupa della formattazione e della codifica dei dati. Converte i dati in un formato comprensibile per il livello applicativo e gestisce la compressione e la crittografia dei dati.
-    \item \textbf{Livello applicativo}: è il livello più alto del modello e fornisce servizi di rete agli utenti finali. Include protocolli come HTTP, FTP, SMTP e DNS, che consentono la comunicazione tra applicazioni.
+    \item \textbf{Livello applicativo}: è il livello più alto del modello e fornisce agli utenti finali le interfacce per l'accesso al servizio. Esempio: posta elettronica, messaggistica istantanea. 
 \end{enumerate}
 
 \begin{figure}[h!]
@@ -66,7 +74,7 @@ Il modello ibrido è composto da cinque livelli principali:
 
 \subsection{Enc/decapsulation dati nel modello ibrido}
 Durante l'encapsulation vengono ad ogni livello aggiunti degli header(AH = application heder, TH = transport header, NH = network header ecc), durante la decapsulation vengono spacchettati grazie agli header precedentemente aggiunti ad ogni livello
-l'unico livello che aggiunge oltre ad un header anche una coda(tail) è il “data link” , “collegamento”, questo perchè vuole verificare la correttezza del pacchetto, tramite tecniche che vedrò avanti(algoritmi di controllo, non esiste un metodo che garantisce che il pacchetto che sia 100% corretto, come l’evenienza in cui dopo la verifica mi risulta corretto ma poi si scopre incorretto, falso positivo).
+l'unico livello che aggiunge oltre ad un header anche una coda(tail) è il “data link” , “collegamento”, questo perchè vuole verificare la correttezza del pacchetto, tramite tecniche che vedrò avanti(algoritmi di controllo, non esiste un metodo che garantisce che il pacchetto che sia 100 corretto.% corretto, come l’evenienza in cui dopo la verifica mi risulta corretto ma poi si scopre incorretto, falso positivo).
 
 \subsection{Comunicazione tra sistemi}
 i livelli rete, data link e fisico si occupano del trasporto dell’informazione tra il sistema a ed il sistema b. questo può avvenire tramite il nodi, intermediari, x e y, oppure in modo diretto.
@@ -86,11 +94,41 @@ posso inserire un timer oltre il quale si interrompe la trasmissione, per evitar
 
     \newpage
 \section{Modello TCP/IP}
-Il modello tcp/ip nasce a 4 livelli, il livelllo di rete si chiama internet, poichè a quel livello si usa il protocollo ip(internet protocol).
+Il modello tcp/ip nasce a 4 livelli(negli anni 70), il livelllo di rete si chiama internet, poichè a quel livello si usa il protocollo ip(internet protocol).
+
+Il suo nome è dovuto dai due protocolli principali che lo compongono: TCP (Transmission Control Protocol) e IP (Internet Protocol).
+
+I livelli del modello TCP/IP:
+\begin{enumerate}
+    \item \textbf{Livello di accesso alla rete}: corrisponde ai livelli DataLink e Fisico del modello ISO-OSI.
+    \item \textbf{Livello Internet}: si occupa dell'instradamento dei pacchetti tra reti diverse. Utilizza indirizzi logici (come gli indirizzi IP) per identificare i dispositivi sulla rete e determina il percorso migliore per inviare i dati.
+    A consentire lo scambio di informazioni tra nodie della rete è l'ICMP, l' Internet Control Message Protocol. Al livello di rete sono presenti anche protocolli di routing. 
+    Importante: non prevede l'interlavoro tra protocolli di rete
+diversi, ma necessariamente tutti i nodi devono
+utilizzare IP.
+    \item \textbf{Livello di trasporto}: fornisce servizi di trasporto affidabili(TCP) e non affidabili(UDP), come TCP e UDP. Si occupa della segmentazione dei dati, del controllo degli errori e del controllo del flusso.
+    \item \textbf{Livello applicativo}: Come ISO OSI e ibrido
+\end{enumerate}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/modello_TCP_IP.png}
+    \caption{I livelli del modello TCP/IP}
+    \label{fig:tcp_ip_modello}
+\end{figure}
 
 
 
+\subsubsection{Confronto tra i modelli}
+I tre modelli — ISO-OSI, TCP/IP e il modello ibrido — sono utilizzati per descrivere l’architettura delle reti di telecomunicazione, ma presentano differenze significative in termini di struttura, approccio e utilizzo pratico.
 
+\textbf{Modello ISO-OSI}: è un modello teorico a 7 livelli, sviluppato come riferimento universale per la progettazione delle reti. Ogni livello ha funzioni ben definite e interagisce solo con i livelli adiacenti. Il modello ISO-OSI è molto dettagliato e didattico, ma non è stato adottato integralmente nelle implementazioni pratiche.
+
+\textbf{Modello TCP/IP}: nasce dall’esperienza pratica di Internet e si compone di 4 livelli. È meno dettagliato rispetto all’ISO-OSI, ma più semplice e orientato all’implementazione. Il modello TCP/IP è diventato lo standard de facto per le reti moderne.
+
+\textbf{Modello ibrido}: rappresenta un compromesso tra i due modelli precedenti, combinando la chiarezza concettuale dell’ISO-OSI con la semplicità e la praticità del TCP/IP. Il modello ibrido solitamente prevede 5 livelli, raggruppando alcune funzioni e adattandosi meglio alle esigenze delle reti attuali.
+
+In sintesi, il modello ISO-OSI è utile per comprendere i principi teorici delle reti, il modello TCP/IP è quello realmente utilizzato nelle reti Internet, mentre il modello ibrido cerca di unire i vantaggi di entrambi per una maggiore flessibilità e chiarezza.
 
 \begin{figure}[h!]
     \centering

@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1747680756.0208 "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1747680757.67716 0
+["pdflatex"] 1747737755.36309 "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1747737757.02681 0
   "/etc/texmf/web2c/texmf.cnf" 1747524569.02472 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1747671928 11524 a33806c433029dfb39d2cc7abf3679fd ""
-  "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" 1747680727.38875 680 2be95672c6a532d2c372e54c409ddcc9 ""
+  "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" 1747737753.50972 682 44ac920b46241141fc0e5899a110542a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -46,8 +46,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1747524572.05252 75955 f78456fd1308dc295dc476a68e28d85b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1747524580 6800790 f6bb22424d468a476879bed434660748 ""
   "capitoli/Algoritmi_routing.tex" 1747680514.21573 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "capitoli/Architetture_di_protocolli_e_ISO-OSI.tex" 1747680357.1059 9174 4b380142e2f676b85e9899fb9d867f5f ""
-  "capitoli/Conoscenze_di_base.tex" 1747680754.14123 13492 434053a3fa067ae6c863ed20bf463fd0 ""
+  "capitoli/Architetture_di_protocolli_e_ISO-OSI.tex" 1747737730.86257 12157 cb3d25c2e9a246041335c43636c0f3a0 ""
+  "capitoli/Conoscenze_di_base.tex" 1747735542.63611 13489 4c496cbc1f6447642690e516246f078a ""
   "capitoli/IP_livello3.tex" 1747680450.82819 0 d41d8cd98f00b204e9800998ecf8427e ""
   "capitoli/TCP_livello4.tex" 1747680464.97237 0 d41d8cd98f00b204e9800998ecf8427e ""
   "images/ISO_OSI_incapsulamento.png" 1747678878.56459 148796 a61c52b24a1b5dae58fd70f9f14d2a69 ""
@@ -58,10 +58,11 @@
   "images/e2e_circuit_switching.png" 1747676914.25513 223902 f8c6516b957f75583c017a6ea9695697 ""
   "images/e2e_packet_switching.png" 1747676934.87725 283783 3952a2162de92195f7c83632fa559bd8 ""
   "images/enc_dec_ibrido.png" 1747679621.34498 412613 b13ec86c439435b69bd492c61ebeb52d ""
+  "images/modello_TCP_IP.png" 1747737005.12198 63270 15322edef85ffe10ad48419771cd0144 ""
   "images/pacchetto_generico.png" 1747676288.93583 44169 725147edc1ddfa5233a2a54d2dcd252a ""
-  "main.aux" 1747680757.64216 6357 2472f442cc5238f2f4e63ebb9f1267f5 "pdflatex"
-  "main.tex" 1747680727.38875 680 2be95672c6a532d2c372e54c409ddcc9 ""
-  "main.toc" 1747680757.64316 2467 6d1e84516948cb3aa786ac06c384c2b0 "pdflatex"
+  "main.aux" 1747737756.99308 6643 ee6062040bdc4ffbefeb8ea0f5abc6f7 "pdflatex"
+  "main.tex" 1747737753.50972 682 44ac920b46241141fc0e5899a110542a ""
+  "main.toc" 1747737756.99308 2531 18fea99018e976d891c28096d7e13b29 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

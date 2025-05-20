@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  19 MAY 2025 20:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  20 MAY 2025 12:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -244,28 +244,31 @@ Overfull \hbox (6.62923pt too wide) in paragraph at lines 3--4
 \OT1/cmr/m/n/10 di reti di tele-co-mu-ni-cazioni. []E stato svilup-pato dall'Organizzazione In-ter-nazionale
  []
 
-[10
+
+Overfull \vbox (11.36107pt too high) has occurred while \output is active []
+
+ [10
 
 ]
 <images/ISO_OSI_livelli.png, id=51, 786.94pt x 1108.14pt>
 File: images/ISO_OSI_livelli.png Graphic file (type png)
 <use images/ISO_OSI_livelli.png>
-Package pdftex.def Info: images/ISO_OSI_livelli.png  used on input line 20.
+Package pdftex.def Info: images/ISO_OSI_livelli.png  used on input line 28.
 (pdftex.def)             Requested size: 155.24895pt x 218.6143pt.
  [11 <./images/ISO_OSI_livelli.png>]
 <images/ISO_OSI_incapsulamento.png, id=55, 2445.135pt x 1180.41pt>
 File: images/ISO_OSI_incapsulamento.png Graphic file (type png)
 <use images/ISO_OSI_incapsulamento.png>
-Package pdftex.def Info: images/ISO_OSI_incapsulamento.png  used on input line 41.
+Package pdftex.def Info: images/ISO_OSI_incapsulamento.png  used on input line 49.
 (pdftex.def)             Requested size: 345.0pt x 166.5351pt.
  [12 <./images/ISO_OSI_incapsulamento.png>]
 <images/enc_dec_ibrido.png, id=61, 2449.15pt x 1503.6175pt>
 File: images/enc_dec_ibrido.png Graphic file (type png)
 <use images/enc_dec_ibrido.png>
-Package pdftex.def Info: images/enc_dec_ibrido.png  used on input line 62.
+Package pdftex.def Info: images/enc_dec_ibrido.png  used on input line 70.
 (pdftex.def)             Requested size: 413.99895pt x 254.16617pt.
 
-Overfull \hbox (68.99895pt too wide) in paragraph at lines 62--63
+Overfull \hbox (68.99895pt too wide) in paragraph at lines 70--71
  [][] 
  []
 
@@ -273,29 +276,35 @@ Overfull \hbox (68.99895pt too wide) in paragraph at lines 62--63
 <images/comunicazione_ibrido.png, id=65, 2493.315pt x 1116.17pt>
 File: images/comunicazione_ibrido.png Graphic file (type png)
 <use images/comunicazione_ibrido.png>
-Package pdftex.def Info: images/comunicazione_ibrido.png  used on input line 81.
+Package pdftex.def Info: images/comunicazione_ibrido.png  used on input line 89.
 (pdftex.def)             Requested size: 345.0pt x 154.44037pt.
  [14 <./images/comunicazione_ibrido.png>]
-<images/confronto_stack.png, id=69, 2230.3325pt x 1150.2975pt>
+<images/modello_TCP_IP.png, id=69, 768.8725pt x 893.3375pt>
+File: images/modello_TCP_IP.png Graphic file (type png)
+<use images/modello_TCP_IP.png>
+Package pdftex.def Info: images/modello_TCP_IP.png  used on input line 115.
+(pdftex.def)             Requested size: 172.5pt x 200.41975pt.
+ [15 <./images/modello_TCP_IP.png>]
+<images/confronto_stack.png, id=73, 2230.3325pt x 1150.2975pt>
 File: images/confronto_stack.png Graphic file (type png)
 <use images/confronto_stack.png>
-Package pdftex.def Info: images/confronto_stack.png  used on input line 97.
+Package pdftex.def Info: images/confronto_stack.png  used on input line 135.
 (pdftex.def)             Requested size: 345.0pt x 177.92567pt.
-) [15 <./images/confronto_stack.png>]
+) [16 <./images/confronto_stack.png>]
 Chapter 3.
-(./capitoli/TCP_livello4.tex) [16
+(./capitoli/TCP_livello4.tex) [17
 
 ]
 Chapter 4.
-(./capitoli/IP_livello3.tex) [17
+(./capitoli/IP_livello3.tex) [18
 
 ]
 Chapter 5.
-(./capitoli/Algoritmi_routing.tex) [18
+(./capitoli/Algoritmi_routing.tex) [19
 
 ]
 Chapter 6.
-[19
+[20
 
 ] (./main.aux)
  ***********
@@ -304,18 +313,18 @@ L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1664 strings out of 476182
- 29445 string characters out of 5795595
+ 1672 strings out of 476182
+ 29688 string characters out of 5795595
  1932975 words of memory out of 5000000
- 23673 multiletter control sequences out of 15000+600000
+ 23681 multiletter control sequences out of 15000+600000
  563871 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,7n,65p,979b,247s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,7n,65p,979b,261s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (20 pages, 2060334 bytes).
+Output written on main.pdf (21 pages, 2112859 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 137 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 
