@@ -36,8 +36,10 @@ questi gruppi vengono organizzati in modo gerarchico, quindi a strati(stratifica
 lo strato N è costituito da una o più entità e l'interazione tra due sistemi avviene tra strati di eguale livello e con entità pari.
 
 Con il modello iso osi i “problemi” nella progettazione vengono divisi, rendendo la progettazione più modulare e più semplice, potendo specializzarsi su un livello specifico del modello. dividere un problema in più livelli è più conveniente. 
-\subsubsection{Entità e pacchetti}
-Ogni livello ha un'entità, queste elaborano i pacchetti, un pacchetto(PDU: protocol data unit) è composto da un header(PCI:protocol control information) e un payload(SDU: service data unit) 
+\subsubsection{Entità e pacchetti(PDU, PCI, SDU)}
+Ogni livello ha un'entità, queste elaborano i pacchetti, detti PDU(protocol data unit);
+
+ogni PDU è composto da un header PCI(protocol control information) e un payload SDU(service data unit) 
 \subsection{Segmentazione e riassemblaggio} 
 La segmentazione è il processo di suddivisione dei dati in pacchetti più piccoli per facilitarne la trasmissione attraverso la rete. Ogni pacchetto viene inviato separatamente e può seguire percorsi diversi attraverso la rete. Il riassemblaggio è il processo inverso, in cui i pacchetti ricevuti vengono ricomposti nell'ordine corretto per ricostruire i dati originali.
 (dall’alto verso il basso(segmentazione) vengono aggiunti gli header ai pacchetti; dal basso verso l’alto(riassemblaggio) vengono rimossi, quindi utilizzati, gli header dei pacchetti)

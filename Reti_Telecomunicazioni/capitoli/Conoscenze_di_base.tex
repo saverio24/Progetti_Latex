@@ -76,15 +76,42 @@ Se mando una richiesta sul web tramite il mio router di casa, collegandomi alla 
     \item velocità di trasporto(relativa ai dati che viaggiano nella rete di trasporto)
 \end{itemize}
 
-\subsection{Da analogico a digitale}
-in base al tipo di comunicazione decido il modo con il quale mettere in comunicazione gli utenti, se sono tanti o pochi, se sono distanti o vicini, se comunicano contemporaneamente oppure no.
-quando l'informazione che voglio trasmettere la digitallizzo, passando da analogico a digitale, ho molti vantaggi:
-campionando il segnale analogico posso ricorstruirlo in segnale digitale, in bit.
-quando chiamo qualcuno avviene il campionamento dell'onda audio della voce, questo avviene tramite il filtro passa banda tra le frequenze 300hz e 3400 hz. le alte e le bassissime frequenze vengono tagliate. 8 bit per campione, 64bit per secondo, quindi 8 campioni al secondo. la trasmissione nel canale telefonico avviene con la trasmissione di pacchetti.
+%\subsection{Da analogico a digitale}
+%in base al tipo di comunicazione decido il modo con il quale mettere in comunicazione gli utenti, se sono tanti o pochi, se sono distanti o vicini, se comunicano contemporaneamente oppure no.
+%quando l'informazione che voglio trasmettere la digitallizzo, passando da analogico a digitale, ho molti vantaggi:
+%campionando il segnale analogico posso ricorstruirlo in segnale digitale, in bit.
+%quando chiamo qualcuno avviene il campionamento dell'onda audio della voce, questo avviene tramite il filtro passa banda tra le frequenze 300hz e 3400 hz. le alte e le bassissime frequenze vengono tagliate. 8 bit per campione, 64bit per secondo, quindi 8 campioni al secondo. la trasmissione nel canale telefonico avviene con la trasmissione di pacchetti.
+
+\subsection*{Differenza tra quantità di valori rappresentabili e byte occupati in memoria}
+
+Quando si lavora con i dati binari, è importante distinguere tra:
+
+\begin{itemize}
+  \item \textbf{Quantità di valori rappresentabili}: indica il numero di combinazioni possibili che si possono ottenere con un certo numero di bit. Ad esempio, con $n$ bit si possono rappresentare $2^n$ valori distinti. Questo determina l'intervallo dei numeri che si possono codificare. Ad esempio, con 16 bit (senza segno) si possono rappresentare i numeri interi da $0$ a $2^{16}-1 = 65535$.
+
+  \item \textbf{Byte occupati in memoria}: rappresenta lo spazio fisico necessario per memorizzare quel valore. Poiché 1 byte corrisponde a 8 bit, un valore a 16 bit occupa esattamente 2 byte in memoria. Questo è indipendente dai valori specifici che si possono rappresentare con quei bit.
+\end{itemize}
+
+\noindent In sintesi, \emph{la quantità di valori rappresentabili dipende dal numero di bit}, mentre \emph{i byte occupati in memoria dipendono da come è strutturato il campo nella memoria del computer}. Un campo a 16 bit occupa sempre 2 byte, ma può rappresentare fino a 65536 valori distinti (da 0 a 65535 nel caso senza segno).
 
 
 \newpage
 \section{Matematica}
+\subsection{Potenza di due}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/potenza_due}
+    \caption{Tabella delle potenze di due}
+    \label{fig:potenza_due}
+\end{figure}
+\subsection{Complemento a 1 - NOT}
+Il complemento a 1  è una rappresentazione binaria in cui ogni bit di un numero binario viene invertito. Ad esempio, il complemento a 1 di 1010 è 0101. Questo metodo è spesso utilizzato per rappresentare numeri negativi nei sistemi binari.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/complemento_uno}
+    \caption{Esempio di complemento a 1}
+    \label{fig:complemento_uno}
+\end{figure}
 \subsection{Aritmetica a 2 - XOR}
 \subsection{Distribuzione di Poisson}
 \section{Fisica}
