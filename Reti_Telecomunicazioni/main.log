@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  21 MAY 2025 19:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  24 MAY 2025 18:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -183,46 +183,100 @@ Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
 \mult@nat@firstbox=\box97
 \colbreak@box=\box98
 \mc@col@check@num=\count283
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count284
+\Gm@cntv=\count285
+\c@Gm@tempcnt=\count286
+\Gm@bindingoffset=\dimen161
+\Gm@wd@mp=\dimen162
+\Gm@odd@mp=\dimen163
+\Gm@even@mp=\dimen164
+\Gm@layoutwidth=\dimen165
+\Gm@layoutheight=\dimen166
+\Gm@layouthoffset=\dimen167
+\Gm@layoutvoffset=\dimen168
+\Gm@dimlist=\toks26
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count284
+\l__color_backend_stack_int=\count287
 \l__pdf_internal_box=\box99
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count285
-\scratchdimen=\dimen161
+\scratchcounter=\count288
+\scratchdimen=\dimen169
 \scratchbox=\box100
-\nofMPsegments=\count286
-\nofMParguments=\count287
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count288
-\MPscratchDim=\dimen162
-\MPnumerator=\count289
-\makeMPintoPDFobject=\count290
-\everyMPtoPDFconversion=\toks27
+\nofMPsegments=\count289
+\nofMParguments=\count290
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count291
+\MPscratchDim=\dimen170
+\MPnumerator=\count292
+\makeMPintoPDFobject=\count293
+\everyMPtoPDFconversion=\toks28
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-)) [1
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc)
 \tf@toc=\write3
@@ -232,161 +286,135 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 ]
 Chapter 1.
-(./capitoli/TCP_livello4.tex
-Overfull \hbox (41.90959pt too wide) in paragraph at lines 12--13
- \OT1/cmr/bx/n/10 Fun-zioni prin-ci-pali UDP[] \OT1/cmr/m/n/10 Svolge l'unico com-pito di in-cap-su-lare i dati dell'applicazione
- []
+(./capitoli/IP_livello3.tex
+<images/indirizzoip.png, id=14, 1429.34pt x 758.835pt>
+File: images/indirizzoip.png Graphic file (type png)
+<use images/indirizzoip.png>
+Package pdftex.def Info: images/indirizzoip.png  used on input line 7.
+(pdftex.def)             Requested size: 194.6149pt x 103.3183pt.
+<images/reteipbase.png, id=15, 1463.4675pt x 698.61pt>
+File: images/reteipbase.png Graphic file (type png)
+<use images/reteipbase.png>
+Package pdftex.def Info: images/reteipbase.png  used on input line 33.
+(pdftex.def)             Requested size: 268.59235pt x 128.21747pt.
+ [2
 
-
-Overfull \hbox (48.3063pt too wide) in paragraph at lines 12--13
-\OT1/cmr/m/n/10 in un pac-chetto UDP, ag-giun-gendo le in-for-mazioni nec-es-sarie per la con-segna(Multiplexing).
- []
-
-[2
-
-]
-<images/socket_port.png, id=18, 1423.3175pt x 718.685pt>
-File: images/socket_port.png Graphic file (type png)
-<use images/socket_port.png>
-Package pdftex.def Info: images/socket_port.png  used on input line 37.
-(pdftex.def)             Requested size: 207.0021pt x 104.51918pt.
- [3 <./images/socket_port.png>]
-<images/flusso_IP.png, id=22, 1082.0425pt x 371.3875pt>
-File: images/flusso_IP.png Graphic file (type png)
-<use images/flusso_IP.png>
-Package pdftex.def Info: images/flusso_IP.png  used on input line 55.
-(pdftex.def)             Requested size: 241.49895pt x 82.88988pt.
-<images/DNS.jpg, id=23, 1019.81pt x 449.68pt>
-File: images/DNS.jpg Graphic file (type jpg)
-<use images/DNS.jpg>
-Package pdftex.def Info: images/DNS.jpg  used on input line 62.
-(pdftex.def)             Requested size: 207.0021pt x 91.2724pt.
-<images/datagram_udp.png, id=24, 1322.9425pt x 385.44pt>
-File: images/datagram_udp.png Graphic file (type png)
-<use images/datagram_udp.png>
-Package pdftex.def Info: images/datagram_udp.png  used on input line 83.
-(pdftex.def)             Requested size: 241.49895pt x 70.35838pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4 <./images/flusso_IP.png> <./images/DNS.jpg>]
-<images/pseudoheaderUDP.png, id=28, 1517.67pt x 419.5675pt>
-File: images/pseudoheaderUDP.png Graphic file (type png)
-<use images/pseudoheaderUDP.png>
-Package pdftex.def Info: images/pseudoheaderUDP.png  used on input line 99.
-(pdftex.def)             Requested size: 241.49895pt x 66.76085pt.
-
-Overfull \hbox (21.69496pt too wide) in paragraph at lines 109--110
-[]\OT1/cmr/m/n/10 Se il check-sum ^^Re di-verso da 0, sig-nifica che ci sono er-rori, si-cu-ra-mente(condizione
- []
-
-[5 <./images/datagram_udp.png> <./images/pseudoheaderUDP.png>]
-Overfull \hbox (10.62227pt too wide) in paragraph at lines 115--116
- \OT1/cmr/bx/n/10 In trasmis-sione[] \OT1/cmr/m/n/10 In tramis-sione ven-gono som-mate in bi-na-rio tutte le righe(mezze
- []
-
-<images/checksum_udp.png, id=34, 1218.5525pt x 915.42pt>
-File: images/checksum_udp.png Graphic file (type png)
-<use images/checksum_udp.png>
-Package pdftex.def Info: images/checksum_udp.png  used on input line 126.
-(pdftex.def)             Requested size: 345.0pt x 259.17932pt.
-[6 <./images/checksum_udp.png>]
-<images/segmento_tcp.png, id=39, 1535.7375pt x 839.135pt>
-File: images/segmento_tcp.png Graphic file (type png)
-<use images/segmento_tcp.png>
-Package pdftex.def Info: images/segmento_tcp.png  used on input line 153.
-(pdftex.def)             Requested size: 276.00105pt x 150.8073pt.
- [7 <./images/segmento_tcp.png>]
-<images/sequence_number.png, id=43, 1897.0875pt x 423.5825pt>
-File: images/sequence_number.png Graphic file (type png)
-<use images/sequence_number.png>
-Package pdftex.def Info: images/sequence_number.png  used on input line 168.
-(pdftex.def)             Requested size: 241.49895pt x 53.91718pt.
-
-Overfull \hbox (4.79309pt too wide) in paragraph at lines 188--188
-[]\OT1/cmr/bx/n/12 Apertura con-nes-sione client-server (3way hand-shake) 
- []
-
-<images/three_w_hs1.png, id=44, 1250.6725pt x 1164.35pt>
-File: images/three_w_hs1.png Graphic file (type png)
-<use images/three_w_hs1.png>
-Package pdftex.def Info: images/three_w_hs1.png  used on input line 192.
-(pdftex.def)             Requested size: 241.49895pt x 224.81764pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[8 <./images/sequence_number.png>] [9 <./images/three_w_hs1.png>]
-<images/halfclosetcp.png, id=52, 853.1875pt x 1162.3425pt>
-File: images/halfclosetcp.png Graphic file (type png)
-<use images/halfclosetcp.png>
-Package pdftex.def Info: images/halfclosetcp.png  used on input line 220.
-(pdftex.def)             Requested size: 241.49895pt x 329.00085pt.
- [10 <./images/halfclosetcp.png>]
-<images/3wayclose.png, id=56, 1003.75pt x 1188.44pt>
-File: images/3wayclose.png Graphic file (type png)
-<use images/3wayclose.png>
-Package pdftex.def Info: images/3wayclose.png  used on input line 249.
-(pdftex.def)             Requested size: 241.49895pt x 285.92053pt.
- [11 <./images/3wayclose.png>] [12]
-<images/finestratrasmissione.png, id=64, 1850.915pt x 405.515pt>
-File: images/finestratrasmissione.png Graphic file (type png)
-<use images/finestratrasmissione.png>
-Package pdftex.def Info: images/finestratrasmissione.png  used on input line 291.
-(pdftex.def)             Requested size: 413.99895pt x 90.69861pt.
-
-Overfull \hbox (68.99895pt too wide) in paragraph at lines 291--292
- [][] 
- []
-
-<images/finestraricezione.png, id=65, 1875.005pt x 471.7625pt>
-File: images/finestraricezione.png Graphic file (type png)
-<use images/finestraricezione.png>
-Package pdftex.def Info: images/finestraricezione.png  used on input line 303.
-(pdftex.def)             Requested size: 413.99895pt x 104.16238pt.
-
-Overfull \hbox (68.99895pt too wide) in paragraph at lines 303--304
- [][] 
- []
-
-[13 <./images/finestratrasmissione.png> <./images/finestraricezione.png>]
-<images/tcpflusso.png, id=69, 2296.58pt x 1218.5525pt>
-File: images/tcpflusso.png Graphic file (type png)
-<use images/tcpflusso.png>
-Package pdftex.def Info: images/tcpflusso.png  used on input line 314.
-(pdftex.def)             Requested size: 345.0pt x 183.0539pt.
-<images/slidingwindowesempio.png, id=70, 2099.845pt x 1367.1075pt>
-File: images/slidingwindowesempio.png Graphic file (type png)
-<use images/slidingwindowesempio.png>
-Package pdftex.def Info: images/slidingwindowesempio.png  used on input line 334.
-(pdftex.def)             Requested size: 413.99895pt x 269.53664pt.
-
-Overfull \hbox (68.99895pt too wide) in paragraph at lines 334--335
- [][] 
- []
+ <./images/indirizzoip.png> <./images/reteipbase.png>]
+<images/datagrammaIP.png, id=19, 1742.51pt x 768.8725pt>
+File: images/datagrammaIP.png Graphic file (type png)
+<use images/datagrammaIP.png>
+Package pdftex.def Info: images/datagrammaIP.png  used on input line 41.
+(pdftex.def)             Requested size: 409.71692pt x 180.77892pt.
+<images/tos.png, id=20, 2378.8875pt x 602.25pt>
+File: images/tos.png Graphic file (type png)
+<use images/tos.png>
+Package pdftex.def Info: images/tos.png  used on input line 54.
+(pdftex.def)             Requested size: 455.24411pt x 115.24655pt.
+ [3 <./images/datagrammaIP.png> <./images/tos.png>]
+<images/flagsIP.png, id=25, 377.41pt x 130.4875pt>
+File: images/flagsIP.png Graphic file (type png)
+<use images/flagsIP.png>
+Package pdftex.def Info: images/flagsIP.png  used on input line 75.
+(pdftex.def)             Requested size: 182.09486pt x 62.95782pt.
+<images/frammentazione.png, id=26, 1094.0875pt x 1188.44pt>
+File: images/frammentazione.png Graphic file (type png)
+<use images/frammentazione.png>
+Package pdftex.def Info: images/frammentazione.png  used on input line 97.
+(pdftex.def)             Requested size: 182.09486pt x 197.78874pt.
+<images/strutturaIP.png, id=27, 2298.5875pt x 429.605pt>
+File: images/strutturaIP.png Graphic file (type png)
+<use images/strutturaIP.png>
+Package pdftex.def Info: images/strutturaIP.png  used on input line 117.
+(pdftex.def)             Requested size: 364.19667pt x 68.063pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [14 <./images/tcpflusso.png>] [15 <./images/slidingwindowesempio.png>] (./main.aux)
+[4 <./images/flagsIP.png> <./images/frammentazione.png>]
+<images/classfulladdressing.png, id=32, 2569.6pt x 1395.2125pt>
+File: images/classfulladdressing.png Graphic file (type png)
+<use images/classfulladdressing.png>
+Package pdftex.def Info: images/classfulladdressing.png  used on input line 134.
+(pdftex.def)             Requested size: 455.24411pt x 247.16762pt.
+<images/mascheraIP.png, id=33, 1314.9125pt x 439.6425pt>
+File: images/mascheraIP.png Graphic file (type png)
+<use images/mascheraIP.png>
+Package pdftex.def Info: images/mascheraIP.png  used on input line 144.
+(pdftex.def)             Requested size: 194.6149pt x 65.06473pt.
+ [5 <./images/strutturaIP.png> <./images/classfulladdressing.png> <./images/mascheraIP.png>]
+<images/indirizziipspeciali.png, id=39, 2473.24pt x 1389.19pt>
+File: images/indirizziipspeciali.png Graphic file (type png)
+<use images/indirizziipspeciali.png>
+Package pdftex.def Info: images/indirizziipspeciali.png  used on input line 179.
+(pdftex.def)             Requested size: 455.24411pt x 255.7031pt.
+ [6 <./images/indirizziipspeciali.png>]
+<images/frameethernet.png, id=44, 2495.3225pt x 413.545pt>
+File: images/frameethernet.png Graphic file (type png)
+<use images/frameethernet.png>
+Package pdftex.def Info: images/frameethernet.png  used on input line 205.
+(pdftex.def)             Requested size: 455.24411pt x 75.4445pt.
+
+Overfull \vbox (5.86282pt too high) has occurred while \output is active []
+
+ [7 <./images/frameethernet.png>]
+<images/esempioarp.png, id=48, 2354.7975pt x 1383.1675pt>
+File: images/esempioarp.png Graphic file (type png)
+<use images/esempioarp.png>
+Package pdftex.def Info: images/esempioarp.png  used on input line 237.
+(pdftex.def)             Requested size: 455.24411pt x 267.38443pt.
+ [8 <./images/esempioarp.png>]
+<images/esempioARPretidiverse.png, id=52, 1903.11pt x 710.655pt>
+File: images/esempioARPretidiverse.png Graphic file (type png)
+<use images/esempioARPretidiverse.png>
+Package pdftex.def Info: images/esempioARPretidiverse.png  used on input line 259.
+(pdftex.def)             Requested size: 455.24411pt x 169.99681pt.
+ [9 <./images/esempioARPretidiverse.png>]
+<images/dhcp.png, id=56, 1842.885pt x 813.0375pt>
+File: images/dhcp.png Graphic file (type png)
+<use images/dhcp.png>
+Package pdftex.def Info: images/dhcp.png  used on input line 319.
+(pdftex.def)             Requested size: 455.24411pt x 200.83972pt.
+ [10 <./images/dhcp.png>]
+<images/nat.png, id=60, 2182.1525pt x 1222.5675pt>
+File: images/nat.png Graphic file (type png)
+<use images/nat.png>
+Package pdftex.def Info: images/nat.png  used on input line 363.
+(pdftex.def)             Requested size: 386.96027pt x 216.78806pt.
+ [11 <./images/nat.png>]
+<images/comandiicmp.png, id=64, 1618.045pt x 999.735pt>
+File: images/comandiicmp.png Graphic file (type png)
+<use images/comandiicmp.png>
+Package pdftex.def Info: images/comandiicmp.png  used on input line 383.
+(pdftex.def)             Requested size: 305.01271pt x 188.45667pt.
+<images/pingicmp.png, id=65, 1316.92pt x 429.605pt>
+File: images/pingicmp.png Graphic file (type png)
+<use images/pingicmp.png>
+Package pdftex.def Info: images/pingicmp.png  used on input line 396.
+(pdftex.def)             Requested size: 250.38564pt x 81.67824pt.
+<images/traceroute.png, id=66, 2067.725pt x 578.16pt>
+File: images/traceroute.png Graphic file (type png)
+<use images/traceroute.png>
+Package pdftex.def Info: images/traceroute.png  used on input line 406.
+(pdftex.def)             Requested size: 364.19667pt x 101.83234pt.
+ [12 <./images/comandiicmp.png> <./images/pingicmp.png> <./images/traceroute.png>]) [13] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2383 strings out of 476182
- 38182 string characters out of 5795595
- 1931975 words of memory out of 5000000
- 24386 multiletter control sequences out of 15000+600000
- 564999 words of font info for 60 fonts, out of 8000000 for 9000
+ 2969 strings out of 476182
+ 47177 string characters out of 5795595
+ 1934975 words of memory out of 5000000
+ 24960 multiletter control sequences out of 15000+600000
+ 565167 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,7n,65p,697b,304s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (16 pages, 2218445 bytes).
+ 57i,8n,65p,715b,303s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (14 pages, 3255047 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

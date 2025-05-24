@@ -24,31 +24,38 @@ ISO OSI non ha un numero fisso di livelli, è importante capire la logica dei li
 \end{enumerate}
 
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.45\textwidth]{images/ISO_OSI_livelli.png}
-    \caption{I sette livelli del modello ISO-OSI}
-    \label{fig:iso_osi_livelli}
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.85\textwidth]{images/ISO_OSI_livelli.png}
+        \caption{I sette livelli del modello ISO-OSI}
+        \label{fig:iso_osi_livelli}
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        L'ISO-OSI serve a descrivere l'architettura dei protocolli, tramite il raggruppamento e la stratificazione.\\
+        Vengono raggruppate tra loro le funzioni simili per logica o tecnologia.\\
+        Questi gruppi vengono organizzati in modo gerarchico, quindi a strati (stratificazione). Con ogni strato ci si può interfacciare tramite le interfacce.\\
+        Lo strato N è costituito da una o più entità e l'interazione tra due sistemi avviene tra strati di eguale livello e con entità pari.
+
+        Con il modello iso osi i “problemi” nella progettazione vengono divisi, rendendo la progettazione più modulare e più semplice, potendo specializzarsi su un livello specifico del modello. dividere un problema in più livelli è più conveniente. 
+\paragraph{Entità e pacchetti(PDU, PCI, SDU)}
+
+Ogni livello ha un'entità, queste elaborano i pacchetti, detti PDU(protocol data unit);
+ogni PDU è composto da un header PCI(protocol control information) e un payload SDU(service data unit) 
+
+
+    \end{minipage}
 \end{figure}
 
-L'ISO-OSI serve a descrivere l'architettura dei protocolli, tramite il raggruppamento e la stratificazione.
-vengono raggruppate tra loro le funzioni simili per logica o tecnologia.
-questi gruppi vengono organizzati in modo gerarchico, quindi a strati(stratificazione). con ogni strato ci si può interfacciare trazie alle interfacce.
-lo strato N è costituito da una o più entità e l'interazione tra due sistemi avviene tra strati di eguale livello e con entità pari.
 
-Con il modello iso osi i “problemi” nella progettazione vengono divisi, rendendo la progettazione più modulare e più semplice, potendo specializzarsi su un livello specifico del modello. dividere un problema in più livelli è più conveniente. 
-\subsubsection{Entità e pacchetti(PDU, PCI, SDU)}
-Ogni livello ha un'entità, queste elaborano i pacchetti, detti PDU(protocol data unit);
-
-ogni PDU è composto da un header PCI(protocol control information) e un payload SDU(service data unit) 
-\subsection{Segmentazione e riassemblaggio} 
+\subsection{Segmentazione e riassemblaggio (incapsulamento e decapsulamento)} 
 La segmentazione è il processo di suddivisione dei dati in pacchetti più piccoli per facilitarne la trasmissione attraverso la rete. Ogni pacchetto viene inviato separatamente e può seguire percorsi diversi attraverso la rete. Il riassemblaggio è il processo inverso, in cui i pacchetti ricevuti vengono ricomposti nell'ordine corretto per ricostruire i dati originali.
 (dall’alto verso il basso(segmentazione) vengono aggiunti gli header ai pacchetti; dal basso verso l’alto(riassemblaggio) vengono rimossi, quindi utilizzati, gli header dei pacchetti)
-\subsubsection{Incapsulamento e decapsulamento}
+
 Dall'alto verso il basso: trasmissione $\rightarrow$ da tenere a mente che il livello più basso c’è il livello fisico, mentre il livello più alto è quello a cui tipicamente ci interfacciamo(applicazione del telefono ad esempio, whatsapp)
 quando trasmetto quindi faccio encapsulation, ossia aggiungo informazioni utili alla trasmissione del payload. questo perchè tra un livello è l’altro potrei avere la necessità di dover dividere il pacchetto in altri pacchetti, perciò va aggiunto negli header le informazioni necessarie a far riassemblare il pacchetto intero una volta finita la trasmissione.
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{images/ISO_OSI_incapsulamento.png}
+    \includegraphics[width=0.7\textwidth]{images/ISO_OSI_incapsulamento.png}
     \caption{Pacchetti e incapsulamento/decapsulamento}
     \label{fig:pacchetti}
 \end{figure}
@@ -69,10 +76,11 @@ Il modello ibrido è composto da cinque livelli principali:
 
     \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.2\textwidth]{images/enc_dec_ibrido.png}
+    \includegraphics[width=1\textwidth]{images/enc_dec_ibrido.png}
     \caption{Incapsulamento e decapsulamento dei dati nel modello ibrido}
     \label{fig:modello_ibrido_enc_decapsulamento}
 \end{figure}
+
 
 \subsection{Enc/decapsulation dati nel modello ibrido}
 Durante l'encapsulation vengono ad ogni livello aggiunti degli header(AH = application heder, TH = transport header, NH = network header ecc), durante la decapsulation vengono spacchettati grazie agli header precedentemente aggiunti ad ogni livello
@@ -93,6 +101,12 @@ posso inserire un timer oltre il quale si interrompe la trasmissione, per evitar
     \label{fig:comunicazione_sistemi_ibrido}
 \end{figure}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/confronto_stack.png}
+    \caption{Confronto tra stack ISO-OSI, TCP/IP e modello ibrido}
+    \label{fig:confronto_stack}
+\end{figure}
 
     \newpage
 \section{Modello TCP/IP}
@@ -100,25 +114,27 @@ Il modello tcp/ip nasce a 4 livelli(negli anni 70), il livelllo di rete si chiam
 
 Il suo nome è dovuto dai due protocolli principali che lo compongono: TCP (Transmission Control Protocol) e IP (Internet Protocol).
 
-I livelli del modello TCP/IP:
-\begin{enumerate}
-    \item \textbf{Livello di accesso alla rete}: corrisponde ai livelli DataLink e Fisico del modello ISO-OSI.
-    \item \textbf{Livello Internet}: si occupa dell'instradamento dei pacchetti tra reti diverse. Utilizza indirizzi logici (come gli indirizzi IP) per identificare i dispositivi sulla rete e determina il percorso migliore per inviare i dati.
-    A consentire lo scambio di informazioni tra nodie della rete è l'ICMP, l' Internet Control Message Protocol. Al livello di rete sono presenti anche protocolli di routing. 
-    Importante: non prevede l'interlavoro tra protocolli di rete
-diversi, ma necessariamente tutti i nodi devono
-utilizzare IP.
-    \item \textbf{Livello di trasporto}: fornisce servizi di trasporto affidabili(TCP) e non affidabili(UDP), come TCP e UDP. Si occupa della segmentazione dei dati, del controllo degli errori e del controllo del flusso.
-    \item \textbf{Livello applicativo}: Come ISO OSI e ibrido
-\end{enumerate}
-
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/modello_TCP_IP.png}
-    \caption{I livelli del modello TCP/IP}
-    \label{fig:tcp_ip_modello}
+    \begin{minipage}{0.55\textwidth}
+        I livelli del modello TCP/IP:
+        \begin{enumerate}
+            \item \textbf{Livello di accesso alla rete}: corrisponde ai livelli DataLink e Fisico del modello ISO-OSI.
+            \item \textbf{Livello Internet}: si occupa dell'instradamento dei pacchetti tra reti diverse. Utilizza indirizzi logici (come gli indirizzi IP) per identificare i dispositivi sulla rete e determina il percorso migliore per inviare i dati.
+            A consentire lo scambio di informazioni tra nodi della rete è l'ICMP, l'Internet Control Message Protocol. Al livello di rete sono presenti anche protocolli di routing. 
+            Importante: non prevede l'interlavoro tra protocolli di rete
+            diversi, ma necessariamente tutti i nodi devono
+            utilizzare IP.
+            \item \textbf{Livello di trasporto}: fornisce servizi di trasporto affidabili (TCP) e non affidabili (UDP), come TCP e UDP. Si occupa della segmentazione dei dati, del controllo degli errori e del controllo del flusso.
+            \item \textbf{Livello applicativo}: Come ISO OSI e ibrido
+        \end{enumerate}
+    \end{minipage}\hfill
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/modello_TCP_IP.png}
+        \caption{I livelli del modello TCP/IP}
+        \label{fig:tcp_ip_modello}
+    \end{minipage}
 \end{figure}
-
 
 
 \subsubsection{Confronto tra i modelli}
@@ -132,9 +148,3 @@ I tre modelli — ISO-OSI, TCP/IP e il modello ibrido — sono utilizzati per de
 
 In sintesi, il modello ISO-OSI è utile per comprendere i principi teorici delle reti, il modello TCP/IP è quello realmente utilizzato nelle reti Internet, mentre il modello ibrido cerca di unire i vantaggi di entrambi per una maggiore flessibilità e chiarezza.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=1\textwidth]{images/confronto_stack.png}
-    \caption{Confronto tra stack ISO-OSI, TCP/IP e modello ibrido}
-    \label{fig:confronto_stack}
-\end{figure}

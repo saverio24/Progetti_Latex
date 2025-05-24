@@ -1,25 +1,34 @@
-\contentsline {chapter}{\numberline {1}Livello 4 trasporto TCP/UDP}{2}{}%
-\contentsline {section}{\numberline {1.1}Nozioni preliminari}{2}{}%
-\contentsline {paragraph}{Funzioni principali UDP}{2}{}%
-\contentsline {paragraph}{Funzioni principali TCP}{2}{}%
-\contentsline {subsection}{\numberline {1.1.1}Sock e ports}{3}{}%
-\contentsline {section}{\numberline {1.2}UDP - datagram}{4}{}%
-\contentsline {paragraph}{Struttura del datagram UDP}{4}{}%
-\contentsline {subsection}{\numberline {1.2.1}Calcolo checksum}{6}{}%
-\contentsline {paragraph}{In trasmissione}{6}{}%
-\contentsline {paragraph}{In ricezione}{6}{}%
-\contentsline {section}{\numberline {1.3}TCP - segmento}{7}{}%
-\contentsline {subsection}{\numberline {1.3.1}Apertura connessione client-server (3way handshake)}{9}{}%
-\contentsline {subsection}{\numberline {1.3.2}Chiusura connessione}{10}{}%
-\contentsline {paragraph}{Chiusura con half-close}{10}{}%
-\contentsline {paragraph}{Chiusura con 3way handshake}{11}{}%
-\contentsline {paragraph}{TIMEWAIT}{11}{}%
-\contentsline {subsection}{\numberline {1.3.3}TCP client - sequenza di stati?}{12}{}%
-\contentsline {subsection}{\numberline {1.3.4}TCP server - sequenza di stati?}{12}{}%
-\contentsline {subsection}{\numberline {1.3.5}Trasmissione dei segmenti - sliding window}{12}{}%
-\contentsline {subsubsection}{Round trip time - RTT}{12}{}%
-\contentsline {subsection}{\numberline {1.3.6}Finestre di trasmissione e ricezione}{13}{}%
-\contentsline {subsection}{\numberline {1.3.7}Controllo di flusso}{14}{}%
-\contentsline {subsection}{\numberline {1.3.8}Perdita di segmenti}{14}{}%
-\contentsline {subsubsection}{Retransmission Time Out - RTO}{14}{}%
-\contentsline {subsubsection}{3 Dupack}{14}{}%
+\contentsline {chapter}{\numberline {1}Livello 3 rete}{2}{}%
+\contentsline {section}{\numberline {1.1}Internet Protocol (IP) version 4}{2}{}%
+\contentsline {subsection}{\numberline {1.1.1}Introduzione}{2}{}%
+\contentsline {subsection}{\numberline {1.1.2}Datagramma IP}{3}{}%
+\contentsline {subsubsection}{Struttura indirizzo IP}{5}{}%
+\contentsline {subsection}{\numberline {1.1.3}Indirizzo IP - classful}{5}{}%
+\contentsline {subsection}{\numberline {1.1.4}Indirizzo IP - classless CIDR}{5}{}%
+\contentsline {paragraph}{Riconoscere un indirizzo di rete e un indirizzo di host}{6}{}%
+\contentsline {subsection}{\numberline {1.1.5}Subnetting}{6}{}%
+\contentsline {subsection}{\numberline {1.1.6}Classificazione degli indirizzi IP}{6}{}%
+\contentsline {subsubsection}{Pubblici}{6}{}%
+\contentsline {subsubsection}{Privati}{6}{}%
+\contentsline {subsubsection}{Statici}{6}{}%
+\contentsline {subsubsection}{Dinamici}{6}{}%
+\contentsline {subsection}{\numberline {1.1.7}Variable Length Subnet Mask (VLSM)}{6}{}%
+\contentsline {subsection}{\numberline {1.1.8}Indirizzi IP speciali}{6}{}%
+\contentsline {subsection}{\numberline {1.1.9}Address Resolution Protocol (ARP) - mappatura IP a MAC}{7}{}%
+\contentsline {subsubsection}{Esempio ARP all'interno di una rete}{8}{}%
+\contentsline {subsubsection}{Esempio ARP in reti diverse}{9}{}%
+\contentsline {paragraph}{Default gateway e tabelle di routing}{9}{}%
+\contentsline {paragraph}{ARP nella stessa rete}{9}{}%
+\contentsline {subsection}{\numberline {1.1.10}Dynamic Host Configuration Protocol (DHCP) - configurazione automatica degli indirizzi IP tramite server DHCP}{10}{}%
+\contentsline {paragraph}{DHCP relay - inoltro delle richieste DHCP}{10}{}%
+\contentsline {paragraph}{DHCP - funzionamento}{10}{}%
+\contentsline {subsection}{\numberline {1.1.11}Zero-configuration networking}{11}{}%
+\contentsline {paragraph}{Link-Local Address}{11}{}%
+\contentsline {paragraph}{ARP probe}{11}{}%
+\contentsline {paragraph}{ARP announcement}{11}{}%
+\contentsline {subsection}{\numberline {1.1.12}Network Address Translation (NAT) - da IP privato a IP pubblico}{11}{}%
+\contentsline {paragraph}{Funzionamento del NAT e tabelle di traduzione}{11}{}%
+\contentsline {subsection}{\numberline {1.1.13}Internet control message protocol (ICMP) - diagnostica della rete}{12}{}%
+\contentsline {paragraph}{Esempio utilizzo di ICMP - ping}{12}{}%
+\contentsline {paragraph}{Esempio utilizzo di ICMP - traceroute}{12}{}%
+\contentsline {section}{\numberline {1.2}Algoritmi di routing}{13}{}%

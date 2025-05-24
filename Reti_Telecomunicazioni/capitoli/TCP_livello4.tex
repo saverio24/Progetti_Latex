@@ -11,12 +11,14 @@ I pacchetti(PDU) TCP sono chiamati segmenti, mentre i pacchetti UDP sono chiamat
 \paragraph{Funzioni principali UDP}
 Svolge l'unico compito di incapsulare i dati dell'applicazione in un pacchetto UDP, aggiungendo le informazioni necessarie per la consegna(Multiplexing). Non fornisce alcuna garanzia di consegna o ordine dei pacchetti.
 \paragraph{Funzioni principali TCP}
+\begin{multicols}{2}
 \begin{itemize}
     \item Controllo flusso end to end
     \item Controllo congestione end to end
     \item Ritrasmette le PDU perse o corrotte
     \item Riordina i segmenti ricevuti in ordine corretto
 \end{itemize}
+\end{multicols}
 Il TCP numera i singoli byte che arrivano dal livello applicativo, e non i segmenti; è fondamentale poichè dal livello 3(IP) non arrivano i byte in ordine, ma i pacchetti possono arrivare in ordine sparso.
 
 \subsection{Sock e ports}
@@ -45,25 +47,26 @@ Le porte sono numerate da 0 a 65535 e sono suddivise in tre categorie:
     \item Registered ports: da 1024 a 49151, utilizzate da applicazioni registrate presso l'IANA
     \item Dynamic/Private ports: da 49152 a 65535, utilizzate per connessioni temporanee e dinamiche
 \end{itemize}
-\newpage
+
 Tramite i numeri di porta è possibile identificare a livello 4 con quale applicazione sto inviando/ricevendo dati
 
 Come identificare un flusso dati in internet?
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/flusso_IP.png}
+    \includegraphics[width=0.5\textwidth]{images/flusso_IP.png}
     \caption{Identificazione di un flusso dati tramite indirizzi IP e numeri di porta (tuple a 4 campi)}
     \label{fig:flussoIP}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/DNS.jpg}
+    \includegraphics[width=0.5\textwidth]{images/DNS.jpg}
     \caption{Esempio di funzionamento del DNS: risoluzione di un nome simbolico in indirizzo IP, tramite DNS server}
     \label{fig:dns_example}
 \end{figure}
-
+traduce nomi comprensibili come www.amazon.com in indirizzi IP utilizzati dai computer, ad esempio 192.0.2.44
+\newpage
 \section{UDP - datagram}
 
 è il più veloce del TCP poichè non esegue molte funzioni come l'ordinamento dei pacchetti 
@@ -86,8 +89,7 @@ Viene usato soprattutto per applicazioni in tempo reale, come servizi streaming 
 \end{figure}
 
 \begin{itemize}
-    \item Source port(indirizzo IP del mittente): 16 bit
-    \item Destination port(indirizzo IP del destinatario): 16 bit 
+    \item Source port e destination port(indirizzo IP del mittente/destinatario): 16 bit ciascuno
     \item Length (dimensione del datagram): 16 bit, quindi può rappresentare valori da 0 a $2^{16}-1 = 65535$ bytes, ma il campo include anche l'header, quindi la dimensione massima di un datagram UDP è 65535 byte.
     \item Checksum: 16 bit, utilizzato per verificare l'integrità dei dati del datagram. Il checksum è calcolato su un pseudoheader che include informazioni sull'indirizzo IP del mittente e del destinatario, oltre alla lunghezza del datagram e al protocollo utilizzato (UDP in questo caso). Il pseudoheader non viene trasmesso, ma viene utilizzato solo per il calcolo del checksum. 
     \item Data: dimensione variabile, contiene i dati dell'applicazione
@@ -108,7 +110,6 @@ Il checksum è la somma di controllo, è una tecnica di verifica veloce di contr
     \item Se il checksum è 0, significa che non ci sono errori, non affidabile.
     \item Se il checksum è diverso da 0, significa che ci sono errori, sicuramente(condizione necessaria).
 \end{itemize}
-\newpage
 \subsection{Calcolo checksum}
 Il valore del checksum prima della trasmissione è impostato a 0.
  \paragraph{In trasmissione}
@@ -131,12 +132,14 @@ Se il risultato è diverso da 0 significa che i due valori calcolati in ricezion
 \newpage
 \section{TCP - segmento}
 Nei processi TCP viene utilizzata una coppia di socket per identificare un flusso di dati. Ogni socket è identificato da una tupla a 4 campi:
+\begin{multicols}{2}
 \begin{itemize}
     \item Indirizzo IP del mittente
     \item Porta del mittente
     \item Indirizzo IP del destinatario
     \item Porta del destinatario
 \end{itemize}
+\end{multicols}
 
 La connessione è full duplex $\rightarrow$ comunicazione affidabile, se qualcosa va storto chiede la ritrasmissione del pacchetto errato.
 
@@ -165,7 +168,7 @@ Nel campo Seq. Number si inserisce poi il numero di sequenza (di questa numerazi
 relativo al primo byte contenuto nel campo Data
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/sequence_number.png}
+    \includegraphics[width=0.9\textwidth]{images/sequence_number.png}
     \caption{Esempio di utilizzo del campo Sequence Number nei segmenti TCP}
     \label{fig:sequencenumber}
 \end{figure}
@@ -217,9 +220,18 @@ La chiusura della connessione puà essere avviata da uno dei due host, il client
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/halfclosetcp.png}
-    \caption{Chiusura della connessione TCP tramite half-close}
-    \label{fig:halfclosetcp}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/halfclosetcp.png}
+        \caption{Chiusura della connessione TCP tramite half-close}
+        \label{fig:halfclosetcp}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/3wayclose.png}
+        \caption{Chiusura della connessione TCP tramite 3-way handshake}
+        \label{fig:3wayclose}
+    \end{minipage}
 \end{figure}
 
 \paragraph{Chiusura con half-close}
@@ -232,7 +244,7 @@ La chiusura della connessione avviene tramite due mezze chiusure:
 \end{itemize} 
 
 
-
+\newpage
 \paragraph{Chiusura con 3way handshake}
 
 in risposta al segmento FIN inviato
@@ -244,12 +256,7 @@ Questa soluzione non prevede che il server invii
 ulteriori dati e il client risponde con il segmento di ACK di
 chiusura della connessione.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/3wayclose.png}
-    \caption{Chiusura della connessione TCP tramite 3-way handshake}
-    \label{fig:3wayclose}
-\end{figure}
+
 
 \paragraph{TIMEWAIT}
 in entrambe le tecniche (con
@@ -260,11 +267,24 @@ succedere, infatti, che il segmento ACK vada
 perso e il server ritrasmetta il suo FIN. Il client
 deve quindi essere ancora in grado di poter
 ritrasmettere l'ACK finale.
+\newpage
+\subsection{TCP sequenze di stati}
+\subsubsection{TCP client}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.1\textwidth]{images/tcpstaticlient.png}
+    \caption{Sequenza di stati TCP lato client}
+    \label{fig:tcpstaticlient}
+\end{figure}
+\subsubsection{TCP server}
 
-\subsection{TCP client - sequenza di stati?}
-\subsection{TCP server - sequenza di stati?}
-
-
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/tcpstatiserver.png}
+    \caption{Sequenza di stati TCP lato server}
+    \label{fig:tcpstateserver}
+    \end{figure}
+\newpage
 
 \subsection{Trasmissione dei segmenti - sliding window}
 Il TCP usa un meccanismo di trasmissione dei segmenti basato su finestre scorrevoli, finestra di trasmissione e finestra di ricezione; in base alla loro larghezzo si possono inviare più o meno bytes.
@@ -283,12 +303,19 @@ Data W, dimensione della finestra di trasmissione, e RTT, il tempo di round trip
 Come miglioro questo rate? 
 
 Si può agire solo sulla dimensione della finestra W, non sul RTT.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/rttsliding.png}
+    \caption{Esempio di sliding window e round trip time (RTT)}
+    \label{fig:rttsliding}
+\end{figure}
 \newpage
 
 \subsection{Finestre di trasmissione e ricezione}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.2\textwidth]{images/finestratrasmissione.png}
+    \includegraphics[width=1\textwidth]{images/finestratrasmissione.png}
     \caption{Esempio di finestra di trasmissione}
     \label{fig:finestratrasmissione}
 \end{figure}
@@ -300,18 +327,18 @@ Sono gli ACK ricevuti che fanno scorrere la finestra. Se ricevo l'ACK 240 allora
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.2\textwidth]{images/finestraricezione.png}
+    \includegraphics[width=1\textwidth]{images/finestraricezione.png}
     \caption{Esempio di finestra di ricezione}
     \label{fig:finestraricezione}
 \end{figure}
 
 
- \newpage
-\subsection{Controllo di flusso}
-Come gestisce il TCP il flusso dei dati?
+
+\subsection{Controllo di flusso - come gestisce il TCP il flusso dei dati?}
+
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{images/tcpflusso.png}
+    \includegraphics[width=0.8\textwidth]{images/tcpflusso.png}
     \caption{Esempio di flusso TCP}
     \label{fig:tcpflusso}
 \end{figure}
@@ -322,19 +349,148 @@ IMPORTANTE: ciò che è presente nel buffer di ricezione è stato riscontrato da
 Il receiver comunica con il sender la dimensione del buffer di ricezione, in modo che il mittente possa regolare la velocità di invio dei segmenti, quindi regolare la finestra di trasmissione.
 
 
-
-\subsection{Perdita di segmenti} 
-Si assime che un segmento sia stato perso se si verificano: 3 dupack, RTO.
+\newpage
+\subsection{Perdita di segmenti - RTO e 3 dupack} 
+Si assume che un segmento sia stato perso se si verificano: 3 dupack, RTO.
 
  \subsubsection{Retransmission Time Out - RTO}
-Per ogni segmento inviato, viene avviato un RTO, ossia un timer che scade dopo un certo intervallo di tempo. Se il timer scade prima di ricevere l'ACK, il mittente ritrasmette il segmento.
+In questo caso, a differenza del 3 dupack, nel quale si perdeva un solo segmento, nell'esempio seguente non vengono riscorntrati ben 3 segmenti.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.2\textwidth]{images/slidingwindowesempio.png}
-    \caption{Esempio di sliding window e gestione del Retransmission Time Out}
-    \label{fig:slidingwindowrto}
+    \includegraphics[width=0.9\textwidth]{images/rtotcp.png}
+    \caption{Esempio di Retransmission Time Out (RTO) in TCP}
+    \label{fig:rtotcp}
+\end{figure}
+Per ogni segmento inviato, viene avviato un RTO, ossia un timer che scade dopo un certo intervallo di tempo. Se il timer scade prima di ricevere l'ACK, il mittente ritrasmette il segmento.
+\paragraph{Calcolo del RTO}
+
+?
+
+\newpage
+\subsubsection{3 Dupack(three duplicate ACK)}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/3dupack.png}
+    \caption{Esempio di 3 duplicate ACK (3 Dupack) in TCP}
+    \label{fig:3dupack}
+\end{figure}
+\subsection{Controllo di congestione TCP}
+
+I problemi di congestione si verificano quando la rete è sovraccarica(buff di ricezione saturo) di traffico e non riesce a gestire tutte le richieste. TCP utilizza diversi algoritmi per gestire la congestione e garantire una trasmissione affidabile dei dati.
+
+Il protocollo TCP si rende conto dei limiti della rete solo quando avviene una congestione, quindi il TCP testa i limiti della rete(probing).
+
+A tal scopo è importante definire le seguenti variabili:
+\begin{itemize}
+    \item rwnd(ricezione): è la dimensione della finestra di ricezione, ossia la quantità di dati che il mittente può inviare prima di ricevere un ACK dal destinatario.  
+    \item cwnd(finestra di congestione): è dinamicamente calcolata tramite un algoritmo di controllo di congestione. 
+\end{itemize}
+\begin{figure}[h!]
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/rwnd.png}
+        \caption{Esempio di finestra di ricezione (rwnd) in TCP}
+        \label{fig:rwnd}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.52\textwidth}
+        \raggedright
+        La finestra di congestione W è posta uguale al minimo tra la congestion window e la rwnd:
+        \begin{equation}
+            W = min(cwnd, rwnd)
+        \end{equation}
+        \raggedleft
+    \end{minipage}
 \end{figure}
 
+La variabile cwnd ha il vantaggio di poter essere controllata, perciò se c'è una congestione in atto posso diminuire la variabile cwnd, così da evitare di saturare la rete.
 
-\subsubsection{3 Dupack}
+\subsubsection{Algoritmo di controllo di congestione}
+
+\paragraph{Additive Increase Multiplicative Decrease (AIMD)}
+TCP aumenta la finestra di ricezione rallentando "addittivamente" la velocità di invio dei segmenti(inzialmente è molto veloce, piano piano questa velocità tende a diminuire in modo additivo). 
+
+Quando però avviene una congestione, la finestra non viene rallentata in modo additivo, ma anzi, viene ridotta drasticamente in modo moltiplicativo, moltiplicando la finestra per un fattore frazionario. 
+
+
+\subsubsection{Evoluzione della cwnd}
+
+        \paragraph{Slow start}
+        Inizialmente la cwnd è pari ad 1 MSS, minimo valore possibile di cwnd, invia un segmento e inizia la fase di probing(slow start: parte "piano" per poi aumentare). Ogni volta che si ha un riscontro viene raddoppiata la cwnd. 
+
+        \begin{itemize}
+            \item MSS(maximum segment size): rappresenta la massima quantità di dati (in byte) che un host TCP può ricevere in un singolo segmento.
+            tipicamnete 1460 byte (se MTU = 1500 e header IP+TCP = 40 byte)
+            \item sstresh(slow star threshold): è una soglia che separa la fase di Slow Start da quella di Congestion Avoidance
+        \end{itemize}
+
+        Quando si verifica una congestione(3DUPACK o scadenza RTO), la cwnd e la soglia sshtresh(viene posta pari alla metà della finestra di congestione al momento della congestione) vengono modificate in base all'algoritmo di congestione utilizzato.
+
+        \paragraph{Congestion avoidance}
+        Nel caso in cui  la cwnd sia maggiore della soglia sshtresh, inizia la fase di congestion avoidance, in cui la cwnd viene aumentata linearmente, ossia viene incrementata di 1 MSS ogni RTT.
+
+        L'obiettivo è quello di aumentare la cwnd in modo più lento, evitando di saturare la rete.
+        \begin{equation}
+            cwnd = cwnd + \frac{1}{\text{cwnd}}     \end{equation}
+        
+  
+        \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/graficocongestione.png}
+        \caption{Andamento della finestra di congestione}
+        \label{fig:graficocongestione}
+        \end{figure}
+
+        \newpage
+
+\subsubsection{TCP Tahoe}
+
+\begin{figure}[h!]
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/tahoe.png}
+        \caption{Andamento della finestra di congestione in Tahoe}
+        \label{fig:tcptahoe}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        TCP Tahoe non distingue tra i due eventi di congestione(3DUPACK e RTO), quando avviene riporta la cwnd a 1; rientrando in slow start.
+    \end{minipage}
+\end{figure}
+
+\subsubsection{TCP Reno}
+
+\begin{figure}[h!]
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/reno.png}
+        \caption{Andamento della finestra di congestione in Reno}
+        \label{fig:tcpreno}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        TCP Reno distingue i due eventi di congestione, (considerando che un 3DUPACK è un evento di congestione più "leggero" rispetto ad un RTO):
+            \begin{itemize}
+                \item In caso di 3DUPACK, la cwnd viene dimezzata e si entra nella fase di fast recovery, in cui la cwnd viene aumentata linearmente fino a raggiungere la soglia sshtresh.
+                \item In caso di RTO, la cwnd viene riportata a 1 e si entra nella fase di slow start.
+            \end{itemize}   
+    \end{minipage}
+\end{figure}
+
+\subsubsection{TCP New Reno}
+
+\begin{figure}[h!]
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/newreno.png}
+        \caption{Andamento della finestra di cong. in New Reno}
+        \label{fig:tcpnewreno}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        Nel reno visto in precedenza ad ogni 3DUPACK viene dimezzata la cwnd, ma questo non è ottimale nel caso in cui avvengano più 3DUPACK nella stessa finestra.
+
+        Perciò esiste la variante New Reno, che non dimezza la cwnd ad ogni 3DUPACK, lo fa solamente la prima volta che avviene all'interno della finestra; quelli successivi vengono ignorati.
+    \end{minipage}
+\end{figure}
