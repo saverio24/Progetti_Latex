@@ -728,31 +728,25 @@ in OSPF si può specificare quale sia il costo(banda, affidabilità, ritardo, an
 Quando i router diventano tanti allora OSPF non fa altro che dividere gli AS in aree, ognuna delle quali definita da 4 ottetti, in modo gerarchico;
 \paragraph{Area border routers}
 i router al confine con due aree vengono detti “area border router” e devono avere almeno un'interfaccia verso la backbone area(rete 0.0.0.0)
-questa backbone area(area 0) fa da ponte
-l'idea è quella di usare l'algoritmo dijkstra in modo modulare in ogni singola area.
+questa backbone area(area 0) fa da ponte tra le aree.
+L'idea è quella di usare l'algoritmo dijkstra in ogni singola area e non sul totale, così da richiedere meno dispendio compilativo.
 
-\paragraph{LSA}
-I Link State Packet: sono generati dal protocollo OSPF, sono pacchetti di aggiornamento che contengono i vari nodi a cui il router è collegato
-ogni volta che collega una rete viene detta LSA(Link State Advertisement)
-nella rete locale LAN è importante definire un router che inoltri gli lsa, questo router viene chiamato “designated”
-per ridurre l'overhead da segnalazione, l'lsa viene inviato ogni 30 minuti o ad ogni qual volta ci sia un cambiamento dei collegamenti della rete
-differenza tra lsa e pacchetto OSPF
-LSA = informazione vera e propria sullo stato dei link.
-Pacchetto OSPF (come il Link State Update) = trasporta una o più LSA tra router OSPF.
-AUTENTICAZIONE DEL PEER E AUTENTICAZIONE DEL MESSAGGIO - DIFFERENZA
-aut peer è riferita a chi manda il pacchetto: esempio, io mando un pacchetto a michele, verifico che questo pacchetto sia effettivamente per michele(aut peer)
-aut messaggio è una verifica sul “messaggio” del pacchetto che viene inviato, per assicurarsi che sia proprio quello inviato e non differente
-il pacchetto OSPF è incapsulato in pacchetti IP(type 59(cinque nove, non è cinquantanove) in esadecimale)
-del pacchetto OSPF mi serve sapere: version, Router ID(IP address del router), Area ID, link state checksum.
+\paragraph{LSA e pacchetti LSP}
+I Link State Packet: sono pacchetti generati dal protocollo OSPF, contengono i vari nodi a cui il router è collegato, informazione contenuta nel campo LSA(Link State Advertisement).
 
-tre tipologie di LSP:
+Nella rete locale LAN è importante definire un router che inoltri i pacchetti LSP, questo router viene chiamato “designated” router.
 
+Per ridurre l'overhead(risorse richieste in sovrappiù rispetto a quelle strettamente necessarie) da segnalazione, l'LSP viene inviato ogni 30 minuti o ad ogni qual volta ci sia un cambiamento dei collegamenti della rete.
+
+\paragraph{Tipologie di pacchetti LSP}
+I pacchetti LSP sono utilizzati per scambiare informazioni tra i router OSPF e sono di tre tipi:
 \begin{itemize}
     \item link state request: richiesta di invio di uno o più LSA
     \item link state update: ogni 30 min o quando avviene un cambiamento topologico
     \item link state acknowledgment: all'avvenuta ricezione del LSA
 \end{itemize}
-cinque tipologie di LSA:
+\paragraph{Tipologie di LSA}
+In OSPF esistono cinque tipologie di LSA, che vengono utilizzate per scambiare informazioni sulla topologia della rete tra i router OSPF:
 \begin{multicols}{2}
 \begin{itemize}
     \item router LSA
@@ -764,13 +758,29 @@ cinque tipologie di LSA:
 \end{itemize}
 \end{multicols}
 ! un LSA “vecchio” di circa un'ora viene rimosso
-
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{images/backbone.png}
+    \includegraphics[width=0.82\textwidth]{images/backbone.png}
     \caption{Backbone della rete OSPF}
     \label{fig:backbone}
 \end{figure}
+
+\newpage
+\paragraph{Differenza tra LSA e pacchetto OSPF}
+LSA è informazione vera e propria dello stato dei link.
+Il pacchetto OSPF invece trasporta una o più LSP tra router che utilizzano OSPF.
+\paragraph{Autenticazione}
+OSPF supporta l'autenticazione dei pacchetti, per garantire che i pacchetti OSPF siano inviati da router autorizzati e non siano stati manomessi.
+Si distinguiono due tipi di autenticazione:
+\begin{itemize}
+    \item \textbf{Autenticazione del peer}: verifica che il pacchetto sia inviato da un router autorizzato
+    \item \textbf{Autenticazione del messaggio}: verifica l'integrità del messaggio stesso, assicurandosi che non sia stato alterato durante la trasmissione
+\end{itemize}
+\paragraph{Pacchetto OSPF}
+Il pacchetto OSPF è incapsulato in pacchetti IP(type 59, in esadecimale).
+
+Del pacchetto OSPF mi serve sapere: version, Router ID(IP address del router), Area ID, link state checksum.
+
 
 \paragraph{Utilizzo di Dijkstra in diverse aree}
 Ad esempio, nell'area 1 uso il dijkstra tra quei 4 router, i rouer di bordo area avranno sicuramente dei collegamenti con le altre aree, però durante il calcolo dijkstra in area 1 questi altri collegamenti “terminano” sui router di bordo area. 
@@ -788,5 +798,41 @@ così abbasso il costo computazionale dell'algoritmo dijkstra perchè non lo app
 \end{figure}
 
 \subsection{Protocolli di routing inter-AS - (BGP)}
-\subsubsection{BGP (Path Vector)}
+Il BGC(border gateway protocol) è il protocollo che gestisce il routing tra AS diversi, è montato sui router di frontiera degli AS.
 
+Esistono tre tipologie di Autonomous Systems:  
+\begin{itemize}
+    \item Stub AS: ha un solo router di frontiera, comunica con un solo AS; trasporta solo traffico in uscita o in entrata, ma non entrambi
+    \item Multihomed AS: può avere più router di frontiera, comunica con più AS, ma non fa da transit per altri AS
+    \item transit AS: ha più router di frontiera, comunica con più AS e fa da transit per altri AS
+\end{itemize}
+Questo protocollo prevede che i router comunichino a coppie tra di loro utilizzando il TCP(porta 179); il router di bordo della AS comunica con gli altri router di bordo delle altre AS.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/tipologieAS.png}
+    \caption{Tipologie di Autonomous Systems}
+    \label{fig:tipologieAS}
+\end{figure}
+
+Lo scambio di informazioni BGP può avvenire anche tra router interni dello stesso AS; è possibile distinguerli:
+\begin{itemize}
+    \item \textbf{EBGP}: External BGP, scambio di informazioni tra router di frontiera di AS diversi
+    \item \textbf{IBGP}: Internal BGP, scambio di informazioni tra router di frontiera dello stesso AS
+\end{itemize}
+Ogni AS ha un identificativo unico, l'Autonomous System Number(ASN).
+\subsubsection{Approccio Path Vector}
+Il BGP utilizza un approccio path vector, in cui ogni router mantiene una tabella di routing che contiene le informazioni sui percorsi verso le destinazioni e i rispettivi attributi.
+Queste informazioni vengono scambiate tra i router BGP per costruire una visione globale della rete e determinare il percorso migliore per raggiungere le destinazioni.
+\paragraph{Attributi BGP}
+Gli attributi BGP sono informazioni associate ai percorsi che vengono utilizzate per prendere decisioni di routing. Alcuni degli attributi più comuni includono:
+\begin{itemize}
+    \item \textbf{AS Path}: elenca gli Autonomous Systems attraversati dal percorso
+    \item \textbf{Next Hop}: indica il prossimo router da raggiungere per il percorso
+\end{itemize}
+Tra le diverse rotte si sceglie quella con AS-PATH più breve; in caso di rotte
+con stesso costo, si sceglie quella con NEXT-HOP più vicino; in ultima istanza
+ci si basa sugli altri attributi in relazione alla policy adottata.
+
+Inoltre un router può accettare o meno gli annunci che gli giungono in base alle sue
+policy.

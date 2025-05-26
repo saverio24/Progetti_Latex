@@ -53,8 +53,14 @@
 \contentsline {paragraph}{RIPv1 e RIPv2}{21}{}%
 \contentsline {subsubsection}{OSPF (Link State) e Link State Advertisement (LSA)}{22}{}%
 \contentsline {paragraph}{Area border routers}{22}{}%
-\contentsline {paragraph}{LSA}{22}{}%
-\contentsline {paragraph}{Utilizzo di Dijkstra in diverse aree}{22}{}%
+\contentsline {paragraph}{LSA e pacchetti LSP}{22}{}%
+\contentsline {paragraph}{Tipologie di pacchetti LSP}{22}{}%
+\contentsline {paragraph}{Tipologie di LSA}{22}{}%
+\contentsline {paragraph}{Differenza tra LSA e pacchetto OSPF}{23}{}%
+\contentsline {paragraph}{Autenticazione}{23}{}%
+\contentsline {paragraph}{Pacchetto OSPF}{23}{}%
+\contentsline {paragraph}{Utilizzo di Dijkstra in diverse aree}{23}{}%
 \contentsline {subsubsection}{Pacchetti OSPF}{23}{}%
-\contentsline {subsection}{\numberline {1.2.9}Protocolli di routing inter-AS - (BGP)}{23}{}%
-\contentsline {subsubsection}{BGP (Path Vector)}{23}{}%
+\contentsline {subsection}{\numberline {1.2.9}Protocolli di routing inter-AS - (BGP)}{24}{}%
+\contentsline {subsubsection}{Approccio Path Vector}{24}{}%
+\contentsline {paragraph}{Attributi BGP}{24}{}%

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748183843.14713 "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1748183846.74258 0
+["pdflatex"] 1748281129.68465 "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" "main.pdf" "main" 1748281133.39398 0
   "/etc/texmf/web2c/texmf.cnf" 1747524569.02472 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1747671928 11524 a33806c433029dfb39d2cc7abf3679fd ""
   "/home/sav/Desktop/uni/Progetti_Latex/Reti_Telecomunicazioni/main.tex" 1748168776.21145 768 caae71c94b80932c09fc45c8221ae317 ""
@@ -62,7 +62,7 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1747524572.05252 75955 f78456fd1308dc295dc476a68e28d85b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1747524580 6800790 f6bb22424d468a476879bed434660748 ""
-  "capitoli/IP_livello3.tex" 1748183842.95349 43047 4f76823e42e8b95d507c25ee3b8df60a ""
+  "capitoli/IP_livello3.tex" 1748281129.47303 46019 c154e823105f33a1ea8df31d5dd1b6dd ""
   "images/RIPversioni.png" 1748180478.03759 179833 a321de386048cfcaf86367d06e6bff99 ""
   "images/asgerarchia.png" 1748109599.15729 360807 69b36193dfcef1c1e4aa5e8484d64b58 ""
   "images/backbone.png" 1748183361.16622 452649 762b13f2221376ad9ef8ae7977abaa06 ""
@@ -93,11 +93,12 @@
   "images/routingtipologie.png" 1748105387.45414 136870 91eb4751e716a58110c909c9a6701311 ""
   "images/strutturaIP.png" 1748088171.61126 52189 5fc70df971acd57d519eb68c9c3ab0e6 ""
   "images/tabellarouting.png" 1748105705.99378 48942 a4b3c1326899fc94d03ef9ab18d35f36 ""
+  "images/tipologieAS.png" 1748280400.2518 480854 a148caa51357048de2cbce1252d201bd ""
   "images/tos.png" 1748014152.58974 139038 e9aeadbc02294d136780f70c0349702e ""
   "images/traceroute.png" 1748104169.05858 142514 a714133b6c120da8ab82ba578c4cb799 ""
-  "main.aux" 1748183846.69448 13308 80f63f314300fdad9bfe518b09ac3f08 "pdflatex"
+  "main.aux" 1748281133.34643 14085 ca9b851382da185a7fe4a992750d6d2f "pdflatex"
   "main.tex" 1748168776.21145 768 caae71c94b80932c09fc45c8221ae317 ""
-  "main.toc" 1748183846.69548 4293 950e89419a1da07e9f09c5c827bdf5b1 "pdflatex"
+  "main.toc" 1748281133.34743 4641 5785fe98c6cdea65bde6da2295f9b45f "pdflatex"
   (generated)
   "main.aux"
   "main.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  25 MAY 2025 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  26 MAY 2025 19:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -479,36 +479,39 @@ Package pdftex.def Info: images/processoRIP.png  used on input line 718.
 <images/backbone.png, id=116, 2276.505pt x 935.495pt>
 File: images/backbone.png Graphic file (type png)
 <use images/backbone.png>
-Package pdftex.def Info: images/backbone.png  used on input line 770.
-(pdftex.def)             Requested size: 455.24411pt x 187.06712pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/pacchettoospf.png, id=117, 1106.1325pt x 760.8425pt>
+Package pdftex.def Info: images/backbone.png  used on input line 763.
+(pdftex.def)             Requested size: 373.3035pt x 153.39362pt.
+ [22 <./images/backbone.png>]
+<images/pacchettoospf.png, id=120, 1106.1325pt x 760.8425pt>
 File: images/pacchettoospf.png Graphic file (type png)
 <use images/pacchettoospf.png>
-Package pdftex.def Info: images/pacchettoospf.png  used on input line 785.
+Package pdftex.def Info: images/pacchettoospf.png  used on input line 795.
 (pdftex.def)             Requested size: 318.66948pt x 219.18748pt.
-[22]) [23 <./images/backbone.png> <./images/pacchettoospf.png>] (./main.aux)
+ [23 <./images/pacchettoospf.png>]
+<images/tipologieAS.png, id=124, 2206.2425pt x 690.58pt>
+File: images/tipologieAS.png Graphic file (type png)
+<use images/tipologieAS.png>
+Package pdftex.def Info: images/tipologieAS.png  used on input line 813.
+(pdftex.def)             Requested size: 409.71692pt x 128.24002pt.
+) [24 <./images/tipologieAS.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3089 strings out of 476182
- 50063 string characters out of 5795595
+ 3097 strings out of 476182
+ 50282 string characters out of 5795595
  1936975 words of memory out of 5000000
- 25078 multiletter control sequences out of 15000+600000
+ 25086 multiletter control sequences out of 15000+600000
  565872 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  57i,8n,65p,715b,305s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (24 pages, 5939193 bytes).
+Output written on main.pdf (25 pages, 6503935 bytes).
 PDF statistics:
- 183 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 188 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 

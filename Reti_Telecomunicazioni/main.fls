@@ -260,6 +260,11 @@ INPUT ./images/pacchettoospf.png
 INPUT ./images/pacchettoospf.png
 INPUT ./images/pacchettoospf.png
 INPUT ./images/pacchettoospf.png
+INPUT ./images/tipologieAS.png
+INPUT ./images/tipologieAS.png
+INPUT ./images/tipologieAS.png
+INPUT ./images/tipologieAS.png
+INPUT ./images/tipologieAS.png
 INPUT main.aux
 INPUT /home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
