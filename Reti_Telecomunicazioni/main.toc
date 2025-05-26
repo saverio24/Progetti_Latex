@@ -32,3 +32,29 @@
 \contentsline {paragraph}{Esempio utilizzo di ICMP - ping}{12}{}%
 \contentsline {paragraph}{Esempio utilizzo di ICMP - traceroute}{12}{}%
 \contentsline {section}{\numberline {1.2}Algoritmi di routing}{13}{}%
+\contentsline {subsection}{\numberline {1.2.1}Introduzione agli algoritmi di routing - tipologie}{13}{}%
+\contentsline {subsection}{\numberline {1.2.2}Metriche per il costo del percorso}{14}{}%
+\contentsline {paragraph}{Cosa fa il router?}{14}{}%
+\contentsline {subsection}{\numberline {1.2.3}Instradamento gerarchico - protocolli intra e inter AS}{14}{}%
+\contentsline {subsection}{\numberline {1.2.4}Distance Vector}{15}{}%
+\contentsline {subsection}{\numberline {1.2.5}Algoritmo Bellman-Ford}{16}{}%
+\contentsline {paragraph}{Albero dei cammini a costo minimo}{16}{}%
+\contentsline {paragraph}{Variabili}{16}{}%
+\contentsline {paragraph}{Fasi dell'algoritmo}{16}{}%
+\contentsline {paragraph}{Esempio}{17}{}%
+\contentsline {subsection}{\numberline {1.2.6}Link State}{20}{}%
+\contentsline {paragraph}{Flooding}{20}{}%
+\contentsline {subsubsection}{Algoritmo di Dijkstra}{20}{}%
+\contentsline {subsection}{\numberline {1.2.7}Problemi di routing - routing loop}{20}{}%
+\contentsline {subsubsection}{Soluzioni: split horizon, poison reverse, hold-down}{20}{}%
+\contentsline {subsection}{\numberline {1.2.8}Protocolli di routing intra AS (RIP - OSPF)}{21}{}%
+\contentsline {subsubsection}{RIP (Distance Vector)(UDP)}{21}{}%
+\contentsline {paragraph}{Caratteristiche principali}{21}{}%
+\contentsline {paragraph}{RIPv1 e RIPv2}{21}{}%
+\contentsline {subsubsection}{OSPF (Link State) e Link State Advertisement (LSA)}{22}{}%
+\contentsline {paragraph}{Area border routers}{22}{}%
+\contentsline {paragraph}{LSA}{22}{}%
+\contentsline {paragraph}{Utilizzo di Dijkstra in diverse aree}{22}{}%
+\contentsline {subsubsection}{Pacchetti OSPF}{23}{}%
+\contentsline {subsection}{\numberline {1.2.9}Protocolli di routing inter-AS - (BGP)}{23}{}%
+\contentsline {subsubsection}{BGP (Path Vector)}{23}{}%

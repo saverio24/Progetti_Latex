@@ -1,3 +1,4 @@
+
 \section{Internet Protocol (IP) version 4}
 
 \subsection{Introduzione}
@@ -413,5 +414,379 @@ comandi: traceroute sitoweb
 
 
 \section{Algoritmi di routing}
+\subsection{Introduzione agli algoritmi di routing - tipologie}
+Gli algoritmi di routing sono utilizzati dai router per determinare il percorso migliore che i pacchetti devono seguire per raggiungere la loro destinazione.
 
+Questi algoritmi possono essere classificati in base al loro uso o meno delle tabelle di routing o se sono gerarchici.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/routingtipologie.png}
+    \caption{Tipologie di algoritmi di routing}
+    \label{fig:routingtipologie}
+\end{figure}
+
+\begin{itemize}
+    \item Con tabella:  il router conserva in memoria una tabella per capire qual è la strada migliore, contiene dati per scegliere la strada migliore
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1\textwidth]{images/tabellarouting.png}
+        \caption{Esempio di tabella di routing}
+        \label{fig:tabellarouting}
+    \end{figure}
+    Come costo si intende il numero di hop, la banda, l'affidabilità, il ritardo o anche un valore inserito manualmente; dipende strettamente dal metodo che si vuole utilizzare.
+
+    \item Senza tabella: includono il routing random, il flooding e il source routing
+    
+    \item Gerarchici: i router affidano le scelte di routing ad altri router "più intelligenti"?
+\end{itemize}
+
+!Instradare significa scegliere il percorso migliore per raggiungere la destinazione, il forewarding invece è l'azione di inviare il pacchetto per la strada scelta!
+
+\subsection{Metriche per il costo del percorso}
+Il costo del percorso viene calcolato sulla base di diverse metriche:
+\begin{itemize}
+    \item \textbf{\textit{Bandwidth}}: la capacità di un link (es. generalmente un link a 10 Mbps è preferibile rispetto ad una linea a 64 kbps)
+    \item \textbf{\textit{Delay}}: il tempo necessario ad ogni pacchetto per andare dalla sorgente alla destinazione
+    \item \textbf{\textit{Load}}: il carico di lavoro degli elementi della rete come i router o i link
+    \item \textbf{\textit{Reliability}}: l'affidabilità, generalmente riferita al tasso di errore di ogni singolo link
+    \item \textbf{\textit{Hop count}}: il numero di router che un pacchetto deve attraversare per raggiungere la destinazione
+    \item \textbf{\textit{Ticks}}: il ritardo di un collegamento dati in multipli di un \textit{IBM PC clock tick} (circa 55 ms)
+    \item \textbf{\textit{Cost}}: un valore arbitrario, generalmente basato sulla banda, sul costo economico di un link, o su altre misure stabilite dall'amministratore di rete
+\end{itemize}
+
+\paragraph{Cosa fa il router?}
+?
+
+\subsection{Instradamento gerarchico - protocolli intra e inter AS}
+Al fine di comprendere il routing è indispensabile introdurre il concetto di Autonomous System(AS).
+
+Un AS è l'insieme di router amministrati dallo stesso gestore; è possibile distinguere i vari protocolli di routing proprio sulla base di questo.
+
+Infatti i protocolli che lavorano all'interno di un AS vengono chiamati intra AS, mentre quelli che operano tra Autonomous Systems differenti vengono detti inter AS.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/asgerarchia.png}
+    \caption{Esempio di gerarchia tra Autonomous Systems (AS)}
+    \label{fig:asgerarchia}
+\end{figure}
+\newpage
+\subsection{Distance Vector}
+
+È una famiglia di algoritmi di routing in cui ogni router scambia informazioni con i vicini, usa l'algoritmo di Bellman-Ford per calcolare il percorso più breve.
+Un algoritmo di routing che fa uso di tabelle dinamiche è il distance vector:
+
+ogni rouoter prende decisioni in modo autonomo; ogni router invia in modo periodico ai router vicini i “vettori delle distanze”(distance vector).
+
+Le colonne della tabella che interessano particolarmente questo algoritmo sono quella dei costi e quella delle destinazioni note. 
+
+In questo modo tra i router ci si scambiano informazioni utili al routing stesso, prendendo informazioni dai router vicini
+
+Il vettore distanza quindi comunica ai vicini i percorsi che conosce e il costo di tali percorsi(percorsi che passano dal router che condivide tali percorsi)
+le tabelle sono dinamiche perchè la topologia della rete può cambiare nel tempo.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/distancevector.png}
+    \caption{Esempio di funzionamento dell'algoritmo Distance Vector}
+    \label{fig:distancevector}
+\end{figure}
+\newpage
+\subsection{Algoritmo Bellman-Ford}
+Il funzionamento dell'algoritmo di routing distance-vector porta ad una
+soluzione che si otterrebbe equivalentemente applicando l'algoritmo di
+Bellman-Ford per la ricerca del cammino a costo minimo in un grafo.
+
+I router non applicano questo algoritmo, ma la
+soluzione finale cui si giunge è identica.
+
+Questo algorimo lavora su una rappresentazione globale del grafo, cosa che nei ruouter reali non accade poichè non conoscono tutta la rete, ma solo le info sui e dei vicini diretti.
+
+!I protocolli distance vector sono una versione distribuita del Bellman-Ford, cioè: l'algoritmo non è eseguito da un singolo punto centrale, ma ogni nodo della rete (es. ogni router) esegue una parte dell'algoritmo.!
+
+\paragraph{Albero dei cammini a costo minimo}
+
+
+\paragraph{Variabili}
+\begin{multicols}{2}
+\begin{itemize}
+    \item $s$ è il router da cui parte l'algoritmo e di cui ci interessa calcolare il costo minimo
+    \item $h$ indica il numero dei salti
+    \item $j$ indica un nodo
+    \item $i$ indica un nodo differente da $j$
+    \item $D_j^{(h)}$ è il costo del cammino minimo tra la sorgente $s$ e il nodo $j$ con massimo $h$ salti
+    \item $d_{ij}$ è il costo del collegamento diretto tra i nodi $i$ e $j$; questo costo è infinito se i nodi non sono collegati direttamente
+\end{itemize}
+\end{multicols}
+
+
+
+\paragraph{Fasi dell'algoritmo}
+\begin{enumerate}
+    \item Inizializzazione: $h = 0$
+    \begin{itemize}
+        \item La distaza del nodo da se stesso $D_s^{(0)} = 0$
+        \item La distanza tra s e i nodi non diretti è infinita $D_j^{(0)} = \infty$ per tutti i $j \neq s$
+    \end{itemize}
+    \item Iterazione: per ogni $h > 0$
+
+    Hop successivo $h = h + 1$ 
+
+    Calcolo le dei cammini al salto successivo $D_j^{(h)} = \min_i [D_i^{(h-1)} + d_{ij}^{(h-1)}]$
+
+     \item Verifica: tramite questo controllo capisco se il cammino $D_j^{(h)}$ calcolato è uguale al precedente, se così fosse allora non ha senso continuare e si setta come $h_{max}$ quello precedente, si ferma l'algoritmo; in caso contrario l'algortmo prosegue dal passaggio due. 
+     
+    If $D_j^{h} = D_j^{h-1} \quad \forall j \neq s$
+    
+    then $h_{max} = h - 1$; stop
+    
+    else go to 2
+\end{enumerate}
+\newpage
+\paragraph{Esempio}
+
+Il primo passo è calcolare i costi dei cammini quando h = 0, ricordando che quando non c'è collegamento diretto avrò costo infinito.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/bf1.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 1}
+    \label{fig:bf1}
+\end{figure}
+
+Poi si calcolano i costi dei cammini quando h = 1, quindi con al massimo un salto.
+
+\begin{itemize}
+    \item $D_B^{(1)} = \min [D_A^{(0)} + d_{AB}, D_C^{(0)} + d_{CB}, D_D^{(0)} + d_{DB}, D_E^{(0)} + d_{EB}, D_F^{(0)} + d_{FB}, D_B^{(0)}] = $
+   
+    $\min [0 + 1, \infty + 3, \infty + \infty, \infty + 5, \infty + 1, \infty] = 1$
+    \item $D_C^{(1)} = \min [D_A^{(0)} + d_{AC}, D_B^{(0)} + d_{BC}, D_D^{(0)} + d_{DC}, D_E^{(0)} + d_{EC}, D_F^{(0)} + d_{FC}, D_C^{(0)}] = $
+    
+    $\min [0 + 3, \infty + 3, \infty + \infty, \infty + 2, \infty + \infty, \infty] = 3$
+    \item $D_D^{(1)} = \min [D_A^{(0)} + d_{AD}, D_B^{(0)} + d_{BD}, D_C^{(0)} + d_{CD}, D_E^{(0)} + d_{ED}, D_F^{(0)} + d_{FD}, D_D^{(0)}] = $ 
+    
+    $\min [0 + \infty, \infty + \infty, \infty + \infty, \infty + 1, \infty + 5, \infty] = \infty$
+    \item $D_E^{(1)} = \min [D_A^{(0)} + d_{AE}, D_B^{(0)} + d_{BE}, D_C^{(0)} + d_{CE}, D_D^{(0)} + d_{DE}, D_F^{(0)} + d_{FE}, D_E^{(0)}] = $ 
+    
+    $\min [0 + \infty, \infty + 5, \infty + 2, \infty + 1, \infty + \infty, \infty] = \infty$
+    
+    \item $D_F^{(1)} = \min [D_A^{(0)} + d_{AF}, D_B^{(0)} + d_{BF}, D_C^{(0)} + d_{CF}, D_D^{(0)} + d_{DF}, D_E^{(0)} + d_{EF}, D_F^{(0)}] = $ 
+    
+    $\min [0 + \infty, \infty + 1, \infty + \infty, \infty + 5, \infty + \infty, \infty] = \infty$
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/bf2.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 2}
+    \label{fig:bf2}
+\end{figure}
+
+
+\begin{itemize}
+    \item $D_B^{(2)}$ = $\min [0 + 1, 3 + 3, \infty + \infty, \infty + 5, \infty + 1, 1] = 1$
+    \item $D_C^{(2)}$ = $\min [0 + 3, 1 + 3, \infty + \infty, \infty + 2, \infty + \infty, 3] = 3$
+    \item $D_D^{(2)}$ = $\min [0 + \infty, 1 + \infty, 3 + \infty, \infty + 1, \infty + 5, \infty] = \infty$
+    \item $D_E^{(2)}$ = $\min [0 + \infty, 1 + 5, 3 + 2, \infty + 1, \infty + \infty, \infty] = 5$
+    \item $D_F^{(2)}$ = $\min [0 + \infty, 1 + 1, 3 + \infty, \infty + 5, \infty + \infty, \infty] = 2$
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/bf3.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 3}
+    \label{fig:bf3}
+\end{figure}
+
+
+\begin{itemize}
+    \item $D_B^{(3)}$ = $\min [0 + 1, 3 + 3, \infty + \infty, 5 + 5, 2 + 1, 1] = 1$
+    \item $D_C^{(3)}$ = $\min [0 + 3, 1 + 3, \infty + \infty, 5 + 2, 2 + \infty, 3] = 3$
+    \item $D_D^{(3)}$ = $\min [0 + \infty, 1 + \infty, 3 + \infty, 5 + 1, 2 + 5, \infty] = 6$
+    \item $D_E^{(3)}$ = $\min [0 + \infty, 1 + 5, 3 + 2, \infty + 1, 2 + \infty, 5] = 5$    
+    \item $D_F^{(3)}$ = $\min [0 + \infty, 1 + 1, 3 + \infty, \infty + 5, 5 + \infty, 2] = 2$
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/bf4.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 4}
+    \label{fig:bf4}
+\end{figure}
+
+Poi si calcolano i costi dei cammini quando h = 4
+
+\begin{itemize}
+   
+    \item $D_B^{(4)}$ =  $\min [0 + 1, 3 + 3, 6 + \infty, 5 + 5, 2 + 1, 1] = 1$
+    \item $D_C^{(4)}$ = $\min [0 + 3, 1 + 3, 6 + \infty, 5 + 2, 2 + \infty, 3] = 3$
+    \item $D_D^{(4)}$ = $\min [0 + \infty, 1 + \infty, 3 + \infty, 5 + 1, 2 + 5, 6] = 6$
+    \item $D_E^{(4)}$ = $\min [0 + \infty, 1 + 5, 3 + 2, 6 + 1, 2 + \infty, 5] = 5$
+    \item $D_F^{(4)}$ = $\min [0 + \infty, 1 + 1, 3 + \infty, 6 + 5, 5 + \infty, 2] = 2$
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/bf5.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 5}
+    \label{fig:bf5}
+\end{figure}
+\newpage
+Poi si calcolano i costi dei cammini quando h = 5, quindi con al massimo un salto.
+
+\begin{itemize}
+   
+    \item $D_B^{(5)}$ = $\min [0 + 1, 3 + 3, 6 + \infty, 5 + 5, 2 + 1, 1] = 1$
+    
+    \item $D_C^{(5)}$ = $\min [0 + 3, 1 + 3, 6 + \infty, 5 + 2, 2 + \infty, 3] = 3$
+    
+    \item $D_D^{(5)}$ = $\min [0 + \infty, 1 + \infty, 3 + \infty, 5 + 1, 2 + 5, 6] = 6$
+    
+    \item $D_E^{(5)}$ = $\min [0 + \infty, 1 + 5, 3 + 2, 6 + 1, 2 + \infty, 5] = 5$
+    
+    \item $D_F^{(5)}$ = $\min [0 + \infty, 1 + 1, 3 + \infty, 6 + 5, 5 + \infty, 2] = 2$
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/bf5.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 6}
+    \label{fig:bf6}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/bf7.png}
+    \caption{Albero dei cammini a costo minimo}
+    \label{fig:bf7}
+\end{figure}
+
+\subsection{Link State}
+
+L'algoritmo link-state rappresenta un'alternativa al vistance vector, si utilizza per reti di dimensioni maggiori.
+
+Il presupposto su cui si basa questo algoritmo è che i router conoscano la topologia della rete, non come avveniva nel distance vector; infatti nel distance vector i router conoscevano solamente le info sui vicini, nel link state invece i router conoscono l'intera topologia della rete.
+
+\paragraph{Flooding}
+Si sfrutta il concetto di flooding: il flooding è un protocollo di instradamento usato dai router che inoltrano un pacchetto in ingresso su tutte le linee ad eccezione di quella da cui proviene. Ogni pacchetto in arrivo viene inoltrato su ogni linea di uscita eccetto quella da cui è arrivato;
+quindi tutti i router della rete comunicano in flooding tutte le informazioni dei vicini, con relativi costi. Inoltre il link state periodicamente ritrasmette l'informazione.
+
+La topologia della rete è cosa nota a tutti e quindi si possono applicare strategie porprie della teoria dei grafi, più nello specifico applichiamo l'algoritmo di Dijkstra(complessità non lineare, nlog(n), ossia con l'aumetare dei nodi la complessità di questo algoritmo aumenta alla nlog(n)):
+permette di trovare la strada nel modo più efficiente possibile(considerando tempo e costo: migliore end to end).
+
+
+\subsubsection{Algoritmo di Dijkstra}
+
+
+
+\subsection{Problemi di routing - routing loop}
+
+\subsubsection{Soluzioni: split horizon, poison reverse, hold-down}
+Tramite split horizon decido che i router non condividono con i vicini le informazioni ottenute da altri vicini
+c'è anche lo split horizon con poisoned reverse, invece di non comunicare ai vicini le info di altri vicini, gliele comunico con costo infinito, metrica “infinity”, così che non vengano mai scelte poichè irraggiungibili
+un'altra soluzione è il trigger update: ogni volta che avviene un cambiamento nella topologia della rete allora vengono aggiornate le tabelle in base a questo cambiamento 
+le reti vengono dichiarate irraggiungibili non nell'esatto momento in cui non sono più raggiungibili, ma allo scadere di un time detto “hold-down timer” 
+
+\newpage
+\subsection{Protocolli di routing intra AS (RIP - OSPF)}
+\subsubsection{RIP (Distance Vector)(UDP)}
+\paragraph{Caratteristiche principali}
+Il RIP è il protocollo di routing più semplice ed è adatto a reti di piccole dimensioni; usa il Distance Vector.
+
+Come metrica del costo utilizza l'hop count, ossia valuta il costo dei percorsi in base al numero dei santi che vengono effettuati.
+Il valore massimo di hop è 15, perciò quando questo valore arriva a 16 per un certo percorso, questo viene indicato come irrangiungibile(per evitare il counting tot inifinity).
+Il routing update(aggiornamento delle tabelle contenenti le informazioni per il routing) avviene ogni 30s oppure ad ogni cambiamento topologico.
+
+\paragraph{RIPv1 e RIPv2}
+
+ Nel RIPv1 l'indirizzamento IP era classful, perciò i pacchetti scambiati non contenevano informazioni sulla maschera di rete; quindi come destinazione si scriveva solamente l'ind. IP.
+
+ RIPv2 invece ha integrato anche la riga Subnet Mask, così da permettere l'uso degli indirizzi classless. 
+
+ I messaggi RIP vengono incapsulati all'interno di UDP(porta 520), perciò tramite datagrammi. Ognuno di questi pacchetti può contenere al massimo 25 destinazioni.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/RIPversioni.png}
+    \caption{Confronto tra RIPv1 e RIPv2}
+    \label{fig:ripversioni}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/processoRIP.png}
+    \caption{Processo di aggiornamento in RIP}
+    \label{fig:processoRIP}
+\end{figure}
+\newpage
+\subsubsection{OSPF (Link State) e Link State Advertisement (LSA)}
+
+Un protocollo che utilizza il link state come alg di routing è il OSPF(open shortest path first);
+in OSPF si può specificare quale sia il costo(banda, affidabilità, ritardo, anche un valore inserito manualmente).
+
+Quando i router diventano tanti allora OSPF non fa altro che dividere gli AS in aree, ognuna delle quali definita da 4 ottetti, in modo gerarchico;
+\paragraph{Area border routers}
+i router al confine con due aree vengono detti “area border router” e devono avere almeno un'interfaccia verso la backbone area(rete 0.0.0.0)
+questa backbone area(area 0) fa da ponte
+l'idea è quella di usare l'algoritmo dijkstra in modo modulare in ogni singola area.
+
+\paragraph{LSA}
+I Link State Packet: sono generati dal protocollo OSPF, sono pacchetti di aggiornamento che contengono i vari nodi a cui il router è collegato
+ogni volta che collega una rete viene detta LSA(Link State Advertisement)
+nella rete locale LAN è importante definire un router che inoltri gli lsa, questo router viene chiamato “designated”
+per ridurre l'overhead da segnalazione, l'lsa viene inviato ogni 30 minuti o ad ogni qual volta ci sia un cambiamento dei collegamenti della rete
+differenza tra lsa e pacchetto OSPF
+LSA = informazione vera e propria sullo stato dei link.
+Pacchetto OSPF (come il Link State Update) = trasporta una o più LSA tra router OSPF.
+AUTENTICAZIONE DEL PEER E AUTENTICAZIONE DEL MESSAGGIO - DIFFERENZA
+aut peer è riferita a chi manda il pacchetto: esempio, io mando un pacchetto a michele, verifico che questo pacchetto sia effettivamente per michele(aut peer)
+aut messaggio è una verifica sul “messaggio” del pacchetto che viene inviato, per assicurarsi che sia proprio quello inviato e non differente
+il pacchetto OSPF è incapsulato in pacchetti IP(type 59(cinque nove, non è cinquantanove) in esadecimale)
+del pacchetto OSPF mi serve sapere: version, Router ID(IP address del router), Area ID, link state checksum.
+
+tre tipologie di LSP:
+
+\begin{itemize}
+    \item link state request: richiesta di invio di uno o più LSA
+    \item link state update: ogni 30 min o quando avviene un cambiamento topologico
+    \item link state acknowledgment: all'avvenuta ricezione del LSA
+\end{itemize}
+cinque tipologie di LSA:
+\begin{multicols}{2}
+\begin{itemize}
+    \item router LSA
+    \item Network LSA
+    \item Summary LSA
+    \item AS Boundary
+    \item router LSA
+    \item AS external LSA
+\end{itemize}
+\end{multicols}
+! un LSA “vecchio” di circa un'ora viene rimosso
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/backbone.png}
+    \caption{Backbone della rete OSPF}
+    \label{fig:backbone}
+\end{figure}
+
+\paragraph{Utilizzo di Dijkstra in diverse aree}
+Ad esempio, nell'area 1 uso il dijkstra tra quei 4 router, i rouer di bordo area avranno sicuramente dei collegamenti con le altre aree, però durante il calcolo dijkstra in area 1 questi altri collegamenti “terminano” sui router di bordo area. 
+questo ragionamento viene applicato ad ogni area, anche alla backbone area, che mi va a risolvere il fatto che i router di bordo area precedentemente non integravano nel dijkstra i collegamenti fuori dalla prorpia area. così ho calcolato le strade più efficienti di ogni area, il che porta a vantaggi anche nel quadro globale della cosa.
+ci sono anche router detti boundary router che si collegano con “internet”, con il “mondo esterno”, infatti tutte le aree precedenti fanno parte della stessa rete, è divisa solo in aree.
+così abbasso il costo computazionale dell'algoritmo dijkstra perchè non lo applico a tutta la rete, ma a tutte le aree che compongono la rete, poichè è un algoritmo la cui complessità è nlog(n), perciò meglio usarlo più volte con un numero inferiore di nodi(n) che una sola volta con un numero  elevato di n
+
+\subsubsection{Pacchetti OSPF}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/pacchettoospf.png}
+    \caption{Pacchetto OSPF}
+    \label{fig:pacchettoospf}
+\end{figure}
+
+\subsection{Protocolli di routing inter-AS - (BGP)}
+\subsubsection{BGP (Path Vector)}
 
