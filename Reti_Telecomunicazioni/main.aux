@@ -2,23 +2,55 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Livello 2 Protocolli di linea}{2}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}Strategie di controllo errore}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Distinzione tra strategie di controllo errori}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}ARQ (Automatic Repeat-reQuest)}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Stop-and-Wait}{3}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Schema Stop-and-Wait}}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Efficienza di stop and wait in assenza di errori}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Efficienza di stop and wait in presenza di errori}{4}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Errore nel frame: quando si verifica un errore nel frame, il mittente si accorge del problema grazie alla scadenza del timer avviato durante la trasmissione. In tal caso, il frame viene ritrasmesso. Questo processo garantisce che i dati vengano ricevuti correttamente, ma può ridurre l'efficienza del protocollo a causa delle ritrasmissioni necessarie.}}{4}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Errore nell'ACK: quando si verifica un errore nell'ACK, il mittente non riceve il riscontro atteso entro il tempo stabilito dal timer. Anche in questo caso, il frame viene ritrasmesso. }}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Protocolli Continuous ARQ}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Go-Back-N}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Senza errori - efficienza massima}{5}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Go-Back-N senza errori}}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Con errori}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Errore trasmissione del frame}{6}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Go-Back-N con errori in trasmissione}}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Errore trasmissione - ACK non ricevuto ($T_{out}$)}{6}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Go-Back-N con errore nell'ACK}}{6}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces Go-Back-N con equivoco nell'ACK}}{7}{}\protected@file@percent }
-\gdef \@abspage@last{8}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Livello 2 Frame DHLC}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Struttura del frame}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Struttura del frame HDLC}}{2}{}\protected@file@percent }
+\newlabel{fig:struttura-frame}{{1.1}{2}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Bit stuffing}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Esempio di bit stuffing}}{2}{}\protected@file@percent }
+\newlabel{fig:bit-stuffing}{{1.2}{2}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}Rivelazione dell'errore con CRC}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Polinomio generatore}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Cosa avviene in trasmissione}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Schema del calcolo di CRC, P(x)}}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Schema del calcolo di CRC, $x^rP(x)$}}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Calcolo e verifica del CRC in trasmissione}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Inserimento bit in FCS}}{3}{}\protected@file@percent }
+\newlabel{fig:calcolo-crc}{{1.5}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Verifica CRC}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Polinomio relativo}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Condizione necessaria}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Dimostrazione condizione necessaria}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Esempio calcolo CRC}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Esempio di calcolo CRC}}{4}{}\protected@file@percent }
+\newlabel{fig:esempio-crc}{{1.6}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.4}Protocollo point to point (PPP)}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces Protocollo Point to Point}}{5}{}\protected@file@percent }
+\newlabel{fig:point-to-point}{{1.7}{5}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{Network bit order - Big Endian e Little Endian}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Big Endian e Little Endian}}{5}{}\protected@file@percent }
+\newlabel{fig:endian}{{1.8}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Byte stuffing}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sequenza di flag 0x7d}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces Esempio di byte stuffing}}{6}{}\protected@file@percent }
+\newlabel{fig:byte-stuffing}{{1.9}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Struttura PPP}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Encapsulation PPP}}{6}{}\protected@file@percent }
+\newlabel{fig:ppp-encapsulation}{{1.10}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Autenticazioni}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Autenticazione PAP e CHAP}}{7}{}\protected@file@percent }
+\newlabel{fig:autenticazione-pap-chap}{{1.11}{7}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{Autenticazione PAP}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Autenticazione CHAP}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Protocolli di accesso}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Troughput di rete}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Calcolo del Troughput}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Protocollo ALOHA puro}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Calcolo del Troughput di ALOHA puro}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Prestazioni ALOHA puro}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}Protocollo ALOHA slotted}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Prestazioni ALOHA slotted}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.4}Protocolli Carrier Sense Multiple Access - CSMA}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{CSMA/CD}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{CSMA/CA}{8}{}\protected@file@percent }
+\gdef \@abspage@last{9}

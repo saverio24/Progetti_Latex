@@ -1,5 +1,4 @@
 \section{Strategie di controllo errore}
-\subsection{Distinzione tra strategie di controllo errori}
 I pacchetti di livello 2 sono chiamati frame/trame, sono divisi in header e trailer; nel trailer sono presenti i campi utili alle strategie di controllo degli errori.
 
 È possibile distinguere due tipi principali di strategie:
@@ -7,7 +6,7 @@ I pacchetti di livello 2 sono chiamati frame/trame, sono divisi in header e trai
     \item FEC (Forward Error Correction): il mittente invia dati ridondanti, in modo che il destinatario possa correggere gli errori senza richiedere una ritrasmissione.
     \item ARQ (Automatic Repeat-reQuest): il mittente invia i dati e il destinatario richiede la ritrasmissione dei dati corrotti. 
 \end{enumerate}
-\subsection{ARQ (Automatic Repeat-reQuest)}
+\subsection{Protocolli ARQ (Automatic Repeat-reQuest)}
 Nei sistemi di telecomunicazioni, Automatic Repeat-reQuest è una strategia di controllo di errore, che svolge il compito di rivelare un errore (ma non di correggerlo). I pacchetti corrotti vengono scartati e viene richiesta la loro ritrasmissione.
 
 I protocolli di tipo ARQ più comuni sono:
@@ -121,7 +120,7 @@ N_R = N_S + 1
 Definiamo il frame error rate(FER), come la probabilità che un frame venga ricevuto con errore, FINIRE E APPROFONDIRE
 
 \newpage
-\subsubsection{Protocolli Continuous ARQ}
+\subsection{Protocolli Continuous ARQ}
 I protocolli continuous ARQ, a differenza dello stop-and-wait, prevede l'invio di un'insieme di pacchetti(frame/trame) numerati, tramite sliding window.
 Vengono definite:
 \begin{itemize}
@@ -187,17 +186,85 @@ Si possono riscontrare errori durante la ricezione del pacchetto e durante il ri
 
 \newpage
 
-\paragraph{Errore trasmissione - ACK equivocato($T_{out}$, )}
+\paragraph{Errore trasmissione - ACK equivocato($T_{out}$)} 
+con conseguente ricezione di duplicati
+
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.55\textwidth}
-        Quando si verifica un equivoco nell'ACK, il mittente interpreta erroneamente il riscontro ricevuto e potrebbe ritrasmettere frame già ricevuti correttamente dal destinatario. 
+    \begin{minipage}{0.5\textwidth}
+        Quando si verifica un equivoco nell'ACK,ossia viene riscontrato erroneamente un frame,  il mittente interpreta erroneamente il riscontro ricevuto e potrebbe ritrasmettere frame già ricevuti correttamente dal destinatario. 
         Questo equivoco può portare a un aumento delle ritrasmissioni e a una riduzione dell'efficienza del protocollo.
+
+        Questi equivoci possono portare ad una sovrapposizione tra le finestre di trasmissione e ricezione; 
     \end{minipage}%
     \hfill
-    \begin{minipage}{0.4\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \includegraphics[width=\linewidth]{images/equivocoack.png}
         \caption{Go-Back-N con equivoco nell'ACK}
     \end{minipage}
 \end{figure}
 
+
+\begin{figure}[htbp]
+    \centering
+     \begin{minipage}{0.46\textwidth}
+        \includegraphics[width=\linewidth]{images/ackequivoco2.png}
+        \caption{Go-Back-N con equivoco nell'ACK}
+
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        DA FARE
+    \end{minipage}%
+\end{figure}
+\newpage
+
+\paragraph{Protocollo selective repeat} 
+Il protocollo Selective Repeat è un protocollo di tipo Continuous ARQ che consente la ritrasmissione selettiva dei soli frame ricevuti con errore, evitando di ritrasmettere quelli ricevuti correttamente.
+
+
+        \begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.47\textwidth}
+        \includegraphics[width=\linewidth]{images/sr.png}
+        \caption{Selective Repeat}
+        
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \paragraph{In assenza di errori} Questo approccio migliora l'efficienza rispetto al Go-Back-N, poiché la finestra di ricezione può essere maggiore di 1 ($W_R > 1$).
+
+    \end{minipage}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.47\textwidth}
+        \includegraphics[width=\linewidth]{images/srerroritrama.png}
+        \caption{Selective Repeat con errori sulla trama}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.49\textwidth}
+        \paragraph{In presenza di errori sulla trama}
+
+        Quando si verifica un errore in una trama, il protocollo Selective Repeat consente di ritrasmettere solo la trama errata(il ricevente invia un NACK in cui indica quale frame è andato perso), senza dover ritrasmettere tutte le trame successive come avviene nel Go-Back-N. 
+        
+
+        Questo approccio riduce il numero di ritrasmissioni necessarie e migliora l'efficienza complessiva del protocollo, specialmente in presenza di errori frequenti.
+    \end{minipage}
+\end{figure}
+\newpage
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \paragraph{In presenza di errori sull'ACK}
+        Quando si verifica un errore nell'ACK, il protocollo Selective Repeat consente di gestire la situazione senza dover ritrasmettere tutte le trame successive. 
+        Il mittente ritrasmette solo le trame per cui non ha ricevuto un riscontro positivo, evitando duplicati e migliorando l'efficienza rispetto al Go-Back-N.
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.47\textwidth}
+        \includegraphics[width=\linewidth]{images/srequivocazione.png}
+        \caption{Selective Repeat con errori sull'ACK}
+    \end{minipage}
+\end{figure}
