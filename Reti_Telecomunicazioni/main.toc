@@ -1,32 +1,4 @@
-\contentsline {chapter}{\numberline {1}Livello 2 Protocolli di linea}{2}{}%
-\contentsline {section}{\numberline {1.1}Livello 2 Frame DHLC}{2}{}%
-\contentsline {subsection}{\numberline {1.1.1}Struttura del frame}{2}{}%
-\contentsline {subsection}{\numberline {1.1.2}Bit stuffing}{2}{}%
-\contentsline {subsection}{\numberline {1.1.3}Rivelazione dell'errore con CRC}{3}{}%
-\contentsline {paragraph}{Polinomio generatore}{3}{}%
-\contentsline {subsubsection}{Cosa avviene in trasmissione}{3}{}%
-\contentsline {paragraph}{Calcolo e verifica del CRC in trasmissione}{3}{}%
-\contentsline {subsubsection}{Verifica CRC}{4}{}%
-\contentsline {paragraph}{Polinomio relativo}{4}{}%
-\contentsline {paragraph}{Condizione necessaria}{4}{}%
-\contentsline {paragraph}{Dimostrazione condizione necessaria}{4}{}%
-\contentsline {subsubsection}{Esempio calcolo CRC}{4}{}%
-\contentsline {subsection}{\numberline {1.1.4}Protocollo point to point (PPP)}{5}{}%
-\contentsline {paragraph}{Network bit order - Big Endian e Little Endian}{5}{}%
-\contentsline {subsubsection}{Byte stuffing}{6}{}%
-\contentsline {paragraph}{Sequenza di flag 0x7d}{6}{}%
-\contentsline {subsubsection}{Struttura PPP}{6}{}%
-\contentsline {subsubsection}{Autenticazioni}{7}{}%
-\contentsline {paragraph}{Autenticazione PAP}{7}{}%
-\contentsline {paragraph}{Autenticazione CHAP}{7}{}%
-\contentsline {section}{\numberline {1.2}Protocolli di accesso}{7}{}%
-\contentsline {subsection}{\numberline {1.2.1}Troughput di rete}{8}{}%
-\contentsline {subsubsection}{Calcolo del Troughput}{8}{}%
-\contentsline {subsection}{\numberline {1.2.2}Protocollo ALOHA puro}{8}{}%
-\contentsline {subsubsection}{Calcolo del Troughput di ALOHA puro}{8}{}%
-\contentsline {subsubsection}{Prestazioni ALOHA puro}{8}{}%
-\contentsline {subsection}{\numberline {1.2.3}Protocollo ALOHA slotted}{8}{}%
-\contentsline {subsubsection}{Prestazioni ALOHA slotted}{8}{}%
-\contentsline {subsection}{\numberline {1.2.4}Protocolli Carrier Sense Multiple Access - CSMA}{8}{}%
-\contentsline {subsubsection}{CSMA/CD}{8}{}%
-\contentsline {subsubsection}{CSMA/CA}{8}{}%
+\contentsline {chapter}{\numberline {1}Livello 2 Data link}{2}{}%
+\contentsline {section}{\numberline {1.1}Il Progetto IEEE 802}{2}{}%
+\contentsline {subsection}{\numberline {1.1.1}Livello LLC}{3}{}%
+\contentsline {subsubsection}{Frame LLC}{3}{}%
