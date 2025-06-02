@@ -6,15 +6,24 @@ I pacchetti di livello 2 sono chiamati frame/trame, sono divisi in header e trai
     \item FEC (Forward Error Correction): il mittente invia dati ridondanti, in modo che il destinatario possa correggere gli errori senza richiedere una ritrasmissione.
     \item ARQ (Automatic Repeat-reQuest): il mittente invia i dati e il destinatario richiede la ritrasmissione dei dati corrotti. 
 \end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/strategierrore.png}
+    \caption{Strategie di controllo degli errori: confronto tra FEC e ARQ}
+\end{figure}
+
 \subsection{Protocolli ARQ (Automatic Repeat-reQuest)}
 Nei sistemi di telecomunicazioni, Automatic Repeat-reQuest è una strategia di controllo di errore, che svolge il compito di rivelare un errore (ma non di correggerlo). I pacchetti corrotti vengono scartati e viene richiesta la loro ritrasmissione.
-
 I protocolli di tipo ARQ più comuni sono:
+
+\begin{multicols}{3}
 \begin{itemize}
     \item Stop-and-Wait 
     \item Go-Back-N 
     \item Selective Repeat
 \end{itemize}
+\end{multicols}
 
 
 \newpage

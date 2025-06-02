@@ -1,4 +1,17 @@
 \contentsline {chapter}{\numberline {1}Livello 2 Data link}{2}{}%
-\contentsline {section}{\numberline {1.1}Il Progetto IEEE 802}{2}{}%
-\contentsline {subsection}{\numberline {1.1.1}Livello LLC}{3}{}%
-\contentsline {subsubsection}{Frame LLC}{3}{}%
+\contentsline {section}{\numberline {1.1}Strategie di controllo errore}{2}{}%
+\contentsline {subsection}{\numberline {1.1.1}Protocolli ARQ (Automatic Repeat-reQuest)}{2}{}%
+\contentsline {subsubsection}{Stop-and-Wait}{3}{}%
+\contentsline {paragraph}{Efficienza di stop and wait in assenza di errori}{3}{}%
+\contentsline {paragraph}{Efficienza di stop and wait in presenza di errori}{4}{}%
+\contentsline {subsection}{\numberline {1.1.2}Protocolli Continuous ARQ}{5}{}%
+\contentsline {subsubsection}{Go-Back-N}{5}{}%
+\contentsline {paragraph}{Senza errori - efficienza massima}{5}{}%
+\contentsline {subsubsection}{Con errori}{6}{}%
+\contentsline {paragraph}{Errore trasmissione del frame}{6}{}%
+\contentsline {paragraph}{Errore trasmissione - ACK non ricevuto ($T_{out}$)}{6}{}%
+\contentsline {paragraph}{Errore trasmissione - ACK equivocato($T_{out}$)}{7}{}%
+\contentsline {paragraph}{Protocollo selective repeat}{8}{}%
+\contentsline {paragraph}{In assenza di errori}{8}{}%
+\contentsline {paragraph}{In presenza di errori sulla trama}{8}{}%
+\contentsline {paragraph}{In presenza di errori sull'ACK}{9}{}%

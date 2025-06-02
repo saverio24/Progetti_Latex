@@ -555,18 +555,28 @@ superiore ad un valore minimo per garantire il funzionamento del collision
 detection.
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.5\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \includegraphics[width=\linewidth]{images/dimostrazionecsma.png}
         \caption{Dimostrazione collision detection}
         \label{fig:dimostrazione-csma}
     \end{minipage}%
     \hfill
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.5\textwidth}
 
 
 
-???
+A e B comunicano nei tampi $\tau$(valore massimo, caso peggiore);
+il primo bit inviato da A arriva a B dopo $\tau$ secondi.
 
+Nel caso peggiore B ascolta il canale un istante($\epsilon$) prima che il bit di A arrivi a B, perciò B vedrà che il canale è libero, non sapendo che un'istante dopo arriveranno i bit di A, causando quindi una collisione.
+
+B si accorge della collisione e manda un jam, impiegando $\tau$ per "avvisare" A.
+
+A può apire che il jam che riceve è dovuto ad una collisione con la sua trasmissione solo se la sua trasmissione ($T_f$) dura almeno quanto il tempo che ha impiegato il suo primo bit di trasmissione ed il jam di B, perciò: $T_f  \geq 2\tau$ 
+
+\begin{equation}
+ T_f = \frac{L_f}{C} \geq 2\tau = \frac{2d}{v} \implies L_f \geq \frac{2dC}{v}
+\end{equation}
 
         %Si supponga che A inizi a trasmettere al tempo t=0 e che B inizi a trasmettere al tempo $t = t_{prop}$ ($t_{prop}$ è il tempo di propagazione del segnale).
 

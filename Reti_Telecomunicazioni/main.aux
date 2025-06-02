@@ -2,9 +2,32 @@
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Livello 2 Data link}{2}{}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}Il Progetto IEEE 802}{2}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Struttura della pila ISO/OSI secondo IEEE 802}}{2}{}\protected@file@percent }
-\newlabel{fig:ieee802}{{1.1}{2}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Livello LLC}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Frame LLC}{3}{}\protected@file@percent }
-\gdef \@abspage@last{4}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Strategie di controllo errore}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Strategie di controllo degli errori: confronto tra FEC e ARQ}}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Protocolli ARQ (Automatic Repeat-reQuest)}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Stop-and-Wait}{3}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Schema Stop-and-Wait}}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Efficienza di stop and wait in assenza di errori}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Efficienza di stop and wait in presenza di errori}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Errore nel frame: quando si verifica un errore nel frame, il mittente si accorge del problema grazie alla scadenza del timer avviato durante la trasmissione. In tal caso, il frame viene ritrasmesso. Questo processo garantisce che i dati vengano ricevuti correttamente, ma può ridurre l'efficienza del protocollo a causa delle ritrasmissioni necessarie.}}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Errore nell'ACK: quando si verifica un errore nell'ACK, il mittente non riceve il riscontro atteso entro il tempo stabilito dal timer. Anche in questo caso, il frame viene ritrasmesso. }}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Protocolli Continuous ARQ}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Go-Back-N}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Senza errori - efficienza massima}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Go-Back-N senza errori}}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Con errori}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Errore trasmissione del frame}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Go-Back-N con errori in trasmissione}}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Errore trasmissione - ACK non ricevuto ($T_{out}$)}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces Go-Back-N con errore nell'ACK}}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Errore trasmissione - ACK equivocato($T_{out}$)}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Go-Back-N con equivoco nell'ACK}}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces Go-Back-N con equivoco nell'ACK}}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Protocollo selective repeat}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Selective Repeat}}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{In assenza di errori}{8}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Selective Repeat con errori sulla trama}}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{In presenza di errori sulla trama}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{In presenza di errori sull'ACK}{9}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.12}{\ignorespaces Selective Repeat con errori sull'ACK}}{9}{}\protected@file@percent }
+\gdef \@abspage@last{10}
