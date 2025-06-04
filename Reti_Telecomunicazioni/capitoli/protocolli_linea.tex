@@ -1,3 +1,4 @@
+
 \section{Strategie di controllo errore}
 I pacchetti di livello 2 sono chiamati frame/trame, sono divisi in header e trailer; nel trailer sono presenti i campi utili alle strategie di controllo degli errori.
 
@@ -52,7 +53,7 @@ In questo caso specifico, i segnali di riscontro negativi sono cumulativi.
     \end{minipage}
 \end{figure}
 
-\paragraph{Efficienza di stop and wait in assenza di errori}
+\subsection{Efficienza di stop and wait in assenza di errori}
 
 Prima di definire l'efficienza del protocollo, è necessario definire il tempo necessario a trasmettere una trama:
 
@@ -75,9 +76,9 @@ T_{tot} = T_f + 2\tau
 da cui si ottiene l'efficienza:
 
 \begin{equation}
-\eta = \frac{T_f}{T_f + 2\tau} = \frac{1}{1 + \frac{2\tau}{T_f}} = \frac{1}{1 + \alpha} 
+\eta = \frac{T_f}{T_f + 2\tau} = \frac{1}{1 + 2\frac{\tau}{T_f}} = \frac{1}{1 + 2\alpha} 
 \end{equation}
-dove $\alpha$ = $\frac{2\tau}{T_f}$ è il rapporto di propagazione normalizzato
+dove $\alpha$ = $\frac{\tau}{T_f}$ è il rapporto di propagazione normalizzato
 
 \begin{itemize}
     \item il throughput è pari al prodotto tra la frequenza di cifra C (capacità del canale) e l'efficienza: $\eta$C
@@ -86,7 +87,7 @@ dove $\alpha$ = $\frac{2\tau}{T_f}$ è il rapporto di propagazione normalizzato
 
 \newpage
 
-\paragraph{Efficienza di stop and wait in presenza di errori}
+\subsection{Efficienza di stop and wait in presenza di errori}
 
 I problemi che possono verificarsi sono:
 \begin{multicols}{2}
@@ -98,7 +99,7 @@ I problemi che possono verificarsi sono:
 
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{0.44\textwidth}
         \includegraphics[width=\linewidth]{images/erroreframe.png}
         \caption{Errore nel frame: quando si verifica un errore nel frame, il mittente si accorge del problema grazie alla scadenza del timer avviato durante la trasmissione. 
         In tal caso, il frame viene ritrasmesso. Questo processo garantisce che i dati vengano ricevuti correttamente, ma può ridurre l'efficienza del protocollo a causa delle ritrasmissioni necessarie.}
@@ -125,8 +126,141 @@ inoltre il numero totale di frame trasmessi($N_R$) è dato dal numero di frame r
 N_R = N_S + 1
 \end{equation}
 
+Per calcolare il tempo totale necessario per la trasmissione
+si deve considerare che per ogni ritrasmissione si perde un
+tempo pari a $T_f+T_{out}$ cui si deve aggiungere il tempo
+necessario per la trasmissione che avviene con successo:
+\begin{equation}
+T_{tot} = (N_S - 1)(T_f + T_{out}) + T_f + T_{ACK} + 2T_P + 2\tau
+\end{equation}
+\newpage
 
-Definiamo il frame error rate(FER), come la probabilità che un frame venga ricevuto con errore, FINIRE E APPROFONDIRE
+\paragraph{Calcolo di $\overline{N_S}$}
+la variabile $N_S$ è aleatoria, in quanto
+dipende dagli errori sul canale di trasmissione; 
+si calcola l'efficienza media del protocollo SW in presenza di errori considerando il valor
+medio di $N_S$
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{images/swprobabilita.png}
+        \caption{Probabilità di successo e insuccesso nella trasmissione di un frame in Stop-and-Wait}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        Definiamo il frame error rate (FER) come la probabilità che un frame venga ricevuto con errore, che sarà il valore di P nel calcolo successivo. 
+            Se $P$ è la probabilità che un frame sia errato, la probabilità che un frame sia trasmesso correttamente è $1-P$.
+       
+        La variabile aleatoria $N_S$ rappresenta il numero di tentativi necessari affinché un frame sia ricevuto correttamente. 
+        
+        La sua distribuzione è di tipo geometrico:
+        \begin{equation*}
+            P(N_S = k) = P^{i-1}(1-P)
+        \end{equation*}
+        dove $k$ è il numero di tentativi (ritrasmissioni più il primo invio).
+        Il valor medio di $N_S$ è:
+        \begin{equation*}
+            \overline{N_S} = \frac{1}{1-P}
+        \end{equation*}
+    \end{minipage}
+\end{figure}
+
+
+
+\begin{equation*}
+ \overline{N_S} = E[N_S] = \sum_{i=1}^{+\infty} i P^{i-1}(1-P) = \frac{1}{(1-P)^2}(1-P) = \frac{1}{1-P}
+\end{equation*}
+
+\paragraph{Spiegazione}
+La formula sopra mostra il calcolo del valor medio $\overline{N_S}$ per una variabile aleatoria geometrica, che rappresenta il numero medio di tentativi necessari affinché un frame venga trasmesso correttamente. 
+
+La distribuzione geometrica è appropriata perché ogni trasmissione è indipendente e la probabilità di successo (ricezione corretta) è costante e pari a $1-P$, dove $P$ è la probabilità di errore del frame. La somma $\sum_{i=1}^{+\infty} i P^{i-1}(1-P)$ rappresenta la media pesata di tutti i possibili numeri di tentativi, ciascuno moltiplicato per la probabilità che siano necessari esattamente $i$ tentativi. 
+
+Sviluppando la somma, si ottiene che il valor medio è $\frac{1}{1-P}$: questo significa che, in media, il numero di tentativi cresce all'aumentare della probabilità di errore $P$. Se $P$ è vicino a zero, bastano pochi tentativi; se $P$ aumenta, il numero medio di ritrasmissioni cresce rapidamente.
+
+Perciò, ripetendo, se si vuole ottenere il valore medio di una variabile aleatoria bisogna effettuare uno studio probabilistico; questa probabilità aleatoria sarà in media pari alla moltiplicazione tra due probabilità:
+\begin{itemize}
+    \item probabilità di successo (1-P): frame trasmesso correttamente
+    \item $P^{i-1}$ rappresenta la sequenza di fallimenti che avvengono prima della trasmissione avvenuta con successo, che calcolo per un valore di i infinito(serie geometrica), caso peggiore(benchè irreale)
+\end{itemize}
+
+
+\[
+\Pr(N_S = i) = \underbrace{P^{i-1}}_{\text{\# fallimenti}} \cdot \underbrace{(1 - P)}_{\text{successo finale}}
+\]
+
+La distribuzione di probabilità è:
+\[
+\Pr(N_S = i) = P^{i - 1} (1 - P)
+\]
+
+Il valore atteso si ottiene come:
+\[
+\mathrm{E}[N_S] = \sum_{i = 1}^{\infty} i \cdot \Pr(N_S = i)
+\]
+
+\newpage
+
+\subsubsection{Errore sul bit ed errore sul frame}
+\paragraph{Frame error rate (FER)} è possibile definire le probabilità per le quali ci sia un errore sui bit(BER, bit error rate) all'interno di un range oppure, di maggiore interesse a questo livello di rete, la probabilità di errore su un range di frame, quindi il FER(frame error rate).
+
+Per calcolarlo ci interessa definire:
+\begin{itemize}
+    \item $L_f$: lunghezza in bit del frame
+    \item $L_{ACK}$: lunghezza in bit del ACK
+\end{itemize}
+
+e sarà pari al valore P utilizzato nel calcolo probabilistico precedente, perciò: 
+\begin{equation}
+P = FER = 1 - (1 - p)^{(L_f + L_{ACK})}
+\end{equation}
+\subsubsection{Calcolo dell'efficienza}
+L'efficienza $\eta$ del protocollo Stop and wait è data da:
+
+L'efficienza $\eta$ del protocollo Stop-and-Wait in presenza di errori si calcola come rapporto tra il tempo utile di trasmissione e il tempo totale medio necessario per trasmettere correttamente un frame, considerando anche le ritrasmissioni dovute agli errori:
+
+\begin{equation}
+\eta = \frac{T_f}{T_{tot}}
+\end{equation}
+
+dove:
+\begin{itemize}
+    \item $T_f$ è il tempo di trasmissione del frame (dato utile)
+    \item $T_{tot}$ è il tempo totale per ogni tentativo di trasmissione (inclusi tempi di ACK, propagazione, elaborazione)
+\end{itemize}
+
+ricordando la formula di $T_{tot}$
+
+\begin{equation}
+T_{tot} = (N_S - 1)(T_f + T_{out}) + T_f + T_{ACK} + 2T_P + 2\tau
+\end{equation}
+
+è possibile effettuare qualche semplificazione, trascurando termini piccoli (come $T_{ACK}, T_P, \tau)$ rispetto al tempo di trasmissione; considerando inoltre il tempo minimo per $T_{out}(pari a 2\tau)$(timer pari al tempo di propagazione di andata/ritorno del frame) per cui:
+
+\begin{equation}
+\eta \simeq \frac{T_f}{(\overline{N_S} - 1)(T_f + 2\tau) + T_f + 2\tau} = \frac{T_f}{\overline{N_S}(T_f + 2\tau)} = \frac{(1-P)T_f}{T_f + 2\tau}
+\end{equation}
+
+ricordando il rapporto di propagazione normalizzato $\alpha(\alpha = \frac{\tau}{T_f} )$, ottengo che l'efficienza:
+
+\begin{equation}
+\eta = \frac{1 - P}{1 + 2\alpha}
+\end{equation}
+
+\paragraph{Dipendenza dell'efficienza dal ritardo di propagazione normalizzato}
+Fissato il FER (dipendente dalla rumorosità del canale), l'efficienza dipende dal valore del ritardo di propagazione normalizzato
+
+Considerando la distanza $d$ e la velocità di propagazione $v$ delle onde elettromagnetiche nel mezzo:
+\[
+\alpha = \frac{\tau}{T_f} = \frac{d/v}{L_f/C} = \frac{dC}{vL_f}
+\]
+
+Il protocollo Stop-and-Wait è efficiente (quasi $1-P$) solo per valori piccoli di $\alpha$, cioè:
+\begin{itemize}
+    \item canali lenti ($C$ basso) 
+    \item collegamenti a distanze ridotte ($d$ basso) 
+    \item trame sufficientemente grandi ($L_f$ alto, ma non troppo per non aumentare $P$)
+\end{itemize}
 
 \newpage
 \subsection{Protocolli Continuous ARQ}
@@ -140,7 +274,7 @@ Se il campo dedicato alla numerazione è costituito da b bit, si potranno
 numerare in modo differente fino a $N_b$ trame. 
 
 
-\subsubsection{Go-Back-N}
+\subsubsection{Protocollo Go-Back-N}
 \paragraph{Senza errori - efficienza massima}
 Il protocollo Go-Back-N è un protocollo di tipo Continuous ARQ, che consente la trasmissione continua di più frame numerati. In questo caso specifico, i segnali di riscontro negativi sono cumulativi.
 
@@ -160,7 +294,7 @@ Nel caso in cui ci siano errori allora questo protocollo prevede di ritornare in
     \end{minipage}
 \end{figure}
  \newpage
-\subsubsection{Con errori}
+\subsubsection{Go back N - con errori}
 Si possono riscontrare errori durante la ricezione del pacchetto e durante il riscontro degli ack; a seconda della tipologia dell'errore avremo soluzioni differenti.
 \paragraph{Errore trasmissione del frame} utilizzo del negative ACK (NACK)
 \begin{figure}[htbp]
@@ -177,7 +311,7 @@ Si possono riscontrare errori durante la ricezione del pacchetto e durante il ri
     \end{minipage}
 \end{figure}
 
-\paragraph{Errore trasmissione - ACK non ricevuto ($T_{out}$)} caso in cui l'ACK non venga inviato o si sia perso
+\paragraph{Errore ACK non ricevuto ($T_{out}$)} caso in cui l'ACK non venga inviato o si sia perso
 
 \begin{figure}[htbp]
     \centering
@@ -193,42 +327,56 @@ Si possono riscontrare errori durante la ricezione del pacchetto e durante il ri
     \end{minipage}
 \end{figure}
 
+
 \newpage
 
-\paragraph{Errore trasmissione - ACK equivocato($T_{out}$)} 
+\subsubsection{Go back N - ACK equivocato($T_{out}$)} 
 con conseguente ricezione di duplicati
+
 
 \begin{figure}[htbp]
     \centering
     \begin{minipage}{0.5\textwidth}
+        \paragraph{Analisi del problema}
         Quando si verifica un equivoco nell'ACK,ossia viene riscontrato erroneamente un frame,  il mittente interpreta erroneamente il riscontro ricevuto e potrebbe ritrasmettere frame già ricevuti correttamente dal destinatario. 
         Questo equivoco può portare a un aumento delle ritrasmissioni e a una riduzione dell'efficienza del protocollo.
 
-        Questi equivoci possono portare ad una sovrapposizione tra le finestre di trasmissione e ricezione; 
+L'unico ACK corretto è l'ACK-0, quelli successivi sono errati; nel frattempo la finestra di ricezione ha continuato a scorrere, richiedendo i nuovi 1, 2, etc\dots
+
+Il problema è che i pacchetti 1,2,3 sono già stati ricevuti, l'errore c'è stato solo negli ACK, per i quali il trasmittente sta reinviando 1,2,3 precedenti, che però risulteranno come una copia(il ricevente non lo sa) di quelli trasmessi correttamente prima ma riscontrati in modo errato.
+
     \end{minipage}%
     \hfill
     \begin{minipage}{0.45\textwidth}
         \includegraphics[width=\linewidth]{images/equivocoack.png}
         \caption{Go-Back-N con equivoco nell'ACK}
+        
     \end{minipage}
 \end{figure}
 
 
 \begin{figure}[htbp]
     \centering
-     \begin{minipage}{0.46\textwidth}
+     \begin{minipage}{0.45\textwidth}
         \includegraphics[width=\linewidth]{images/ackequivoco2.png}
         \caption{Go-Back-N con equivoco nell'ACK}
 
     \end{minipage}
     \hfill
     \begin{minipage}{0.5\textwidth}
-        DA FARE
+        \paragraph{Soluzione} In questo esempio l'unico frame riscontrato correttamente è 0, come nel caso precedente; il problema dei duplicati si risolve poichè il primo frame che non ha avuto un riscontro corretto, ACK-1, ha avviato un timer entro il quale desidera ricevere un riscontro. 
+        Al termine di quest'ultimo il trasmettitore ritrasmette dal primo frame che non ha ricevuto riscontro, quindi da 1.
+
+        Il ricevente riceve 1, ma la sua finestra intato ha slideato come se non ci fossero problemi fino a 0; quindi il ricevente si accorge del problema poichè riceve 1 al posto di 0; a questo punto invia un NACK-0 per dire al trasmettitore che quelli ricevuti precedentemente erano corretti, ma riscontrati erroneamnete, quindi desidera continuare la comunicazione dal frame 0, senza ricevere duplicati. ($W_S + W_R \leq N$)
+
+        Questo è possibile perchè la finestra di trasmissione è grande N-1, dove N è il numero di frame.
+
+        
     \end{minipage}%
 \end{figure}
 \newpage
 
-\paragraph{Protocollo selective repeat} 
+\subsubsection{Protocollo selective repeat} 
 Il protocollo Selective Repeat è un protocollo di tipo Continuous ARQ che consente la ritrasmissione selettiva dei soli frame ricevuti con errore, evitando di ritrasmettere quelli ricevuti correttamente.
 
 
@@ -255,25 +403,353 @@ Il protocollo Selective Repeat è un protocollo di tipo Continuous ARQ che conse
     \end{minipage}%
     \hfill
     \begin{minipage}{0.49\textwidth}
-        \paragraph{In presenza di errori sulla trama}
+        \paragraph{In presenza di errori sul frame}
 
-        Quando si verifica un errore in una trama, il protocollo Selective Repeat consente di ritrasmettere solo la trama errata(il ricevente invia un NACK in cui indica quale frame è andato perso), senza dover ritrasmettere tutte le trame successive come avviene nel Go-Back-N. 
-        
+        Quando si verifica un errore in una trama, il protocollo Selective Repeat consente di ritrasmettere solo la trama errata(il ricevente invia un NACK in cui indica quale frame è andato perso), senza dover ritrasmettere tutte le trame successive come nel Go-Back-N. 
 
         Questo approccio riduce il numero di ritrasmissioni necessarie e migliora l'efficienza complessiva del protocollo, specialmente in presenza di errori frequenti.
     \end{minipage}
 \end{figure}
+
+
 \newpage
+
+\subsubsection{Selective repeat - equivocazione dei riscontri e soluzione ($T_{out}$)}
+
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.5\textwidth}
-        \paragraph{In presenza di errori sull'ACK}
-        Quando si verifica un errore nell'ACK, il protocollo Selective Repeat consente di gestire la situazione senza dover ritrasmettere tutte le trame successive. 
-        Il mittente ritrasmette solo le trame per cui non ha ricevuto un riscontro positivo, evitando duplicati e migliorando l'efficienza rispetto al Go-Back-N.
+    \begin{minipage}{0.48\textwidth}
+        \paragraph{Problema equivocazione ACK}
+        Il problema sussiste quando i frame vengono trasmessi correttamente, la finestra di ricezione scorre correttamente, ma gli ACK inviati sono errati.
+
+        Perciò come avveniva erroneamente negli altri protocolli, vengono ricevuti dei frame duplicati perchè il trasmettitore riceve degli ACK errati e quindi invia nuovamente i frame rispettivi(alla fine del $T_{out}$) a questi ACK; ma questi frame risulteranno a tutti gli effetti dei duplicati di quelli ricevuti correttamente dal ricevitore.
     \end{minipage}%
     \hfill
-    \begin{minipage}{0.47\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \includegraphics[width=\linewidth]{images/srequivocazione.png}
         \caption{Selective Repeat con errori sull'ACK}
     \end{minipage}
 \end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \paragraph{Soluzione}
+        Questo problema viene risolto diminuendo la grandezza delle finestre($W_S + W_R \leq N$), secondo i criteri discussi nel capoverso successivo.
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.435\textwidth}
+        \includegraphics[width=\linewidth]{images/equivocazionesr.png}
+        \caption{Selective Repeat con equivocazione risolta}
+    \end{minipage}
+\end{figure}
+
+\newpage
+
+\subsection{Dimensione delle finestre di trasmissione/ricezione}
+Con la visione degli esempi riguardanti l'equivocazione, si può affermare che in entrambi i protocolli continous ARQ, Go-Back-N e Selective Repeat, le finestre di trasmissione e di ricezione non possono essere pari a o maggiori di N in quanto si avrebbe equivocazione:
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+    \begin{equation*}
+        \begin{cases}
+            W_S \leq N \\
+            W_R \leq N
+        \end{cases}
+    \end{equation*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \begin{equation*}
+        W_S + W_R \leq N
+    \end{equation*}
+\end{minipage}
+\end{center}
+Inoltre le finestre non devono sovrapporsi, poichè in caso di equivoco e di scorrimento completo della finestra di ricezione, si potrebbe riscontrare il problema di ricezione di duplicati; anche questo si risolve imponendo una condizione sulla grandezza di tali finestre:
+
+\subsubsection{Dimensione finestre GBN ed efficienza massima}
+
+\begin{minipage}{0.55\textwidth}
+Nel caso di GBN, la finestra di ricezione è necessariamente
+unitaria. Per cui la finestra di trasmissione deve essere al più
+N-1; poiché non conviene fissarla ad un valore inferiore al
+massimo (riduzione del throughput non giustificata), la scelta
+ottimale è fissare: 
+\end{minipage}%
+\hfill
+\begin{minipage}{0.4\textwidth}
+\begin{equation*}
+    \begin{cases}
+        W_S = N-1 \\
+        W_R = 1
+    \end{cases}
+\end{equation*}
+\end{minipage}
+
+\subsubsection{Dimensione finestre SR ed efficienza massima}
+Nel caso del selective repeat vanno considerati più fattori:
+
+\begin{itemize}
+    \item non ha senso scegliere la finestra di
+trasmissione maggiore di quella di ricezione, perché si
+trasmetterebbero più trame di quante ne può ricevere e
+ordinare il ricevente
+    \item  non ha senso scegliere la finestra di
+ricezione maggiore di quella di trasmissione perché si
+ridurrebbe il throughput trasmettendo meno trame di quelle
+che si possono ricevere
+\end{itemize}
+Pertanto la soluzione ottimale è: $W_S = W_R = \frac{N}{2}$
+\subsection{Effcienza GBN $\&$ SR}
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\linewidth]{images/efficienzagbn.png}
+        \caption{Efficienza del protocollo Go-Back-N}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        \paragraph{Efficienza Go-Back-N}
+        Il trasmettitore si accorge dell'errore sulla trama i solo dopo i+x, dove x dipende dalla finestra di trasmissione e dal tempo in cui impiega ad arrivare il NACK-i relativo al frame errato.
+
+        Il costo della trasmissione del frame corretto è $N_ST_f$, dove $N_S$ è il numero di frame che sono stati trasmessi e ritrasmessi per la corretta trasmissione di quel frame, pari a:
+        \begin{equation}
+        N_S = ("numero\_errori" * K) + 1
+        \end{equation}
+
+        K è il numero di trame che vengono ritrasmesse ad ogni errore, il + 1 il frame corretto.
+
+    \end{minipage}
+\end{figure}
+
+Considerando il valore medio delle trame trasmesse in totale, $N_S$, il tempo totale equivale a:
+        
+        \begin{equation}
+        T_{tot} = \overline{N_S} * T_f 
+        \end{equation}
+        
+        da cui l'efficienza $\eta$ è pari al reciproco di $\overline{N_S}$:
+
+        \begin{equation}
+        \eta = \frac{T_f}{\overline{N_S} \cdot T_f} = \frac{1}{\overline{N_S}}
+        \end{equation}
+
+        \begin{figure}[htbp]
+            \centering
+            \begin{minipage}{0.4\textwidth}
+                \includegraphics[width=\linewidth]{images/gbnns.png}
+                \caption{Calcolo probabilità di $N_S$}
+            \end{minipage}%
+            \hfill
+            \begin{minipage}{0.55\textwidth}
+                Nella prima riga si illustra il caso in cui non ci siano errori, per cui $numero_{errori}*K + 1$ vale 1;
+
+                nel secondo rigo l'errore è uno, nel terzo rigo gli errori sono due$(numero_{errori} = 2)$ e così via, fino al calcolo generale di $N_S = iK + 1$
+
+                Inoltre si calcola la probabilità pr 
+            \end{minipage}
+        \end{figure}
+\paragraph{Calcolo del valor medio di $N_S$}
+
+Il valor medio si otterrà sommando i valori assunti dalla variabile "i" per la probabilità di assumerli:
+
+\begin{equation*}
+\overline{N_S} = E[N_S] = \sum_{i=0}^{+\infty} (iK + 1) P^i (1-P) = (1-P) \left[ \sum_{i=0}^{+\infty} iK P^i + \sum_{i=0}^{+\infty} P^i \right] =
+\end{equation*}
+\begin{equation*}
+(1-P) \left[ KP \sum_{i=1}^{+\infty} i P^{i-1} + \frac{1}{1-P} \right] = (1-P) \left[ \frac{KP}{(1-P)^2} + \frac{1}{1-P} \right] = \frac{1 + P(K-1)}{1-P}
+\end{equation*}
+
+\subsubsection{Quanto vale K}
+Dal grafico sull'efficienza si può individuare il valore di K approssimato:
+
+\begin{equation}
+KT_f \simeq 2T_f + 2\tau \implies K = 2 + 2\alpha
+\end{equation}
+
+sostituendo K nella formula dell'efficienza ottengo:
+
+\begin{equation}
+\eta = \frac{1-P}{1 + P(K-1)} = \frac{1-P}{1 + P(1 + 2\alpha)}
+\end{equation}
+
+
+\newpage
+
+
+\subsection{Efficienza GBN $\&$ SR}
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \includegraphics[width=\linewidth]{images/efficienzasr.png}
+        \caption{Efficienza del protocollo Selective Repeat}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.55\textwidth}
+        \paragraph{Efficienza Selective Repeat}
+        Nel protocollo Selective Repeat, grazie alla ritrasmissione selettiva dei soli frame errati, l'efficienza risulta superiore rispetto al Go-Back-N, soprattutto in presenza di errori frequenti. 
+
+        Per valutarne l'efficienza si suppone che:
+        \begin{itemize}
+            \item i riscontri arrivino all'interno della finestra di trasmissione
+            \item l'eventuale trama sbagliata sia sempre la stessa
+            \item si trascurano i tempi di elaborazione e di trasmissione degli ack($\tau, T_P$)
+        \end{itemize}
+
+        l'efficienza la calcoliamo allo stesso modo:
+
+        \begin{equation}
+        \eta = \frac{T_f}{T_{tot}}
+        \end{equation}
+         \begin{equation}
+        \eta = \frac{T_f}{\overline{N_S} \cdot T_f} = \frac{1}{\overline{N_S}}
+        \end{equation}
+
+        va capito quanto vale $T_{tot}$
+
+    \end{minipage}
+\end{figure}
+
+Per calcolare $T_{tot}$ ho bisogno di individuare il valore medio di $N_S$:
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{images/nssr.png}
+        \caption{Calcolo del valor medio di $N_S$ per Selective Repeat}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        Nel protocollo Selective Repeat, il valore medio di $N_S$ (numero di trasmissioni per frame corretto) si calcola considerando che ad ogni errore viene ritrasmesso solo il frame errato. La variabile aleatoria $N_S$ segue una distribuzione geometrica come nel caso Stop-and-Wait, quindi:
+        \[
+        \overline{N_S} = E[N_S] = \sum_{i=1}^{+\infty} i P^{i-1}(1-P) = \frac{1}{1-P}
+        \]
+        dove $P$ è la probabilità di errore sul frame. L'efficienza risulta quindi:
+        \[
+        \eta = 1 - P
+        \]
+    \end{minipage}
+\end{figure}
+
+Si vede chiaramente che il SR ha l'efficienza più elevata tra
+tutti i protocolli di linea, ma è quello con la maggiore
+complessità (e quindi costi più alti) per la presenza dei due
+buffer (in trasmissione e ricezione) e per la necessità di
+gestire il riordinamento.
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+    \textbf{Go-Back-N}
+    \begin{equation*}
+        \eta_{GBN} = \frac{1-P}{1 + P(1 + 2\alpha)}
+    \end{equation*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \textbf{Selective Repeat}
+    \begin{equation*}
+        \eta_{SR} = 1 - P
+    \end{equation*}
+\end{minipage}
+\end{center}
+
+Quando nel caso ideale non si considerano gli errori (P=0),
+GBN e SR hanno stessa efficienza pari a 1 (la massima
+teorica).
+
+Si noti però che per valori piccoli del ritardo di
+propagazione normalizzato a tutti i protocolli hanno
+efficienza comparabile e pari a 1-P per cui, in tal caso,
+sono equivalenti.
+
+\newpage
+
+\subsection{Efficienza con riscontri fuori dalla finestra di trasmissione $W_s$}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{images/efficienzasrwr.png}
+        \caption{Riscontri fuori dalla finestra di trasm. $W_s$}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.5\textwidth}
+        Fino ad ora ho studiato l'efficienza di questi protocolli nel caso in cui i riscontri arrivino all'interno della finestra di trasmissione; se però ciò non accade, quindi i riscontri arrivano fuori dalla finestra, l'efficienza sarà inferiore.
+
+        Il tempo che impiega A a trasmettere tutti i frame delle finestra è necessariamente minore del tempo che impiega il primo frame a raggiungere B e ad essere processato(da cui calcolo la finestra):
+
+        \begin{equation}
+        W_S T_f \leq T_f + 2\tau \implies W_S \leq 1 + 2\alpha
+        \end{equation}
+
+            Il primo ACK arriverà al di fuori di questa finestra, quindi impiegherà almeno $T_f + 2\tau$
+
+    \end{minipage}
+
+\end{figure}
+
+Pertanto l'efficienza degli schemi visti prima, va moltiplicata
+per un fattore(w) di efficienza che pesa l'efficienza finale e che
+rappresenta il valore limite per SR e GBN nel caso di
+assenza di errori e riscontri fuori dalla finestra di
+trasmissione. Tale valore è dato dal rapporto tra tempo utile
+di occupazione del canale e tempo di attesa del primo
+riscontro:
+
+\begin{equation}
+\eta_W = \frac{W_S T_f}{T_f + 2\tau} = \frac{W_S}{1 + 2\alpha}
+\end{equation}
+
+Per cui le efficienze si SR e GBN sono:
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+    \begin{equation*}
+        \eta_{GBN} = \frac{1-P}{1 + P(W_S - 1)} \cdot \frac{W_S}{1 + 2\alpha}
+    \end{equation*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \begin{equation*}
+        \eta_{SR} = (1-P) \cdot \frac{W_S}{1 + 2\alpha}
+    \end{equation*}
+\end{minipage}
+\end{center}
+Nel GBN invece, il valore K è proprio $W_S$ in quanto in caso di errore si ritrasmette l'intera finestra.
+Se si ipotizza stesso valore di $N$ per SR e GBN, considerando il valore ottimale delle finestre, si ha:
+
+\begin{align*}
+    \eta_{GBN} &= \frac{1-P}{1 + P(N-2)} \cdot \frac{N-1}{1 + 2\alpha} \\
+    \eta_{SR}  &= (1-P) \cdot \frac{N/2}{1 + 2\alpha}
+\end{align*}
+
+\newpage
+
+\subsection{Confronto tra protocolli di linea}
+\paragraph{Confronto tra protocolli}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/confrontoprotocolli.png}
+    \caption{Confronto dell'efficienza tra i protocolli Stop-and-Wait, Go-Back-N e Selective Repeat}
+\end{figure}
+
+        Il grafico mostra l'andamento dell'efficienza dei protocolli Stop-and-Wait, Go-Back-N e Selective Repeat al variare del ritardo di propagazione normalizzato $\alpha$ e della probabilità di errore $P$.\\
+        La scelta del protocollo di linea dipende dalla situazione:
+        \begin{itemize}
+            \item caso in cui i riscontri siano all'interno della finestra di ricezione: SR è sempre più efficiente, ma per bassi valori di $\alpha$ tutti hanno efficienza simile e pari a 1-P
+            \item caso in cui i riscontri siano fuori della finestra di trasmissione: il diverso valore della finestra di trasmissione può
+rendere più efficiente GBN rispetto al SR, 
+            \item canali poco rumorosi(P basso) e $\alpha$ elevato: si
+può avere un'efficienza maggiore del GBN: infatti, è vero che
+con il GBN si ritrasmette l'intera finestra, ma questo evento
+accade raramente, mentre durante la trasmissione senza errori
+si trasmettono più frame di continuo (es. link satellitari) 
+            \item canali molto rumorosi(P alto): sarà nuovamente più
+efficiente il SR poiché si ritrasmette spesso per cui conviene
+ritrasmettere la singola trama piuttosto che l'intera finestra
+        \end{itemize}
+        La scelta del protocollo dipende dal compromesso tra efficienza, complessità($\$$) e condizioni del canale.
+
+        

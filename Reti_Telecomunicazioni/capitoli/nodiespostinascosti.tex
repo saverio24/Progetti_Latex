@@ -212,10 +212,9 @@ Lo switch è un dispositivo che riceve i frame e li inoltra solo alla porta (o i
 
 \begin{itemize}
     \item \textbf{Store and Forward}:\\
-    Lo switch legge l’intero frame e verifica il campo FCS (scarta il frame se errato). Il frame viene memorizzato temporaneamente nel buffer associato alla porta d’uscita e trasmesso quando la linea della porta d’uscita è libera.
+    Lo switch legge l'intero frame e verifica il campo FCS (scarta il frame se errato). Il frame viene memorizzato temporaneamente nel buffer associato alla porta d’uscita e trasmesso quando la linea della porta d’uscita è libera.
     \item \textbf{Cut and Through}:\\
-    Lo switch legge solo l’header del frame e inoltra immediatamente il frame senza memorizzazione intermedia. Il ritardo di elaborazione è indipendente dalla dimensione del frame.
+    Lo switch legge solo l'header del frame e inoltra immediatamente il frame senza memorizzazione intermedia. Il ritardo di elaborazione è indipendente dalla dimensione del frame.
     \item \textbf{Fragment Free}:\\
     Lo switch legge solo i primi 64 byte del frame (dimensione minima frame Ethernet) per evitare di inoltrare frame che potrebbero essere coinvolti in collisioni. I frame di dimensione minore a 64 byte vengono scartati.
 \end{itemize}
-CAPIRE SE FINIRE FILE 11

@@ -1,7 +1,8 @@
 
+
 \section{Internet Protocol (IP) version 4}
 
-\subsection{Introduzione}
+\subsection*{Introduzione}
 \begin{figure}[h!]
     \begin{minipage}{0.45\textwidth}
         \centering
@@ -153,34 +154,34 @@ Ogni interfaccia (host) della rete IP ha un suo indirizzo.
     \end{minipage}
 \end{figure}
 
-\paragraph{Riconoscere un indirizzo di rete e un indirizzo di host}
+%\paragraph{Riconoscere un indirizzo di rete e un indirizzo di host}
 
-Per riconoscere un indirizzo di rete e un indirizzo di host, si utilizza la maschera di rete. La maschera di rete è un numero che indica quanti bit dell'indirizzo IP sono dedicati alla parte di rete e quanti alla parte di host.
+%Per riconoscere un indirizzo di rete e un indirizzo di host, si utilizza la maschera di rete. La maschera di rete è un numero che indica quanti bit dell'indirizzo IP sono dedicati alla parte di rete e quanti alla parte di host.
 
-\begin{itemize}
-    \item Un indirizzo di rete ha tutti zero nella parte di host.
-\end{itemize}
-\subsection{Subnetting}
+%\begin{itemize}
+%    \item Un indirizzo di rete ha tutti zero nella parte di host.
+%\end{itemize}
+%\subsection{Subnetting}
+%paragraph{Piggybacking}
+
+%\subsection{Classificazione degli indirizzi IP}
+
+%\subsubsection{Pubblici}
+%\subsubsection{Privati}
+
+%\subsubsection{Statici}
+%\subsubsection{Dinamici}
 
 
-\subsection{Classificazione degli indirizzi IP}
+%\subsection{Variable Length Subnet Mask (VLSM)}
+%\subsection{Indirizzi IP speciali}
 
-\subsubsection{Pubblici}
-\subsubsection{Privati}
-
-\subsubsection{Statici}
-\subsubsection{Dinamici}
-
-
-\subsection{Variable Length Subnet Mask (VLSM)}
-\subsection{Indirizzi IP speciali}
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=1\textwidth]{images/indirizziipspeciali.png}
-    \caption{Indirizzi IP speciali}
-    \label{fig:indirizziipspeciali}
-\end{figure}
+%\begin{figure}[h!]
+%    \centering
+%    \includegraphics[width=1\textwidth]{images/indirizziipspeciali.png}
+%    \caption{Indirizzi IP speciali}
+%    \label{fig:indirizziipspeciali}
+%\end{figure}
 
 
 \newpage
@@ -456,7 +457,20 @@ Il costo del percorso viene calcolato sulla base di diverse metriche:
 \end{itemize}
 
 \paragraph{Cosa fa il router?}
-?
+
+Il router è un dispositivo fondamentale nelle reti di comunicazione, in quanto si occupa di instradare i pacchetti dati tra reti diverse. Il suo compito principale è ricevere i pacchetti in ingresso su una delle sue interfacce, esaminare l'indirizzo IP di destinazione e, in base alle informazioni contenute nella propria tabella di routing, decidere su quale interfaccia inoltrare ciascun pacchetto affinché raggiunga la destinazione finale nel modo più efficiente possibile. Il router aggiorna periodicamente la propria tabella di routing tramite protocolli specifici e può adattare le proprie decisioni in base ai cambiamenti della topologia di rete. In sintesi, il router permette la comunicazione tra reti diverse, ottimizzando il percorso dei dati e garantendo che i pacchetti raggiungano correttamente il destinatario.
+
+\paragraph{Funzionamento della tabella di routing}
+
+Quando un router riceve un datagramma, esegue i seguenti passaggi per determinare dove inoltrarlo:
+\begin{enumerate}
+    \item Cerca nella tabella di routing una entry con lo stesso indirizzo di rete del destinatario del datagramma ricevuto.
+    \item Se la entry corrisponde a una rete direttamente connessa al router, viene individuata la sottorete e il datagramma è inoltrato direttamente.
+    \item Se la entry corrisponde a una rete remota, il datagramma è inoltrato (forwarding) verso il prossimo hop specificato nella tabella.
+    \item Se nessuna entry è trovata, viene utilizzato il \textit{default route}
+\end{enumerate}
+
+\newpage
 
 \subsection{Instradamento gerarchico - protocolli intra e inter AS}
 Al fine di comprendere il routing è indispensabile introdurre il concetto di Autonomous System(AS).
@@ -471,7 +485,7 @@ Infatti i protocolli che lavorano all'interno di un AS vengono chiamati intra AS
     \caption{Esempio di gerarchia tra Autonomous Systems (AS)}
     \label{fig:asgerarchia}
 \end{figure}
-\newpage
+
 \subsection{Distance Vector}
 
 È una famiglia di algoritmi di routing in cui ogni router scambia informazioni con i vicini, usa l'algoritmo di Bellman-Ford per calcolare il percorso più breve.
@@ -679,14 +693,216 @@ permette di trovare la strada nel modo più efficiente possibile(considerando te
 \subsubsection{Algoritmo di Dijkstra}
 
 
+A differenza dell'algoritmo di Bellman-Ford, quello di Dijkstra viene applicato dai router della rete; ad ogni cambiamento della topologia(o dopo tot tempo) vengono calcolati i cammini minimi.
+
+Considerazioni preliminari:
+
+\begin{itemize}
+    \item s è la sorgente, ossia il router da cui si calcolano i cammini minimi usando Dijkstra
+    \item N è l'insieme dei nodi della rete
+    \item M è l'insieme dei nodi dell'albero corrente
+    \item V(M) è l'insieme dei nodi raggiiungibili con un solo salto dai nodi dell'albero M
+    \item $D_j$ è il costo del cammino a costo minimo, da s al nodo j
+    \item $d_{ij}$ è il costo del collegamento diretto tra i nodi i e j;
+    
+    se il collegamento non è diretto allora questo costo è infinito
+\end{itemize}
+
+Steps dell'algoritmo:
+\begin{enumerate}
+    \item Inizializzazione: considero l'insieme M pari ad s; 
+    
+
+
+    nel caso in cui il nodo di cui desidero calcolare il cammino sia collegato direttamente ad s, quindi j fa parte dell'insieme V(M), allora il costo del cammino minimo sarà:
+    \[
+    M = \{s\} \qquad
+    D_j = 
+    \begin{cases}
+        d_{sj}, & \forall j \in V(s) \\
+        \infty, & \text{altrimenti}
+    \end{cases}
+    \]
+    \item prendo in considerazione i nodi che fa parte dell'insieme V(M), perciò i nodi vicini a M, raggiungibili con un solo salto;
+   scelgo un k nodo che sia il più vicino all'albero M rispetto gli altri nodi vicini, "il più vicino tra i vicini": aggiungo k all'albero M e ne calcolo la distanza per arrivare al nodo j, e la aggiungo nell'insieme con i cammini $D_j$
+
+\[
+\text{Select } k \in V(M) \mid D_k = \min_{i \in V(M)} \{ D_i \}  \qquad   M = M \cup \{ k \}  
+\]
+\[
+D_j = \min \{ D_j,\, D_k + d_{kj} \} \qquad \forall\, j \in V(M)
+\]
+    
+   \item si prosegue con il passaggio svolto in precedenza(ricerca del vicino da aggiungere all'albero M) fino a quando non ho ottenuto tutti i cammini minimi, perciò fino a quando l'albero M non sia pari alla rete stessa:
+    
+If $M = N$ stop,\\
+altrimenti vai al passo 2.
+\end{enumerate}
+
+\subsubsection{Esempio Dijkstra}
+
+\begin{figure}[h!]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/linkstate3.png}
+        \caption{Esempio Link State}
+        \label{fig:linkstate1}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Passo 1 dell'algoritmo di Dijkstra}
+
+        \[
+        M = \{A\}, \quad V(M) = \{B, F\}
+        \]
+
+        \[
+        D_B = D_A + d_{AB} = 0 + 1 = 1
+        \]
+        \[
+        D_F = D_A + d_{AF} = 0 + 3 = 3
+        \]
+        B è il nodo diretto più vicino:
+        \[
+        \min \{ D_B, D_F \} = \min \{ 1, 3 \} = 1 = D_B \implies
+        \]
+        \[
+        M = M \cup B; \quad \mathbf{V(M) = \{C, E, F\}}
+        \]
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/linkstate5.png}
+        \caption{Esempio Link State - Passo 2}
+        \label{fig:linkstate4}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Passo 2 dell'algoritmo di Dijkstra}
+
+        Ora $M = \{A, B\}$, $V(M) = \{C, E, F\}$.
+
+        \[
+        D_C = \min(D_C, D_B + d_{BC}) = \min(\infty, 1 + 3) = 4
+        \]
+        \[
+        D_E = \min(D_E, D_B + d_{BE}) = \min(\infty, 1 + 5) = 6
+        \]
+        \[
+        D_F = \min(D_F, D_B + d_{BF}) = \min(3, 1 + 1) = 2
+        \]
+
+        Il nodo più vicino è $F$ ($D_F = 2$), quindi 
+        
+        $M = \{A, B, F\}$.
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/linkstate7.png}
+        \caption{Esempio Link State - Passo 3}
+        \label{fig:linkstate6}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Passo 3 dell'algoritmo di Dijkstra}
+
+        \[
+        M = \{A, B, F\}, \quad V(M) = \{C, D, E\}
+        \]
+
+        \[
+        \begin{aligned}
+        D_C &= \min\{ D_C,\, D_F + d_{FC} \} = \min\{4,\, 2 + \infty\} = 4 \\
+        D_D &= \min\{ D_D,\, D_F + d_{FD} \} = \min\{\infty,\, 2 + 6\} = 8 \\
+        D_E &= \min\{ D_E,\, D_F + d_{FE} \} = \min\{6,\, 2 + 2\} = 4 \\
+        \end{aligned}
+        \]
+
+        Il nodo più vicino è $C$ o $E$ (entrambi con costo 4). Si può scegliere uno dei due, ad esempio $E$.
+    \end{minipage}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/linkstate10.png}
+        \caption{Esempio Link State - Passo 4}
+        \label{fig:linkstate9}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Passo 4 dell'algoritmo di Dijkstra}
+
+        Ora $M = \{A, B, F, E\}$, $V(M) = \{C, D\}$.
+
+        \[
+        \begin{aligned}
+        D_C &= \min\{ D_C,\, D_E + d_{EC} \} = \min\{4,\, 4 + \infty\} = 4 \\
+        D_D &= \min\{ D_D,\, D_E + d_{ED} \} = \min\{8,\, 4 + 1\} = 5 \\
+        \end{aligned}
+        \]
+
+        Il nodo più vicino è $C$ ($D_C = 4$), quindi 
+        
+        $M = \{A, B, C, E, F\}$.
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{images/linkstate12.png}
+        \caption{Esempio Link State - Passo 5}
+        \label{fig:linkstate11}
+    \end{minipage}\hfill
+    \begin{minipage}{0.49\textwidth}
+        \textbf{Passo 5 dell'algoritmo di Dijkstra}
+
+        Ora $M = \{A, B, C, E, F\}$, $V(M) = \{D\}$.
+
+        \[
+        D_D = \min\{ D_D,\, D_C + d_{CD},\, D_E + d_{ED} \} = 
+        \]
+        \[
+        \min\{5,\, 4 + 2,\, 4 + 1\} = 5
+        \]
+        L'albero dei cammini M è stato completato: M = N
+        \[
+        \mathbf{M} = \{A, B, C, D, E, F\}, \quad \mathbf{V(M)} = \varnothing
+        \]\end{minipage}
+\end{figure}
+
+\subsubsection{Albero dei cammini}
+Il risultato è identico a quello ottenuto con Bellman-Ford
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/linkstate134.png}
+    \caption{Albero dei cammini}
+    \label{fig:alberocammini}
+\end{figure}
+
+
+\newpage
 
 \subsection{Problemi di routing - routing loop}
-
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/problemaloop.png}
+    \caption{Esempio di routing loop}
+    \label{fig:problemaloop}
+\end{figure}
 \subsubsection{Soluzioni: split horizon, poison reverse, hold-down}
-Tramite split horizon decido che i router non condividono con i vicini le informazioni ottenute da altri vicini
-c'è anche lo split horizon con poisoned reverse, invece di non comunicare ai vicini le info di altri vicini, gliele comunico con costo infinito, metrica “infinity”, così che non vengano mai scelte poichè irraggiungibili
-un'altra soluzione è il trigger update: ogni volta che avviene un cambiamento nella topologia della rete allora vengono aggiornate le tabelle in base a questo cambiamento 
-le reti vengono dichiarate irraggiungibili non nell'esatto momento in cui non sono più raggiungibili, ma allo scadere di un time detto “hold-down timer” 
+\begin{itemize}
+    \item Tramite split horizon decido che i router non condividono con i vicini le informazioni ottenute da altri vicini
+    \item split horizon con poisoned reverse, invece di non comunicare ai vicini le info di altri vicini, gliele comunico con costo infinito, metrica “infinity”, così che non vengano mai scelte poichè irraggiungibili
+    \item trigger update: ogni volta che avviene un cambiamento nella topologia della rete allora vengono aggiornate le tabelle in base a questo cambiamento 
+le reti vengono dichiarate irraggiungibili non nell'esatto momento in cui non sono più raggiungibili, ma allo scadere di un time “hold-down timer” 
+\end{itemize}
 
 \newpage
 \subsection{Protocolli di routing intra AS (RIP - OSPF)}
