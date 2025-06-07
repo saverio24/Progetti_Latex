@@ -20,6 +20,10 @@
     \end{multicols}
 \end{itemize}
 
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
+
 \subsection{Bit stuffing}
  A proposito dei flag usati nel frame(011111110) che succede se questa sequenza invece fa parte della informazione utile del frame e non come flag delimitatore?
 
@@ -31,7 +35,9 @@
 \end{figure}
 Risolvo inserendo uno 0 ogni cinque 1 ripetuti; questo fa perdere la molteplicità di 8 del frame.
 
-\subsection{Rivelazione dell'errore con CRC}
+\newpage
+
+\subsection{Controllo degli errori casuali con CRC}
 
 HDLC numera i frame e usa il protocollo di linea, utilizzando 3 o 7 bit, usando una tecnica di piggybacking per gestire il flusso che viene dalla direzione opposta(finestre di trasmissione e ricezione).
 
@@ -103,6 +109,20 @@ Vedi operatore XOR appendice basi.
     \end{minipage}
 \end{figure}
 \newpage
+
+
+ \subsubsection{Esempio calcolo CRC}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/esempiocrc.png}
+        \caption{Esempio di calcolo CRC}
+        \label{fig:esempio-crc}
+    \end{figure}
+
+\vspace{0.3em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.3em}
+
 \subsubsection{Verifica CRC}
 
 C'è la necessità di verificare se il CRC calcolato ed inserito nel FCS sia corretto.
@@ -136,13 +156,7 @@ Se effettuiamo la divisione per il polinomio generatore:
         \frac{P^{Rx}(x)}{G(x)} = \frac{x^rP(x)}{G(x)} \oplus \frac{R(x)}{G(x)} = Q(x) \oplus \frac{R(x)}{G(x)} \oplus \frac{R(x)}{G(x)} = Q(x)
     \end{equation}
 
-    \subsubsection{Esempio calcolo CRC}
-    \begin{figure}[htbp]
-        \centering
-        \includegraphics[width=0.8\textwidth]{images/esempiocrc.png}
-        \caption{Esempio di calcolo CRC}
-        \label{fig:esempio-crc}
-    \end{figure}
+   
 
     \subsection{Protocollo point to point (PPP)}
 
@@ -274,8 +288,11 @@ il Troughput, tra questi, è uno dei più rilevanti: è definito come il numero 
 
 Questo valore è alto quando gli errori nei pacchetti che giungono a destinazione sono pochi.
 
-Si parla anche di goodput, ossia il rateo bit al secondo che giungono corretti a destinazione; il Troughput considerava tutti i pacchetti/bit che arrivano a destinazione, anche quelli errati.
-
+Nota bene: a livello 4 si preferisce in genere utilizzare il
+goodput definito come bit al secondo che giungono corretti,
+ma riferiti alla sola informazione utile del livello applicativo. Il
+throughput invece tiene conto anche di tutti gli header aggiunti
+ai vari livelli della pila protocollare.
 
 
 \subsubsection{Calcolo del Troughput}
@@ -292,7 +309,7 @@ Per il calcolo del Troughput è fondamentale definire alcuni concetti:
 Il Troughput medio $\Lambda_T$,misurato in pacchetti al secondo, si calcola come:
 
 \begin{equation}
-    \Lambda_T = \Lambda_s (1 - \pi) \quad \text{[packet/s]}
+    \Lambda_T = \Lambda_s (1 - \Pi) \quad \text{[packet/s]}
 \end{equation}
 \paragraph{Troughput medio bit/s}
 se desiderassi calcolare il Troughput medio misurato in bit al secondo, ho bisogno di definire il parametro L, ossia la lunghezza media dei pacchetti, allora il Troughput vale:
@@ -502,7 +519,7 @@ Se rilevando il canale, risulta occupato, allora la stazione può attuare divers
     \item no-persistent: rinviare la trasmissione ad un momento successivo, generalmente scegliendo un intervallo di attesa casuale
     \item p-persistent: scegliere di comportarsi con probabilità p in una delle due modalità precedenti
 \end{itemize}
-"Può accadere di rilevare il canale come libero, ma nel tempo in cui l'ho rilevato e ho iniziato ad utilizzarlo qualcun'altro potrebbe iniziare a sua volta la comunicazione, c'è quindi da considerare il tempo che impiega l'onda elettromagnetica a viaggiare nel mezzo $v$ e noi a rilevarla $\tau$".
+"Può accadere di rilevare il canale come libero, ma nel tempo in cui l'ho rilevato e ho iniziato ad utilizzarlo qualcun'altro potrebbe iniziare a sua volta la comunicazione, c'è quindi da considerare il tempo che impiega l'onda elettromagnetica a viaggiare nel mezzo $v$ e noi a rilevarla $T_p$".
 
 \subsubsection{CSMA/CD - CSMA with collision detection}
 Per realizzare il CSMA/CD è necessario che la stazione possa a livello fisico

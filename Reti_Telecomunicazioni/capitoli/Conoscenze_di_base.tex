@@ -194,13 +194,13 @@ Il ritardo end-to-end è il tempo che intercorre tra l'invio di un pacchetto da 
 
 Il ritardo nell'invio di un'informazione da mittente a destinatario ha più componenti:
     \begin{description}
-        \item[Ritardo di trasmissione:] è il tempo necessario a inviare i bit sul mezzo, $T_f = \frac{L}{C}$, ad esempio il ritardo per la trasmissione di 1000 bit (informazione) su un cavo (canale) da 1 Gbit, $T_f = \frac{1000}{10^9}$, dove $L$ è la lunghezza in bit dell'informazione, $C$ è la frequenza di cifra.
+        \item[Ritardo di trasmissione  $T_f$:] è il tempo necessario a inviare i bit sul mezzo, $T_f = \frac{L}{C}$, ad esempio il ritardo per la trasmissione di 1000 bit (informazione) su un cavo (canale) da 1 Gbit, $T_f = \frac{1000}{10^9}$, dove $L$ è la lunghezza in bit dell'informazione, $C$ è la frequenza di cifra.
 
-        \item[Ritardo di propagazione:] è il tempo impiegato dai dati per attraversare la rete, tipicamente è il tempo che impiegano le onde elettromagnetiche a viaggiare in un mezzo di una certa lunghezza: $t = \frac{d}{v}$, dove $v$ è la velocità di propagazione (velocità della luce) e $d$ è la distanza considerata.
+        \item[Ritardo di propagazione $\tau$:] è il tempo impiegato dai dati per attraversare la rete, tipicamente è il tempo che impiegano le onde elettromagnetiche a viaggiare in un mezzo di una certa lunghezza: $t = \frac{d}{v}$, dove $v$ è la velocità di propagazione (velocità della luce) e $d$ è la distanza considerata.
 
-        \item[Ritardo di elaborazione:] $T_p$, è il tempo necessario all'elaborazione di un pacchetto in un nodo, dipende dalla velocità di calcolo dei processori.
+        \item[Ritardo di elaborazione  $T_p$:] è il tempo necessario all'elaborazione di un pacchetto in un nodo, dipende dalla velocità di calcolo dei processori.
 
-        \item[Ritardo in accodamento:] $T_q$, tempo di attesa in coda nel buffer di ricezione e dipende dal traffico generato da tutti i flussi che attraversano il nodo in considerazione, è quello più difficile da prevedere e calcolare.
+        \item[Ritardo in accodamento $T_q$ :], tempo di attesa in coda nel buffer di ricezione e dipende dal traffico generato da tutti i flussi che attraversano il nodo in considerazione, è quello più difficile da prevedere e calcolare.
     \end{description}
     \begin{figure}[h!]
         \centering

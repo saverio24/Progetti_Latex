@@ -186,7 +186,7 @@ Ogni interfaccia (host) della rete IP ha un suo indirizzo.
 
 \newpage
 \subsection{Address Resolution Protocol (ARP) - mappatura IP a MAC}
-Con ART si intende un protocollo di rete appartenente alla suite del protocollo internet (IP) versione 4 e operante a livello di accesso alla rete (livello collegamento se si considera nomenclatura ISO/OSI), il cui compito è fornire la "mappatura" tra l'indirizzo IP (32 bit - 4 byte) e l'indirizzo MAC (48 bit - 6 byte) corrispondente di un terminale in una rete locale ethernet.
+Con ARP si intende un protocollo di rete appartenente alla suite del protocollo internet (IP) versione 4 e operante a livello di accesso alla rete (livello collegamento se si considera nomenclatura ISO/OSI), il cui compito è fornire la "mappatura" tra l'indirizzo IP (32 bit - 4 byte) e l'indirizzo MAC (48 bit - 6 byte) corrispondente di un terminale in una rete locale ethernet.
 
 Cos'è l'indirizzo MAC? 
 
@@ -486,6 +486,8 @@ Infatti i protocolli che lavorano all'interno di un AS vengono chiamati intra AS
     \label{fig:asgerarchia}
 \end{figure}
 
+
+
 \subsection{Distance Vector}
 
 È una famiglia di algoritmi di routing in cui ogni router scambia informazioni con i vicini, usa l'algoritmo di Bellman-Ford per calcolare il percorso più breve.
@@ -518,8 +520,6 @@ soluzione finale cui si giunge è identica.
 Questo algorimo lavora su una rappresentazione globale del grafo, cosa che nei ruouter reali non accade poichè non conoscono tutta la rete, ma solo le info sui e dei vicini diretti.
 
 !I protocolli distance vector sono una versione distribuita del Bellman-Ford, cioè: l'algoritmo non è eseguito da un singolo punto centrale, ma ogni nodo della rete (es. ogni router) esegue una parte dell'algoritmo.!
-
-\paragraph{Albero dei cammini a costo minimo}
 
 
 \paragraph{Variabili}
@@ -564,10 +564,14 @@ Il primo passo è calcolare i costi dei cammini quando h = 0, ricordando che qua
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/bf1.png}
-    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 1}
+    \includegraphics[width=0.75\textwidth]{images/bf1.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 0}
     \label{fig:bf1}
 \end{figure}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
 
 Poi si calcolano i costi dei cammini quando h = 1, quindi con al massimo un salto.
 
@@ -592,26 +596,32 @@ Poi si calcolano i costi dei cammini quando h = 1, quindi con al massimo un salt
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/bf2.png}
-    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 2}
+    \includegraphics[width=0.75\textwidth]{images/bf2.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 1}
     \label{fig:bf2}
 \end{figure}
+
+\newpage
 
 
 \begin{itemize}
     \item $D_B^{(2)}$ = $\min [0 + 1, 3 + 3, \infty + \infty, \infty + 5, \infty + 1, 1] = 1$
     \item $D_C^{(2)}$ = $\min [0 + 3, 1 + 3, \infty + \infty, \infty + 2, \infty + \infty, 3] = 3$
-    \item $D_D^{(2)}$ = $\min [0 + \infty, 1 + \infty, 3 + \infty, \infty + 1, \infty + 5, \infty] = \infty$
+    \item $D_D^{(2)}$ = $\min [0 + \infty, 1 + \infty, 3 + 6, \infty + 1, \infty + 5, \infty] = \infty$
     \item $D_E^{(2)}$ = $\min [0 + \infty, 1 + 5, 3 + 2, \infty + 1, \infty + \infty, \infty] = 5$
     \item $D_F^{(2)}$ = $\min [0 + \infty, 1 + 1, 3 + \infty, \infty + 5, \infty + \infty, \infty] = 2$
 \end{itemize}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/bf3.png}
-    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 3}
+    \includegraphics[width=0.85\textwidth]{images/bf3.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 2}
     \label{fig:bf3}
 \end{figure}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
 
 
 \begin{itemize}
@@ -624,10 +634,12 @@ Poi si calcolano i costi dei cammini quando h = 1, quindi con al massimo un salt
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/bf4.png}
-    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 4}
+    \includegraphics[width=0.85\textwidth]{images/bf4.png}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 3}
     \label{fig:bf4}
 \end{figure}
+
+\newpage
 
 Poi si calcolano i costi dei cammini quando h = 4
 
@@ -640,16 +652,26 @@ Poi si calcolano i costi dei cammini quando h = 4
     \item $D_F^{(4)}$ = $\min [0 + \infty, 1 + 1, 3 + \infty, 6 + 5, 5 + \infty, 2] = 2$
 \end{itemize}
 
+
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\textwidth]{images/bf5.png}
-    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 5}
+    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 4}
     \label{fig:bf5}
 \end{figure}
-\newpage
-Poi si calcolano i costi dei cammini quando h = 5, quindi con al massimo un salto.
 
-\begin{itemize}
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
+
+
+Poi si calcolano i costi dei cammini quando h = 5
+
+
+\begin{figure}[h!]
+    \begin{minipage}{0.6\textwidth}
+    \begin{itemize}
    
     \item $D_B^{(5)}$ = $\min [0 + 1, 3 + 3, 6 + \infty, 5 + 5, 2 + 1, 1] = 1$
     
@@ -660,14 +682,23 @@ Poi si calcolano i costi dei cammini quando h = 5, quindi con al massimo un salt
     \item $D_E^{(5)}$ = $\min [0 + \infty, 1 + 5, 3 + 2, 6 + 1, 2 + \infty, 5] = 5$
     
     \item $D_F^{(5)}$ = $\min [0 + \infty, 1 + 1, 3 + \infty, 6 + 5, 5 + \infty, 2] = 2$
-\end{itemize}
+    \end{itemize}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/bf5.png}
-    \caption{Esempio di applicazione dell'algoritmo di Bellman-Ford - Passo 6}
-    \label{fig:bf6}
+    \end{minipage}\hfill
+    \begin{minipage}{0.35\textwidth}
+        \begin{center}
+                    L'algoritmo si ferma qui poichè i cammini calcolati per h=4 sono identici a quelli calcolati adesso con h=5, perciò stop:
+
+            If $D_j^{h} = D_j^{h-1} \quad \forall j \neq s$
+
+        then $h_{max} = h - 1$; stop
+        \end{center}
+    \end{minipage}
 \end{figure}
+
+
+
+
 
 \begin{figure}[h!]
     \centering
@@ -682,7 +713,7 @@ L'algoritmo link-state rappresenta un'alternativa al vistance vector, si utilizz
 
 Il presupposto su cui si basa questo algoritmo è che i router conoscano la topologia della rete, non come avveniva nel distance vector; infatti nel distance vector i router conoscevano solamente le info sui vicini, nel link state invece i router conoscono l'intera topologia della rete.
 
-\paragraph{Flooding}
+\paragraph{Flooding(routing senza tabella)}
 Si sfrutta il concetto di flooding: il flooding è un protocollo di instradamento usato dai router che inoltrano un pacchetto in ingresso su tutte le linee ad eccezione di quella da cui proviene. Ogni pacchetto in arrivo viene inoltrato su ogni linea di uscita eccetto quella da cui è arrivato;
 quindi tutti i router della rete comunicano in flooding tutte le informazioni dei vicini, con relativi costi. Inoltre il link state periodicamente ritrasmette l'informazione.
 
@@ -870,13 +901,16 @@ altrimenti vai al passo 2.
         \[
         \min\{5,\, 4 + 2,\, 4 + 1\} = 5
         \]
-        L'albero dei cammini M è stato completato: M = N
+        L'albero dei cammini M è stato completato: 
+        \begin{center}
+            M = N
+        \end{center}    
         \[
         \mathbf{M} = \{A, B, C, D, E, F\}, \quad \mathbf{V(M)} = \varnothing
         \]\end{minipage}
 \end{figure}
 
-\subsubsection{Albero dei cammini}
+\subsubsection{Albero dei cammini minimi}
 Il risultato è identico a quello ottenuto con Bellman-Ford
 
 \begin{figure}[h!]
@@ -889,14 +923,58 @@ Il risultato è identico a quello ottenuto con Bellman-Ford
 
 \newpage
 
-\subsection{Problemi di routing - routing loop}
+\subsection{Problemi di routing}
+Tabelle di routing inziali, rispettivamente, da sinistra, Pippo, Pluto e Topolino; 
+
+con quarta destinazione l'host 192.168.40.0
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{images/problemaloop.png}
-    \caption{Esempio di routing loop}
+    \caption{Esempio di tabelle routing}
     \label{fig:problemaloop}
 \end{figure}
+
+\vspace{0.5em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.5em}
+
+\paragraph{Una rete va giù (down)} ad un certo punto la rete 192.168.40.0 va down e diventa irraggiungibile, questa cosa viene riscontrata solo dalla rete che ha il collegamento diretto, quindi se ne accorge solo Topolino, che inserisce nella tabella "Down".
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/loop1.png}
+    \caption{Una rete va down}
+    \label{fig:problemaloop1}
+\end{figure}
+
+\vspace{0.5em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.5em}
+
+\paragraph{Inizio del loop} la rete topolino, che riscontra la rete in down, cerca di collegarsi a 192.168.40.0 tramite altre router che ne hanno l'accesso;
+
+quindi legge da Pluto che 192.168.40.0 è raggiungibile con un hop, quindi scrive nella propria tabella che la rete down è raggiungibile tramite il passaggio da Pluto, quindi con 2 hop.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/loop2.png}
+    \caption{Inizio del loop}
+    \label{fig:problemaloop2}
+\end{figure}
+
+\newpage
+\paragraph{Loop infinito}
+Lo stesso ragionamento fatto precedentemente da Topolino verrà fatto da Pluto, a sua volta verrà fatto anche da Pippo, incrementando infinitamente, un passo alla volta, gli hop necessari a raggiungere una rete che di fatto è irraggiungibile.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{images/loop3.png}
+    \caption{Loop infinito}
+    \label{fig:problemaloop3}
+\end{figure}
+
 \subsubsection{Soluzioni: split horizon, poison reverse, hold-down}
+La definizione di un massimo blocca il “Counting to infinity”, per evitare il loop si possono usare queste strategie:
 \begin{itemize}
     \item Tramite split horizon decido che i router non condividono con i vicini le informazioni ottenute da altri vicini
     \item split horizon con poisoned reverse, invece di non comunicare ai vicini le info di altri vicini, gliele comunico con costo infinito, metrica “infinity”, così che non vengano mai scelte poichè irraggiungibili
@@ -904,15 +982,21 @@ Il risultato è identico a quello ottenuto con Bellman-Ford
 le reti vengono dichiarate irraggiungibili non nell'esatto momento in cui non sono più raggiungibili, ma allo scadere di un time “hold-down timer” 
 \end{itemize}
 
-\newpage
+\vspace{0.5em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{0.5em}
+
 \subsection{Protocolli di routing intra AS (RIP - OSPF)}
 \subsubsection{RIP (Distance Vector)(UDP)}
 \paragraph{Caratteristiche principali}
 Il RIP è il protocollo di routing più semplice ed è adatto a reti di piccole dimensioni; usa il Distance Vector.
 
 Come metrica del costo utilizza l'hop count, ossia valuta il costo dei percorsi in base al numero dei santi che vengono effettuati.
-Il valore massimo di hop è 15, perciò quando questo valore arriva a 16 per un certo percorso, questo viene indicato come irrangiungibile(per evitare il counting tot inifinity).
+Il valore massimo di hop è 15, perciò quando questo valore arriva a 16 per un certo percorso, questo viene indicato come irrangiungibile(per evitare il counting to inifinity).
 Il routing update(aggiornamento delle tabelle contenenti le informazioni per il routing) avviene ogni 30s oppure ad ogni cambiamento topologico.
+
+\newpage
+
 
 \paragraph{RIPv1 e RIPv2}
 
@@ -924,14 +1008,14 @@ Il routing update(aggiornamento delle tabelle contenenti le informazioni per il 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\textwidth]{images/RIPversioni.png}
+    \includegraphics[width=1\textwidth]{images/RIPversioni.png}
     \caption{Confronto tra RIPv1 e RIPv2}
     \label{fig:ripversioni}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.75\textwidth]{images/processoRIP.png}
+    \includegraphics[width=1\textwidth]{images/processoRIP.png}
     \caption{Processo di aggiornamento in RIP}
     \label{fig:processoRIP}
 \end{figure}

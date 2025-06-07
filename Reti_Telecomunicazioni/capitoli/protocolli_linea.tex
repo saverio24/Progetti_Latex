@@ -1,6 +1,6 @@
 
 \section{Strategie di controllo errore}
-I pacchetti di livello 2 sono chiamati frame/trame, sono divisi in header e trailer; nel trailer sono presenti i campi utili alle strategie di controllo degli errori.
+I pacchetti di livello 2 sono chiamati frame/trame, il PCI della PDU(della trama) è diviso in header e trailer; nel trailer sono presenti i campi utili alle strategie di controllo degli errori.
 
 È possibile distinguere due tipi principali di strategie:
 \begin{enumerate}
@@ -28,11 +28,9 @@ I protocolli di tipo ARQ più comuni sono:
 
 
 \newpage
-\subsubsection{Stop-and-Wait}
-Lo stop-and wait è un protocollo di tipologia Continous ARQ, per cui è ammessa la trasmissione continua di più frame numerati.
-
-In questo caso specifico, i segnali di riscontro negativi sono cumulativi.
-
+\subsubsection{Stop-and-Wait ($W_S = W_R = 1$)}
+Lo stop-and wait non è una forma di Continuous ARQ, per cui è NON è ammessa la trasmissione continua di frame numerati.
+è una tecnica semplice e "discontinua": il mittente trasmette un solo frame alla volta e attende l'ACK prima di inviarne un altro; i riscontri sono cumulativi.
 \begin{figure}[htbp]
     \centering
     \begin{minipage}{0.4\textwidth}
@@ -99,15 +97,15 @@ I problemi che possono verificarsi sono:
 
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.44\textwidth}
+    \begin{minipage}{0.42\textwidth}
         \includegraphics[width=\linewidth]{images/erroreframe.png}
-        \caption{Errore nel frame: quando si verifica un errore nel frame, il mittente si accorge del problema grazie alla scadenza del timer avviato durante la trasmissione. 
+        \caption{Errore nel frame: quando si verifica un errore nel frame, il mittente si accorge del problema grazie alla scadenza del timer(no riscontro) avviato durante la trasmissione. 
         In tal caso, il frame viene ritrasmesso. Questo processo garantisce che i dati vengano ricevuti correttamente, ma può ridurre l'efficienza del protocollo a causa delle ritrasmissioni necessarie.}
     \end{minipage}%
     \hfill
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{0.44\textwidth}
         \includegraphics[width=\linewidth]{images/erroreack.png}
-        \caption{Errore nell'ACK: quando si verifica un errore nell'ACK, il mittente non riceve il riscontro atteso entro il tempo stabilito dal timer. 
+        \caption{Errore nell'ACK: quando si verifica un errore nell'ACK, B pensa di aver inviato un ACK correttamente, perciò fa scorrere la finestra; ma il mittente non riceve il riscontro atteso entro il tempo stabilito dal timer. Perciò A invierà nuovamente il frame, che però risulterà una copia agli occhi di B, che riscontrerà nuovamente la stessa trama. 
         Anche in questo caso, il frame viene ritrasmesso. }
     \end{minipage}
 \end{figure}
@@ -119,11 +117,11 @@ Deve valere almeno il tempo di invio del ACK($T_{ACK}$), più il tempo di propag
 T_{out} \geq T_{ACK} + 2\tau + 2T_p
 \end{equation}
 
-Il numero di frame ritrasmessi per la corretta ricezione del frame è detto $N_S$ ed è in media considerabile come una variabile aleatoria;
+Il numero di frame trasmessi per la corretta ricezione del frame è detto $N_S$ ed è in media considerabile come una variabile aleatoria;
 
-inoltre il numero totale di frame trasmessi($N_R$) è dato dal numero di frame ritrasmessi più il frame inviato con successo:
+inoltre il numero totale di frame ritrasmessi($N_R$) è dato dal numero di frame trasmessi meno il frame inviato con successo:
 \begin{equation}
-N_R = N_S + 1
+N_R = N_S - 1
 \end{equation}
 
 Per calcolare il tempo totale necessario per la trasmissione
@@ -178,7 +176,7 @@ La distribuzione geometrica è appropriata perché ogni trasmissione è indipend
 
 Sviluppando la somma, si ottiene che il valor medio è $\frac{1}{1-P}$: questo significa che, in media, il numero di tentativi cresce all'aumentare della probabilità di errore $P$. Se $P$ è vicino a zero, bastano pochi tentativi; se $P$ aumenta, il numero medio di ritrasmissioni cresce rapidamente.
 
-Perciò, ripetendo, se si vuole ottenere il valore medio di una variabile aleatoria bisogna effettuare uno studio probabilistico; questa probabilità aleatoria sarà in media pari alla moltiplicazione tra due probabilità:
+Perciò, ripetendo, se si vuole ottenere il valore medio di una variabile aleatoria bisogna effettuare uno studio probabilistico; questa probabilità sarà in media pari alla moltiplicazione tra due probabilità:
 \begin{itemize}
     \item probabilità di successo (1-P): frame trasmesso correttamente
     \item $P^{i-1}$ rappresenta la sequenza di fallimenti che avvengono prima della trasmissione avvenuta con successo, che calcolo per un valore di i infinito(serie geometrica), caso peggiore(benchè irreale)
@@ -235,7 +233,7 @@ ricordando la formula di $T_{tot}$
 T_{tot} = (N_S - 1)(T_f + T_{out}) + T_f + T_{ACK} + 2T_P + 2\tau
 \end{equation}
 
-è possibile effettuare qualche semplificazione, trascurando termini piccoli (come $T_{ACK}, T_P, \tau)$ rispetto al tempo di trasmissione; considerando inoltre il tempo minimo per $T_{out}(pari a 2\tau)$(timer pari al tempo di propagazione di andata/ritorno del frame) per cui:
+è possibile effettuare qualche semplificazione, trascurando termini piccoli (come $T_{ACK}, T_P)$ rispetto al tempo di trasmissione; considerando inoltre il tempo minimo per $T_{out}(pari a 2\tau)$(timer pari al tempo di propagazione di andata/ritorno del frame) per cui:
 
 \begin{equation}
 \eta \simeq \frac{T_f}{(\overline{N_S} - 1)(T_f + 2\tau) + T_f + 2\tau} = \frac{T_f}{\overline{N_S}(T_f + 2\tau)} = \frac{(1-P)T_f}{T_f + 2\tau}
@@ -267,16 +265,21 @@ Il protocollo Stop-and-Wait è efficiente (quasi $1-P$) solo per valori piccoli 
 I protocolli continuous ARQ, a differenza dello stop-and-wait, prevede l'invio di un'insieme di pacchetti(frame/trame) numerati, tramite sliding window.
 Vengono definite:
 \begin{itemize}
-    \item finestra di trasmissione $W_s$: definisce la grandezza della finestra di ricezione, perciò quanti pacchetti posso inviare "consecutivamente"(on the fly, in attesa di riscontro) e da cui posso aspettarmi un riscontro (ACK) cumulativo
+    \item finestra di trasmissione $W_s$: grandezza della finestra di trasmissione, perciò quanti pacchetti posso inviare "consecutivamente"(on the fly, in attesa di riscontro) e da cui posso aspettarmi un riscontro (ACK) cumulativo
     \item finestra di ricezione  $W_R$: definisce la grandezza della finestra di ricezione, 
 \end{itemize} 
 Se il campo dedicato alla numerazione è costituito da b bit, si potranno
 numerare in modo differente fino a $N_b$ trame. 
 
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
 
-\subsubsection{Protocollo Go-Back-N}
+
+
+\subsubsection{Protocollo Go-Back-N ($W_S > 1$ e $W_R$ = 1)}
 \paragraph{Senza errori - efficienza massima}
-Il protocollo Go-Back-N è un protocollo di tipo Continuous ARQ, che consente la trasmissione continua di più frame numerati. In questo caso specifico, i segnali di riscontro negativi sono cumulativi.
+Il protocollo Go-Back-N è un protocollo di tipo Continuous ARQ, che consente la trasmissione continua di più frame numerati. In questo caso specifico, i segnali di riscontro sono cumulativi.
 
 Nel caso in cui ci siano errori allora questo protocollo prevede di ritornare indietro nel momento della trasmissione in cui c'è stato l'errore(alla trama N), perciò go back N.
 \begin{figure}[htbp]
@@ -310,6 +313,10 @@ Si possono riscontrare errori durante la ricezione del pacchetto e durante il ri
         Il mittente, una volta rilevato l'errore(tramite la ricezione di un NACK(negative ACK) inviato dal destinatario), ritrasmette il frame errato e tutti i frame successivi.
     \end{minipage}
 \end{figure}
+
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
 
 \paragraph{Errore ACK non ricevuto ($T_{out}$)} caso in cui l'ACK non venga inviato o si sia perso
 
@@ -354,6 +361,10 @@ Il problema è che i pacchetti 1,2,3 sono già stati ricevuti, l'errore c'è sta
     \end{minipage}
 \end{figure}
 
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
+
 
 \begin{figure}[htbp]
     \centering
@@ -394,6 +405,10 @@ Il protocollo Selective Repeat è un protocollo di tipo Continuous ARQ che conse
     \end{minipage}
 \end{figure}
 
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
+
 
 \begin{figure}[htbp]
     \centering
@@ -431,12 +446,18 @@ Il protocollo Selective Repeat è un protocollo di tipo Continuous ARQ che conse
     \end{minipage}
 \end{figure}
 
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+\vspace{1em}
+
 
 \begin{figure}[htbp]
     \centering
     \begin{minipage}{0.48\textwidth}
         \paragraph{Soluzione}
         Questo problema viene risolto diminuendo la grandezza delle finestre($W_S + W_R \leq N$), secondo i criteri discussi nel capoverso successivo.
+
+        Ritrasmettendo solo i frame degli ACK riscontrati in modo errato, quindi non inviando nuovamente la tutta la finestra.
     \end{minipage}%
     \hfill
     \begin{minipage}{0.435\textwidth}
@@ -578,7 +599,6 @@ sostituendo K nella formula dell'efficienza ottengo:
 \newpage
 
 
-\subsection{Efficienza GBN $\&$ SR}
 \begin{figure}[htbp]
     \centering
     \begin{minipage}{0.4\textwidth}
@@ -734,8 +754,6 @@ Se si ipotizza stesso valore di $N$ per SR e GBN, considerando il valore ottimal
     \includegraphics[width=0.7\textwidth]{images/confrontoprotocolli.png}
     \caption{Confronto dell'efficienza tra i protocolli Stop-and-Wait, Go-Back-N e Selective Repeat}
 \end{figure}
-
-        Il grafico mostra l'andamento dell'efficienza dei protocolli Stop-and-Wait, Go-Back-N e Selective Repeat al variare del ritardo di propagazione normalizzato $\alpha$ e della probabilità di errore $P$.\\
         La scelta del protocollo di linea dipende dalla situazione:
         \begin{itemize}
             \item caso in cui i riscontri siano all'interno della finestra di ricezione: SR è sempre più efficiente, ma per bassi valori di $\alpha$ tutti hanno efficienza simile e pari a 1-P

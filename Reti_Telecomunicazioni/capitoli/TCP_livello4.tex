@@ -237,10 +237,16 @@ La chiusura della connessione puà essere avviata da uno dei due host, il client
 \paragraph{Chiusura con half-close}
 La chiusura della connessione avviene tramite due mezze chiusure:
 \begin{itemize}
-    \item Il client invia un segmento con il flag FIN a 1, per indicare che non invierà più dati al server.(I mezza chiusura) 
-    \item Il server continua ad inviare i dati finchè non termina e invia un segmento con flag FIN settato.(II mezza chiusura)
-    \item Il server invia un segmento con il flag FIN a 1 e il flag ACK a 1, per indicare che non invierà più dati al client. 
-    \item Il client risponde con un segmento con il flag ACK a 1, per confermare la ricezione della richiesta di chiusura del server. 
+    \item prima mezza chiusura:
+    \begin{itemize}
+            \item Il client invia un segmento con il flag FIN a 1, per indicare che non invierà più dati al server.(inizio I mezza chiusura) 
+            \item Il server continua ad inviare i dati finchè non termina e invia un segmento con flag FIN settato.(fine I mezza chiusura)
+    \end{itemize}
+    \item seconda mezza chiusura:
+    \begin{itemize}
+            \item Il server invia un segmento con il flag FIN a 1 e il flag ACK a 1, per indicare che non invierà più dati al client.(inizio II mezza chiusura) 
+            \item Il client risponde con un segmento con il flag ACK a 1, per confermare la ricezione della richiesta di chiusura del server. (fine II mezza chiusura)
+    \end{itemize}
 \end{itemize} 
 
 
@@ -354,8 +360,6 @@ Il receiver comunica con il sender la dimensione del buffer di ricezione, in mod
 Si assume che un segmento sia stato perso se si verificano: 3 dupack, RTO.
 
  \subsubsection{Retransmission Time Out - RTO}
-In questo caso, a differenza del 3 dupack, nel quale si perdeva un solo segmento, nell'esempio seguente non vengono riscorntrati ben 3 segmenti.
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.9\textwidth]{images/rtotcp.png}
@@ -371,7 +375,7 @@ Per ogni segmento inviato, viene avviato un RTO, ossia un timer che scade dopo u
 \subsubsection{3 Dupack(three duplicate ACK)}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/3dupack.png}
+    \includegraphics[width=0.8\textwidth]{images/3dupack.png}
     \caption{Esempio di 3 duplicate ACK (3 Dupack) in TCP}
     \label{fig:3dupack}
 \end{figure}
@@ -396,15 +400,16 @@ A tal scopo è importante definire le seguenti variabili:
     \hfill
     \begin{minipage}{0.52\textwidth}
         \raggedright
-        La finestra di congestione W è posta uguale al minimo tra la congestion window e la rwnd:
+        La finestra di trasmissione W è posta uguale al minimo tra la congestion window e la rwnd:
         \begin{equation}
             W = min(cwnd, rwnd)
         \end{equation}
         \raggedleft
     \end{minipage}
 \end{figure}
+Tramite la formula di W è possibile capire che questa finestra dipende da due variabili, una controllabile dal mittente(cwnd) ed una che dipende dal ricevente(rwnd).
 
-La variabile cwnd ha il vantaggio di poter essere controllata, perciò se c'è una congestione in atto posso diminuire la variabile cwnd, così da evitare di saturare la rete.
+La variabile cwnd ha il vantaggio di poter essere controllata, perciò se c'è una congestione in atto posso diminuire la variabile cwnd, modificando perciò la finestra di trasmissione W e la velocità di trasmissione, così da evitare di saturare la rete.
 
 \subsubsection{Algoritmo di controllo di congestione}
 
