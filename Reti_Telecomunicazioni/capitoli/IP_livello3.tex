@@ -328,7 +328,7 @@ Infine il server DHCP conferma l'assegnazione dell'indirizzo IP con un messaggio
 Il zero-configuration networking è la configurazione della rete in assenza di server e amministratori, è ideale solo per reti piccole e semplici. Non è quindi un protocollo alternativo a DHCP.
 
 \paragraph{Link-Local Address}
-La IANA ha riservato a questo scopo un Link-Local Address: 169:254.0.0/16 
+La IANA ha riservato a questo scopo un Link-Local Address: 169.254.0.0/16 
 
 Gli indirizzi IP dei dispositivi nella rete vengono assegnati automaticamente, all'interno di un range specifico: [169.254.1.1 - 169.254.254]
 
@@ -547,7 +547,7 @@ Questo algorimo lavora su una rappresentazione globale del grafo, cosa che nei r
 
     Hop successivo $h = h + 1$ 
 
-    Calcolo le dei cammini al salto successivo $D_j^{(h)} = \min_i [D_i^{(h-1)} + d_{ij}^{(h-1)}]$
+    Calcolo le dei cammini al salto successivo $D_j^{(h)} = \min_i [D_i^{(h-1)} + d_{ij}, D_j^{(h-1)}]$
 
      \item Verifica: tramite questo controllo capisco se il cammino $D_j^{(h)}$ calcolato è uguale al precedente, se così fosse allora non ha senso continuare e si setta come $h_{max}$ quello precedente, si ferma l'algoritmo; in caso contrario l'algortmo prosegue dal passaggio due. 
      
@@ -923,7 +923,7 @@ Il risultato è identico a quello ottenuto con Bellman-Ford
 
 \newpage
 
-\subsection{Problemi di routing}
+\subsection{Problemi di routing - loop}
 Tabelle di routing inziali, rispettivamente, da sinistra, Pippo, Pluto e Topolino; 
 
 con quarta destinazione l'host 192.168.40.0
@@ -978,8 +978,12 @@ La definizione di un massimo blocca il “Counting to infinity”, per evitare i
 \begin{itemize}
     \item Tramite split horizon decido che i router non condividono con i vicini le informazioni ottenute da altri vicini
     \item split horizon con poisoned reverse, invece di non comunicare ai vicini le info di altri vicini, gliele comunico con costo infinito, metrica “infinity”, così che non vengano mai scelte poichè irraggiungibili
-    \item trigger update: ogni volta che avviene un cambiamento nella topologia della rete allora vengono aggiornate le tabelle in base a questo cambiamento 
-le reti vengono dichiarate irraggiungibili non nell'esatto momento in cui non sono più raggiungibili, ma allo scadere di un time “hold-down timer” 
+    \item trigger update: gli aggiornamenti delle tabelle di routing sono inviate ogni
+qualvolta vi è un cambiamento topologico e non solo allo scadere del route
+timer;
+
+Una rete dichiarata irraggiungibile è considerata tale (la sua entry è
+eliminata) solo allo scadere di un hold-down timer
 \end{itemize}
 
 \vspace{0.5em}
@@ -998,7 +1002,7 @@ Il routing update(aggiornamento delle tabelle contenenti le informazioni per il 
 \newpage
 
 
-\paragraph{RIPv1 e RIPv2}
+\paragraph{RIPv1 e RIPv2 - routing information protocol}
 
  Nel RIPv1 l'indirizzamento IP era classful, perciò i pacchetti scambiati non contenevano informazioni sulla maschera di rete; quindi come destinazione si scriveva solamente l'ind. IP.
 
@@ -1006,6 +1010,8 @@ Il routing update(aggiornamento delle tabelle contenenti le informazioni per il 
 
  I messaggi RIP vengono incapsulati all'interno di UDP(porta 520), perciò tramite datagrammi. Ognuno di questi pacchetti può contenere al massimo 25 destinazioni.
 
+ RIPv2 fa uso di due campi non presenti nel v1, ossia il Route Tag(specifica una route) e il Next hop(indirizzo ip del router al salto successivo);
+ permette inoltre di autenticare i messaggi di routing.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{images/RIPversioni.png}
@@ -1015,12 +1021,12 @@ Il routing update(aggiornamento delle tabelle contenenti le informazioni per il 
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1\textwidth]{images/processoRIP.png}
+    \includegraphics[width=0.7\textwidth]{images/processoRIP.png}
     \caption{Processo di aggiornamento in RIP}
     \label{fig:processoRIP}
 \end{figure}
 \newpage
-\subsubsection{OSPF (Link State) e Link State Advertisement (LSA)}
+\subsubsection{OSPF - open shortest path first (Link State) e Link State Advertisement (LSA)}
 
 Un protocollo che utilizza il link state come alg di routing è il OSPF(open shortest path first);
 in OSPF si può specificare quale sia il costo(banda, affidabilità, ritardo, anche un valore inserito manualmente).

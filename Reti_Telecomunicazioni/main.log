@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  7 JUN 2025 20:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.18)  13 JUN 2025 17:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -301,109 +301,659 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc [1
+
+])
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
- (./capitoli/protocolli_linea.tex
-<images/strategierrore.png, id=8, 1039.885pt x 544.0325pt>
+ [2]
+Chapter 1.
+(./capitoli/Conoscenze_di_base.tex [3
+
+] [4]
+<images/potenza_due.png, id=26, 1525.7pt x 1332.98pt>
+File: images/potenza_due.png Graphic file (type png)
+<use images/potenza_due.png>
+Package pdftex.def Info: images/potenza_due.png  used on input line 105.
+(pdftex.def)             Requested size: 364.19667pt x 318.19287pt.
+ [5 <./images/potenza_due.png>]
+<images/complemento_uno.png, id=33, 406.51875pt x 289.08pt>
+File: images/complemento_uno.png Graphic file (type png)
+<use images/complemento_uno.png>
+Package pdftex.def Info: images/complemento_uno.png  used on input line 114.
+(pdftex.def)             Requested size: 273.14923pt x 194.2472pt.
+<images/xor.png, id=34, 1284.8pt x 624.3325pt>
+File: images/xor.png Graphic file (type png)
+<use images/xor.png>
+Package pdftex.def Info: images/xor.png  used on input line 122.
+(pdftex.def)             Requested size: 273.14923pt x 132.7332pt.
+ [6 <./images/complemento_uno.png (PNG copy)> <./images/xor.png>]
+<images/canali_comunicazione.png, id=39, 2417.03pt x 1387.1825pt>
+File: images/canali_comunicazione.png Graphic file (type png)
+<use images/canali_comunicazione.png>
+Package pdftex.def Info: images/canali_comunicazione.png  used on input line 161.
+(pdftex.def)             Requested size: 364.19667pt x 209.02089pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7]
+<images/pacchetto_generico.png, id=43, 2013.5225pt x 554.07pt>
+File: images/pacchetto_generico.png Graphic file (type png)
+<use images/pacchetto_generico.png>
+Package pdftex.def Info: images/pacchetto_generico.png  used on input line 177.
+(pdftex.def)             Requested size: 318.66948pt x 87.68921pt.
+
+Overfull \hbox (2.70117pt too wide) in paragraph at lines 185--190
+[]\OT1/cmr/m/n/10 Virtual cir-cuit: la co-mu-ni-cazione avviene in 3 fasi (setup, data ex-change, tear-down) e l'instradamento
+ []
+
+[8 <./images/canali_comunicazione.png> <./images/pacchetto_generico.png>]
+<images/e2e_circuit_switching.png, id=47, 2543.5025pt x 1565.85pt>
+File: images/e2e_circuit_switching.png Graphic file (type png)
+<use images/e2e_circuit_switching.png>
+Package pdftex.def Info: images/e2e_circuit_switching.png  used on input line 207.
+(pdftex.def)             Requested size: 455.24411pt x 280.24pt.
+<images/e2e_packet_switching.png, id=48, 2599.7125pt x 1569.865pt>
+File: images/e2e_packet_switching.png Graphic file (type png)
+<use images/e2e_packet_switching.png>
+Package pdftex.def Info: images/e2e_packet_switching.png  used on input line 215.
+(pdftex.def)             Requested size: 455.24411pt x 274.89818pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [9 <./images/e2e_circuit_switching.png>] [10 <./images/e2e_packet_switching.png>]
+Chapter 2.
+(./capitoli/Architetture_di_protocolli_e_ISO-OSI.tex
+<images/ISO_OSI_livelli.png, id=56, 786.94pt x 1108.14pt>
+File: images/ISO_OSI_livelli.png Graphic file (type png)
+<use images/ISO_OSI_livelli.png>
+Package pdftex.def Info: images/ISO_OSI_livelli.png  used on input line 29.
+(pdftex.def)             Requested size: 174.13094pt x 245.19498pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[11
+
+]
+<images/ISO_OSI_incapsulamento.png, id=60, 2445.135pt x 1180.41pt>
+File: images/ISO_OSI_incapsulamento.png Graphic file (type png)
+<use images/ISO_OSI_incapsulamento.png>
+Package pdftex.def Info: images/ISO_OSI_incapsulamento.png  used on input line 58.
+(pdftex.def)             Requested size: 318.66948pt x 153.83693pt.
+ [12 <./images/ISO_OSI_livelli.png> <./images/ISO_OSI_incapsulamento.png>]
+<images/enc_dec_ibrido.png, id=65, 2449.15pt x 1503.6175pt>
+File: images/enc_dec_ibrido.png Graphic file (type png)
+<use images/enc_dec_ibrido.png>
+Package pdftex.def Info: images/enc_dec_ibrido.png  used on input line 79.
+(pdftex.def)             Requested size: 455.24411pt x 279.47266pt.
+ [13 <./images/enc_dec_ibrido.png>]
+<images/comunicazione_ibrido.png, id=69, 2493.315pt x 1116.17pt>
+File: images/comunicazione_ibrido.png Graphic file (type png)
+<use images/comunicazione_ibrido.png>
+Package pdftex.def Info: images/comunicazione_ibrido.png  used on input line 99.
+(pdftex.def)             Requested size: 455.24411pt x 203.79726pt.
+<images/confronto_stack.png, id=70, 2230.3325pt x 1150.2975pt>
+File: images/confronto_stack.png Graphic file (type png)
+<use images/confronto_stack.png>
+Package pdftex.def Info: images/confronto_stack.png  used on input line 106.
+(pdftex.def)             Requested size: 364.19667pt x 187.82506pt.
+ [14 <./images/comunicazione_ibrido.png> <./images/confronto_stack.png>]
+<images/modello_TCP_IP.png, id=74, 768.8725pt x 893.3375pt>
+File: images/modello_TCP_IP.png Graphic file (type png)
+<use images/modello_TCP_IP.png>
+Package pdftex.def Info: images/modello_TCP_IP.png  used on input line 133.
+(pdftex.def)             Requested size: 172.98956pt x 200.99226pt.
+) [15 <./images/modello_TCP_IP.png>]
+Chapter 3.
+(./capitoli/TCP_livello4.tex
+Overfull \hbox (3.92346pt too wide) in paragraph at lines 2--4
+\OT1/cmr/m/n/10 UDP(Used Data-gram Pro-to-col) e TCP(Transmission Con-trol Pro-to-col) sono i pro-to-colli di trasporto(livello
+ []
+
+<images/socket_port.png, id=78, 1423.3175pt x 718.685pt>
+File: images/socket_port.png Graphic file (type png)
+<use images/socket_port.png>
+Package pdftex.def Info: images/socket_port.png  used on input line 39.
+(pdftex.def)             Requested size: 273.14923pt x 137.92235pt.
+[16
+
+]
+Overfull \hbox (5.61778pt too wide) in paragraph at lines 51--52
+[]\OT1/cmr/m/n/10 Tramite i nu-meri di porta ^^Re pos-si-bile iden-ti-fi-care a liv-ello 4 con quale ap-pli-cazione sto in-viando/ricevendo
+ []
+
+<images/flusso_IP.png, id=82, 1082.0425pt x 371.3875pt>
+File: images/flusso_IP.png Graphic file (type png)
+<use images/flusso_IP.png>
+Package pdftex.def Info: images/flusso_IP.png  used on input line 57.
+(pdftex.def)             Requested size: 227.62206pt x 78.12401pt.
+<images/DNS.jpg, id=83, 1019.81pt x 449.68pt>
+File: images/DNS.jpg Graphic file (type jpg)
+<use images/DNS.jpg>
+Package pdftex.def Info: images/DNS.jpg  used on input line 64.
+(pdftex.def)             Requested size: 227.62206pt x 100.36397pt.
+[17 <./images/socket_port.png> <./images/flusso_IP.png> <./images/DNS.jpg>]
+<images/datagram_udp.png, id=87, 1322.9425pt x 385.44pt>
+File: images/datagram_udp.png Graphic file (type png)
+<use images/datagram_udp.png>
+Package pdftex.def Info: images/datagram_udp.png  used on input line 86.
+(pdftex.def)             Requested size: 318.66948pt x 92.84271pt.
+<images/pseudoheaderUDP.png, id=88, 1517.67pt x 419.5675pt>
+File: images/pseudoheaderUDP.png Graphic file (type png)
+<use images/pseudoheaderUDP.png>
+Package pdftex.def Info: images/pseudoheaderUDP.png  used on input line 101.
+(pdftex.def)             Requested size: 318.66948pt x 88.09256pt.
+ [18 <./images/datagram_udp.png> <./images/pseudoheaderUDP.png>]
+Overfull \hbox (9.36781pt too wide) in paragraph at lines 120--121
+[]\OT1/cmr/m/n/10 Viene cal-co-lato nuo-va-mente il check-sum del data-gram rice-vuto, som-mando in bi-na-rio tutte le righe(mezze
+ []
+
+<images/checksum_udp.png, id=93, 1218.5525pt x 915.42pt>
+File: images/checksum_udp.png Graphic file (type png)
+<use images/checksum_udp.png>
+Package pdftex.def Info: images/checksum_udp.png  used on input line 127.
+(pdftex.def)             Requested size: 455.24411pt x 341.99658pt.
+[19 <./images/checksum_udp.png>]
+<images/segmento_tcp.png, id=97, 1535.7375pt x 839.135pt>
+File: images/segmento_tcp.png Graphic file (type png)
+<use images/segmento_tcp.png>
+Package pdftex.def Info: images/segmento_tcp.png  used on input line 156.
+(pdftex.def)             Requested size: 364.19667pt x 198.98932pt.
+<images/sequence_number.png, id=98, 1897.0875pt x 423.5825pt>
+File: images/sequence_number.png Graphic file (type png)
+<use images/sequence_number.png>
+Package pdftex.def Info: images/sequence_number.png  used on input line 171.
+(pdftex.def)             Requested size: 409.71692pt x 91.48212pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[20 <./images/segmento_tcp.png>]
+<images/three_w_hs1.png, id=102, 1250.6725pt x 1164.35pt>
+File: images/three_w_hs1.png Graphic file (type png)
+<use images/three_w_hs1.png>
+Package pdftex.def Info: images/three_w_hs1.png  used on input line 195.
+(pdftex.def)             Requested size: 318.66948pt x 296.66548pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21 <./images/sequence_number.png>]
+<images/halfclosetcp.png, id=106, 853.1875pt x 1162.3425pt>
+File: images/halfclosetcp.png Graphic file (type png)
+<use images/halfclosetcp.png>
+Package pdftex.def Info: images/halfclosetcp.png  used on input line 225.
+(pdftex.def)             Requested size: 218.51521pt x 297.697pt.
+<images/3wayclose.png, id=107, 1003.75pt x 1188.44pt>
+File: images/3wayclose.png Graphic file (type png)
+<use images/3wayclose.png>
+Package pdftex.def Info: images/3wayclose.png  used on input line 231.
+(pdftex.def)             Requested size: 218.51521pt x 258.71936pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[22 <./images/three_w_hs1.png>] [23 <./images/halfclosetcp.png> <./images/3wayclose.png>]
+<images/tcpstaticlient.png, id=114, 2258.4375pt x 1202.4925pt>
+File: images/tcpstaticlient.png Graphic file (type png)
+<use images/tcpstaticlient.png>
+Package pdftex.def Info: images/tcpstaticlient.png  used on input line 284.
+(pdftex.def)             Requested size: 500.77129pt x 266.62254pt.
+
+Overfull \hbox (45.52718pt too wide) in paragraph at lines 284--285
+ [][] 
+ []
+
+<images/tcpstatiserver.png, id=115, 1969.3575pt x 1080.035pt>
+File: images/tcpstatiserver.png Graphic file (type png)
+<use images/tcpstatiserver.png>
+Package pdftex.def Info: images/tcpstatiserver.png  used on input line 292.
+(pdftex.def)             Requested size: 455.24411pt x 249.6553pt.
+[24 <./images/tcpstaticlient.png> <./images/tcpstatiserver.png>]
+<images/rttsliding.png, id=120, 2113.8975pt x 1332.98pt>
+File: images/rttsliding.png Graphic file (type png)
+<use images/rttsliding.png>
+Package pdftex.def Info: images/rttsliding.png  used on input line 318.
+(pdftex.def)             Requested size: 455.24411pt x 287.05292pt.
+ [25 <./images/rttsliding.png>]
+<images/finestratrasmissione.png, id=124, 1850.915pt x 405.515pt>
+File: images/finestratrasmissione.png Graphic file (type png)
+<use images/finestratrasmissione.png>
+Package pdftex.def Info: images/finestratrasmissione.png  used on input line 327.
+(pdftex.def)             Requested size: 455.24411pt x 99.73877pt.
+<images/finestraricezione.png, id=125, 1875.005pt x 471.7625pt>
+File: images/finestraricezione.png Graphic file (type png)
+<use images/finestraricezione.png>
+Package pdftex.def Info: images/finestraricezione.png  used on input line 339.
+(pdftex.def)             Requested size: 455.24411pt x 114.53543pt.
+<images/tcpflusso.png, id=126, 2296.58pt x 1218.5525pt>
+File: images/tcpflusso.png Graphic file (type png)
+<use images/tcpflusso.png>
+Package pdftex.def Info: images/tcpflusso.png  used on input line 350.
+(pdftex.def)             Requested size: 364.19667pt x 193.22458pt.
+ [26 <./images/finestratrasmissione.png> <./images/finestraricezione.png> <./images/tcpflusso.png>]
+<images/rtotcp.png, id=130, 2296.58pt x 1417.295pt>
+File: images/rtotcp.png Graphic file (type png)
+<use images/rtotcp.png>
+Package pdftex.def Info: images/rtotcp.png  used on input line 368.
+(pdftex.def)             Requested size: 409.71692pt x 252.83134pt.
+ [27 <./images/rtotcp.png>]
+<images/3dupack.png, id=134, 2284.535pt x 1437.37pt>
+File: images/3dupack.png Graphic file (type png)
+<use images/3dupack.png>
+Package pdftex.def Info: images/3dupack.png  used on input line 381.
+(pdftex.def)             Requested size: 364.19667pt x 229.12852pt.
+<images/rwnd.png, id=135, 774.895pt x 303.1325pt>
+File: images/rwnd.png Graphic file (type png)
+<use images/rwnd.png>
+Package pdftex.def Info: images/rwnd.png  used on input line 399.
+(pdftex.def)             Requested size: 204.85846pt x 80.13545pt.
+ [28 <./images/3dupack.png> <./images/rwnd.png>]
+<images/graficocongestione.png, id=139, 947.54pt x 650.43pt>
+File: images/graficocongestione.png Graphic file (type png)
+<use images/graficocongestione.png>
+Package pdftex.def Info: images/graficocongestione.png  used on input line 448.
+(pdftex.def)             Requested size: 318.66948pt x 218.74149pt.
+ [29 <./images/graficocongestione.png>]
+<images/tahoe.png, id=143, 1278.7775pt x 684.5575pt>
+File: images/tahoe.png Graphic file (type png)
+<use images/tahoe.png>
+Package pdftex.def Info: images/tahoe.png  used on input line 460.
+(pdftex.def)             Requested size: 259.49092pt x 138.90416pt.
+
+Overfull \hbox (38.64255pt too wide) in paragraph at lines 458--468
+[]$[]$  $[]$ 
+ []
+
+<images/reno.png, id=144, 1336.995pt x 762.85pt>
+File: images/reno.png Graphic file (type png)
+<use images/reno.png>
+Package pdftex.def Info: images/reno.png  used on input line 475.
+(pdftex.def)             Requested size: 259.49092pt x 148.05092pt.
+
+Overfull \hbox (38.64255pt too wide) in paragraph at lines 473--487
+[]$[]$  $[]$ 
+ []
+
+<images/newreno.png, id=145, 1162.3425pt x 660.4675pt>
+File: images/newreno.png Graphic file (type png)
+<use images/newreno.png>
+Package pdftex.def Info: images/newreno.png  used on input line 494.
+(pdftex.def)             Requested size: 259.49092pt x 147.44989pt.
+
+Underfull \hbox (badness 1142) in paragraph at lines 502--503
+[]\OT1/cmr/m/n/10 Perci^^Ro es-iste la vari-ante New Reno, che non
+ []
+
+
+Overfull \hbox (38.64255pt too wide) in paragraph at lines 492--504
+[]$[]$  $[]$ 
+ []
+
+) [30 <./images/tahoe.png> <./images/reno.png> <./images/newreno.png>]
+Chapter 4.
+(./capitoli/IP_livello3.tex
+<images/indirizzoip.png, id=150, 1429.34pt x 758.835pt>
+File: images/indirizzoip.png Graphic file (type png)
+<use images/indirizzoip.png>
+Package pdftex.def Info: images/indirizzoip.png  used on input line 9.
+(pdftex.def)             Requested size: 194.6149pt x 103.3183pt.
+<images/reteipbase.png, id=151, 1463.4675pt x 698.61pt>
+File: images/reteipbase.png Graphic file (type png)
+<use images/reteipbase.png>
+Package pdftex.def Info: images/reteipbase.png  used on input line 35.
+(pdftex.def)             Requested size: 268.59235pt x 128.21747pt.
+ [31
+
+ <./images/indirizzoip.png> <./images/reteipbase.png>]
+<images/datagrammaIP.png, id=155, 1742.51pt x 768.8725pt>
+File: images/datagrammaIP.png Graphic file (type png)
+<use images/datagrammaIP.png>
+Package pdftex.def Info: images/datagrammaIP.png  used on input line 43.
+(pdftex.def)             Requested size: 409.71692pt x 180.77892pt.
+<images/tos.png, id=156, 2378.8875pt x 602.25pt>
+File: images/tos.png Graphic file (type png)
+<use images/tos.png>
+Package pdftex.def Info: images/tos.png  used on input line 56.
+(pdftex.def)             Requested size: 455.24411pt x 115.24655pt.
+ [32 <./images/datagrammaIP.png> <./images/tos.png>]
+<images/flagsIP.png, id=160, 377.41pt x 130.4875pt>
+File: images/flagsIP.png Graphic file (type png)
+<use images/flagsIP.png>
+Package pdftex.def Info: images/flagsIP.png  used on input line 77.
+(pdftex.def)             Requested size: 182.09486pt x 62.95782pt.
+<images/frammentazione.png, id=161, 1094.0875pt x 1188.44pt>
+File: images/frammentazione.png Graphic file (type png)
+<use images/frammentazione.png>
+Package pdftex.def Info: images/frammentazione.png  used on input line 99.
+(pdftex.def)             Requested size: 182.09486pt x 197.78874pt.
+<images/strutturaIP.png, id=162, 2298.5875pt x 429.605pt>
+File: images/strutturaIP.png Graphic file (type png)
+<use images/strutturaIP.png>
+Package pdftex.def Info: images/strutturaIP.png  used on input line 119.
+(pdftex.def)             Requested size: 364.19667pt x 68.063pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[33 <./images/flagsIP.png> <./images/frammentazione.png>]
+<images/classfulladdressing.png, id=166, 2569.6pt x 1395.2125pt>
+File: images/classfulladdressing.png Graphic file (type png)
+<use images/classfulladdressing.png>
+Package pdftex.def Info: images/classfulladdressing.png  used on input line 136.
+(pdftex.def)             Requested size: 455.24411pt x 247.16762pt.
+<images/mascheraIP.png, id=167, 1314.9125pt x 439.6425pt>
+File: images/mascheraIP.png Graphic file (type png)
+<use images/mascheraIP.png>
+Package pdftex.def Info: images/mascheraIP.png  used on input line 146.
+(pdftex.def)             Requested size: 194.6149pt x 65.06473pt.
+ [34 <./images/strutturaIP.png> <./images/classfulladdressing.png> <./images/mascheraIP.png>]
+<images/frameethernet.png, id=172, 2495.3225pt x 413.545pt>
+File: images/frameethernet.png Graphic file (type png)
+<use images/frameethernet.png>
+Package pdftex.def Info: images/frameethernet.png  used on input line 207.
+(pdftex.def)             Requested size: 455.24411pt x 75.4445pt.
+
+Overfull \vbox (5.86282pt too high) has occurred while \output is active []
+
+ [35 <./images/frameethernet.png>]
+<images/esempioarp.png, id=176, 2354.7975pt x 1383.1675pt>
+File: images/esempioarp.png Graphic file (type png)
+<use images/esempioarp.png>
+Package pdftex.def Info: images/esempioarp.png  used on input line 239.
+(pdftex.def)             Requested size: 455.24411pt x 267.38443pt.
+ [36 <./images/esempioarp.png>]
+<images/esempioARPretidiverse.png, id=181, 1903.11pt x 710.655pt>
+File: images/esempioARPretidiverse.png Graphic file (type png)
+<use images/esempioARPretidiverse.png>
+Package pdftex.def Info: images/esempioARPretidiverse.png  used on input line 261.
+(pdftex.def)             Requested size: 455.24411pt x 169.99681pt.
+ [37 <./images/esempioARPretidiverse.png>]
+<images/dhcp.png, id=185, 1842.885pt x 813.0375pt>
+File: images/dhcp.png Graphic file (type png)
+<use images/dhcp.png>
+Package pdftex.def Info: images/dhcp.png  used on input line 321.
+(pdftex.def)             Requested size: 455.24411pt x 200.83972pt.
+ [38 <./images/dhcp.png>]
+<images/nat.png, id=189, 2182.1525pt x 1222.5675pt>
+File: images/nat.png Graphic file (type png)
+<use images/nat.png>
+Package pdftex.def Info: images/nat.png  used on input line 365.
+(pdftex.def)             Requested size: 386.96027pt x 216.78806pt.
+ [39 <./images/nat.png>]
+<images/comandiicmp.png, id=193, 1618.045pt x 999.735pt>
+File: images/comandiicmp.png Graphic file (type png)
+<use images/comandiicmp.png>
+Package pdftex.def Info: images/comandiicmp.png  used on input line 385.
+(pdftex.def)             Requested size: 305.01271pt x 188.45667pt.
+<images/pingicmp.png, id=194, 1316.92pt x 429.605pt>
+File: images/pingicmp.png Graphic file (type png)
+<use images/pingicmp.png>
+Package pdftex.def Info: images/pingicmp.png  used on input line 398.
+(pdftex.def)             Requested size: 250.38564pt x 81.67824pt.
+<images/traceroute.png, id=195, 2067.725pt x 578.16pt>
+File: images/traceroute.png Graphic file (type png)
+<use images/traceroute.png>
+Package pdftex.def Info: images/traceroute.png  used on input line 408.
+(pdftex.def)             Requested size: 364.19667pt x 101.83234pt.
+ [40 <./images/comandiicmp.png> <./images/pingicmp.png> <./images/traceroute.png>]
+<images/routingtipologie.png, id=199, 1756.5625pt x 1021.8175pt>
+File: images/routingtipologie.png Graphic file (type png)
+<use images/routingtipologie.png>
+Package pdftex.def Info: images/routingtipologie.png  used on input line 425.
+(pdftex.def)             Requested size: 455.24411pt x 264.82434pt.
+<images/tabellarouting.png, id=200, 1541.76pt x 283.0575pt>
+File: images/tabellarouting.png Graphic file (type png)
+<use images/tabellarouting.png>
+Package pdftex.def Info: images/tabellarouting.png  used on input line 434.
+(pdftex.def)             Requested size: 455.24411pt x 83.57898pt.
+ [41 <./images/routingtipologie.png> <./images/tabellarouting.png>] [42]
+<images/asgerarchia.png, id=209, 1686.3pt x 632.3625pt>
+File: images/asgerarchia.png Graphic file (type png)
+<use images/asgerarchia.png>
+Package pdftex.def Info: images/asgerarchia.png  used on input line 484.
+(pdftex.def)             Requested size: 364.19667pt x 136.57283pt.
+<images/distancevector.png, id=210, 1527.7075pt x 616.3025pt>
+File: images/distancevector.png Graphic file (type png)
+<use images/distancevector.png>
+Package pdftex.def Info: images/distancevector.png  used on input line 507.
+(pdftex.def)             Requested size: 409.71692pt x 165.28482pt.
+ [43 <./images/asgerarchia.png> <./images/distancevector.png>] [44]
+<images/bf1.png, id=218, 1786.675pt x 766.865pt>
+File: images/bf1.png Graphic file (type png)
+<use images/bf1.png>
+Package pdftex.def Info: images/bf1.png  used on input line 567.
+(pdftex.def)             Requested size: 341.43307pt x 146.54837pt.
+<images/bf2.png, id=219, 1708.3825pt x 682.55pt>
+File: images/bf2.png Graphic file (type png)
+<use images/bf2.png>
+Package pdftex.def Info: images/bf2.png  used on input line 599.
+(pdftex.def)             Requested size: 341.43307pt x 136.40343pt.
+ [45 <./images/bf1.png> <./images/bf2.png>]
+<images/bf3.png, id=223, 1794.705pt x 678.535pt>
+File: images/bf3.png Graphic file (type png)
+<use images/bf3.png>
+Package pdftex.def Info: images/bf3.png  used on input line 617.
+(pdftex.def)             Requested size: 386.96027pt x 146.29633pt.
+<images/bf4.png, id=224, 1780.6525pt x 684.5575pt>
+File: images/bf4.png Graphic file (type png)
+<use images/bf4.png>
+Package pdftex.def Info: images/bf4.png  used on input line 637.
+(pdftex.def)             Requested size: 386.96027pt x 148.7647pt.
+ [46 <./images/bf3.png> <./images/bf4.png>]
+<images/bf5.png, id=228, 1738.495pt x 688.5725pt>
+File: images/bf5.png Graphic file (type png)
+<use images/bf5.png>
+Package pdftex.def Info: images/bf5.png  used on input line 659.
+(pdftex.def)             Requested size: 318.66948pt x 126.21767pt.
+<images/bf7.png, id=229, 1682.285pt x 696.6025pt>
+File: images/bf7.png Graphic file (type png)
+<use images/bf7.png>
+Package pdftex.def Info: images/bf7.png  used on input line 705.
+(pdftex.def)             Requested size: 318.66948pt x 131.95193pt.
+ [47 <./images/bf5.png> <./images/bf7.png>] [48]
+<images/linkstate3.png, id=238, 1941.2525pt x 772.8875pt>
+File: images/linkstate3.png Graphic file (type png)
+<use images/linkstate3.png>
+Package pdftex.def Info: images/linkstate3.png  used on input line 778.
+(pdftex.def)             Requested size: 216.24025pt x 86.09106pt.
+<images/linkstate5.png, id=239, 1961.3275pt x 750.805pt>
+File: images/linkstate5.png Graphic file (type png)
+<use images/linkstate5.png>
+Package pdftex.def Info: images/linkstate5.png  used on input line 808.
+(pdftex.def)             Requested size: 216.24025pt x 82.7721pt.
+<images/linkstate7.png, id=240, 2025.5675pt x 782.925pt>
+File: images/linkstate7.png Graphic file (type png)
+<use images/linkstate7.png>
+Package pdftex.def Info: images/linkstate7.png  used on input line 836.
+(pdftex.def)             Requested size: 216.24025pt x 83.57741pt.
+ [49 <./images/linkstate3.png> <./images/linkstate5.png> <./images/linkstate7.png>]
+<images/linkstate10.png, id=244, 2015.53pt x 809.0225pt>
+File: images/linkstate10.png Graphic file (type png)
+<use images/linkstate10.png>
+Package pdftex.def Info: images/linkstate10.png  used on input line 864.
+(pdftex.def)             Requested size: 216.24025pt x 86.7954pt.
+<images/linkstate12.png, id=245, 2007.5pt x 758.835pt>
+File: images/linkstate12.png Graphic file (type png)
+<use images/linkstate12.png>
+Package pdftex.def Info: images/linkstate12.png  used on input line 889.
+(pdftex.def)             Requested size: 216.24025pt x 81.73528pt.
+<images/linkstate134.png, id=246, 1437.37pt x 676.5275pt>
+File: images/linkstate134.png Graphic file (type png)
+<use images/linkstate134.png>
+Package pdftex.def Info: images/linkstate134.png  used on input line 918.
+(pdftex.def)             Requested size: 455.24411pt x 214.26346pt.
+ [50 <./images/linkstate10.png> <./images/linkstate12.png> <./images/linkstate134.png>]
+<images/problemaloop.png, id=252, 2049.6575pt x 550.055pt>
+File: images/problemaloop.png Graphic file (type png)
+<use images/problemaloop.png>
+Package pdftex.def Info: images/problemaloop.png  used on input line 933.
+(pdftex.def)             Requested size: 455.24411pt x 122.17072pt.
+<images/loop1.png, id=253, 2017.5375pt x 337.26pt>
+File: images/loop1.png Graphic file (type png)
+<use images/loop1.png>
+Package pdftex.def Info: images/loop1.png  used on input line 946.
+(pdftex.def)             Requested size: 455.24411pt x 76.09636pt.
+<images/loop2.png, id=254, 2045.6425pt x 226.8475pt>
+File: images/loop2.png Graphic file (type png)
+<use images/loop2.png>
+Package pdftex.def Info: images/loop2.png  used on input line 961.
+(pdftex.def)             Requested size: 455.24411pt x 50.48119pt.
+ [51 <./images/problemaloop.png> <./images/loop1.png> <./images/loop2.png>]
+<images/loop3.png, id=258, 2021.5525pt x 232.87pt>
+File: images/loop3.png Graphic file (type png)
+<use images/loop3.png>
+Package pdftex.def Info: images/loop3.png  used on input line 971.
+(pdftex.def)             Requested size: 455.24411pt x 52.43967pt.
+ [52 <./images/loop3.png>]
+<images/RIPversioni.png, id=262, 1756.5625pt x 790.955pt>
+File: images/RIPversioni.png Graphic file (type png)
+<use images/RIPversioni.png>
+Package pdftex.def Info: images/RIPversioni.png  used on input line 1017.
+(pdftex.def)             Requested size: 455.24411pt x 204.99173pt.
+<images/processoRIP.png, id=263, 1792.6975pt x 1196.47pt>
+File: images/processoRIP.png Graphic file (type png)
+<use images/processoRIP.png>
+Package pdftex.def Info: images/processoRIP.png  used on input line 1024.
+(pdftex.def)             Requested size: 318.66948pt x 212.67159pt.
+ [53 <./images/RIPversioni.png> <./images/processoRIP.png>]
+<images/backbone.png, id=267, 2276.505pt x 935.495pt>
+File: images/backbone.png Graphic file (type png)
+<use images/backbone.png>
+Package pdftex.def Info: images/backbone.png  used on input line 1069.
+(pdftex.def)             Requested size: 373.3035pt x 153.39362pt.
+ [54 <./images/backbone.png>]
+<images/pacchettoospf.png, id=272, 1106.1325pt x 760.8425pt>
+File: images/pacchettoospf.png Graphic file (type png)
+<use images/pacchettoospf.png>
+Package pdftex.def Info: images/pacchettoospf.png  used on input line 1101.
+(pdftex.def)             Requested size: 318.66948pt x 219.18748pt.
+ [55 <./images/pacchettoospf.png>]
+<images/tipologieAS.png, id=276, 2206.2425pt x 690.58pt>
+File: images/tipologieAS.png Graphic file (type png)
+<use images/tipologieAS.png>
+Package pdftex.def Info: images/tipologieAS.png  used on input line 1119.
+(pdftex.def)             Requested size: 409.71692pt x 128.24002pt.
+) [56 <./images/tipologieAS.png>]
+Chapter 5.
+(./capitoli/protocolli_linea.tex
+<images/strategierrore.png, id=280, 1039.885pt x 544.0325pt>
 File: images/strategierrore.png Graphic file (type png)
 <use images/strategierrore.png>
 Package pdftex.def Info: images/strategierrore.png  used on input line 13.
 (pdftex.def)             Requested size: 318.66948pt x 166.71414pt.
- [1
+ [57
 
-] [2 <./images/strategierrore.png>]
-<images/stopwait.png, id=20, 1176.395pt x 1312.905pt>
+ <./images/strategierrore.png>]
+<images/stopwait.png, id=284, 1176.395pt x 1312.905pt>
 File: images/stopwait.png Graphic file (type png)
 <use images/stopwait.png>
 Package pdftex.def Info: images/stopwait.png  used on input line 37.
 (pdftex.def)             Requested size: 182.09486pt x 203.2177pt.
- [3 <./images/stopwait.png>]
-<images/erroreframe.png, id=26, 764.8575pt x 1025.8325pt>
+ [58 <./images/stopwait.png>]
+<images/erroreframe.png, id=289, 764.8575pt x 1025.8325pt>
 File: images/erroreframe.png Graphic file (type png)
 <use images/erroreframe.png>
 Package pdftex.def Info: images/erroreframe.png  used on input line 101.
 (pdftex.def)             Requested size: 191.20169pt x 256.44185pt.
-<images/erroreack.png, id=27, 780.9175pt x 1035.87pt>
+<images/erroreack.png, id=290, 780.9175pt x 1035.87pt>
 File: images/erroreack.png Graphic file (type png)
 <use images/erroreack.png>
 Package pdftex.def Info: images/erroreack.png  used on input line 107.
 (pdftex.def)             Requested size: 200.30852pt x 265.70026pt.
- [4 <./images/erroreframe.png> <./images/erroreack.png>]
-<images/swprobabilita.png, id=32, 1425.325pt x 542.025pt>
+ [59 <./images/erroreframe.png> <./images/erroreack.png>]
+<images/swprobabilita.png, id=294, 1425.325pt x 542.025pt>
 File: images/swprobabilita.png Graphic file (type png)
 <use images/swprobabilita.png>
 Package pdftex.def Info: images/swprobabilita.png  used on input line 144.
 (pdftex.def)             Requested size: 204.85846pt x 77.901pt.
- [5 <./images/swprobabilita.png>] [6]
-<images/gobackinsenzaerrori.png, id=43, 1274.7625pt x 1437.37pt>
+ [60 <./images/swprobabilita.png>] [61]
+<images/gobackinsenzaerrori.png, id=302, 1274.7625pt x 1437.37pt>
 File: images/gobackinsenzaerrori.png Graphic file (type png)
 <use images/gobackinsenzaerrori.png>
 Package pdftex.def Info: images/gobackinsenzaerrori.png  used on input line 288.
 (pdftex.def)             Requested size: 182.09486pt x 205.30986pt.
- [7 <./images/gobackinsenzaerrori.png>]
-<images/gobackinerrori.png, id=47, 1312.905pt x 1427.3325pt>
+ [62 <./images/gobackinsenzaerrori.png>]
+<images/gobackinerrori.png, id=306, 1312.905pt x 1427.3325pt>
 File: images/gobackinerrori.png Graphic file (type png)
 <use images/gobackinerrori.png>
 Package pdftex.def Info: images/gobackinerrori.png  used on input line 306.
 (pdftex.def)             Requested size: 182.09486pt x 197.95216pt.
-<images/gobacknerroreack.png, id=48, 1310.8975pt x 1427.3325pt>
+
+Underfull \hbox (badness 1502) in paragraph at lines 307--307
+[]\OT1/cmr/m/n/10 Figure 5.7: Go-Back-N con er-rori in
+ []
+
+<images/gobacknerroreack.png, id=307, 1310.8975pt x 1427.3325pt>
 File: images/gobacknerroreack.png Graphic file (type png)
 <use images/gobacknerroreack.png>
 Package pdftex.def Info: images/gobacknerroreack.png  used on input line 332.
 (pdftex.def)             Requested size: 182.09486pt x 198.25708pt.
- [8 <./images/gobackinerrori.png> <./images/gobacknerroreack.png>]
+
+Underfull \hbox (badness 7203) in paragraph at lines 333--333
+[]\OT1/cmr/m/n/10 Figure 5.8: Go-Back-N con er-rore
+ []
+
+[63 <./images/gobackinerrori.png> <./images/gobacknerroreack.png>]
 Underfull \hbox (badness 1158) in paragraph at lines 348--350
  \OT1/cmr/bx/n/10 Anal-isi del prob-lema[] \OT1/cmr/m/n/10 Quando si ver-i-fica un
  []
 
-<images/equivocoack.png, id=52, 1290.8225pt x 1483.5425pt>
+<images/equivocoack.png, id=311, 1290.8225pt x 1483.5425pt>
 File: images/equivocoack.png Graphic file (type png)
 <use images/equivocoack.png>
 Package pdftex.def Info: images/equivocoack.png  used on input line 358.
 (pdftex.def)             Requested size: 204.85846pt x 235.42487pt.
-<images/ackequivoco2.png, id=53, 899.36pt x 1009.7725pt>
+<images/ackequivoco2.png, id=312, 899.36pt x 1009.7725pt>
 File: images/ackequivoco2.png Graphic file (type png)
 <use images/ackequivoco2.png>
 Package pdftex.def Info: images/ackequivoco2.png  used on input line 372.
 (pdftex.def)             Requested size: 204.85846pt x 230.00865pt.
-[9 <./images/equivocoack.png> <./images/ackequivoco2.png>]
-<images/sr.png, id=57, 921.4425pt x 983.675pt>
+[64 <./images/equivocoack.png> <./images/ackequivoco2.png>]
+<images/sr.png, id=316, 921.4425pt x 983.675pt>
 File: images/sr.png Graphic file (type png)
 <use images/sr.png>
 Package pdftex.def Info: images/sr.png  used on input line 397.
 (pdftex.def)             Requested size: 213.96529pt x 228.40189pt.
-<images/srerroritrama.png, id=58, 1132.23pt x 1206.5075pt>
+<images/srerroritrama.png, id=317, 1132.23pt x 1206.5075pt>
 File: images/srerroritrama.png Graphic file (type png)
 <use images/srerroritrama.png>
 Package pdftex.def Info: images/srerroritrama.png  used on input line 416.
 (pdftex.def)             Requested size: 213.96529pt x 227.98694pt.
- [10 <./images/sr.png> <./images/srerroritrama.png>]
-<images/srequivocazione.png, id=62, 1100.11pt x 1210.5225pt>
+ [65 <./images/sr.png> <./images/srerroritrama.png>]
+<images/srequivocazione.png, id=321, 1100.11pt x 1210.5225pt>
 File: images/srequivocazione.png Graphic file (type png)
 <use images/srequivocazione.png>
 Package pdftex.def Info: images/srequivocazione.png  used on input line 444.
 (pdftex.def)             Requested size: 204.85846pt x 225.42084pt.
-<images/equivocazionesr.png, id=63, 1136.245pt x 1268.74pt>
+
+Underfull \hbox (badness 2856) in paragraph at lines 445--445
+[]\OT1/cmr/m/n/10 Figure 5.13: Se-lec-tive Re-peat con er-rori
+ []
+
+<images/equivocazionesr.png, id=322, 1136.245pt x 1268.74pt>
 File: images/equivocazionesr.png Graphic file (type png)
 <use images/equivocazionesr.png>
 Package pdftex.def Info: images/equivocazionesr.png  used on input line 464.
 (pdftex.def)             Requested size: 198.03008pt x 221.12292pt.
- [11 <./images/srequivocazione.png> <./images/equivocazionesr.png>]
-<images/efficienzagbn.png, id=67, 1098.1025pt x 1274.7625pt>
+[66 <./images/srequivocazione.png> <./images/equivocazionesr.png>]
+<images/efficienzagbn.png, id=327, 1098.1025pt x 1274.7625pt>
 File: images/efficienzagbn.png Graphic file (type png)
 <use images/efficienzagbn.png>
 Package pdftex.def Info: images/efficienzagbn.png  used on input line 529.
 (pdftex.def)             Requested size: 182.09486pt x 211.3771pt.
- [12 <./images/efficienzagbn.png>]
-<images/gbnns.png, id=72, 1379.1525pt x 469.755pt>
+ [67 <./images/efficienzagbn.png>]
+<images/gbnns.png, id=331, 1379.1525pt x 469.755pt>
 File: images/gbnns.png Graphic file (type png)
 <use images/gbnns.png>
 Package pdftex.def Info: images/gbnns.png  used on input line 562.
 (pdftex.def)             Requested size: 182.09486pt x 62.02362pt.
- [13 <./images/gbnns.png>]
-<images/efficienzasr.png, id=76, 1007.765pt x 1278.7775pt>
+ [68 <./images/gbnns.png>]
+<images/efficienzasr.png, id=335, 1007.765pt x 1278.7775pt>
 File: images/efficienzasr.png Graphic file (type png)
 <use images/efficienzasr.png>
 Package pdftex.def Info: images/efficienzasr.png  used on input line 605.
@@ -413,7 +963,7 @@ Underfull \hbox (badness 1975) in paragraph at lines 615--616
 []\OT1/cmr/m/n/10 i riscon-tri ar-riv-ino all'interno della fines-tra di
  []
 
-<images/nssr.png, id=77, 1218.5525pt x 471.7625pt>
+<images/nssr.png, id=336, 1218.5525pt x 471.7625pt>
 File: images/nssr.png Graphic file (type png)
 <use images/nssr.png>
 Package pdftex.def Info: images/nssr.png  used on input line 639.
@@ -423,41 +973,41 @@ Underfull \hbox (badness 2617) in paragraph at lines 647--649
 \OT1/cmr/m/n/10 dove $\OML/cmm/m/it/10 P$ \OT1/cmr/m/n/10 ^^Re la prob-a-bilit^^Ra di er-rore sul frame.
  []
 
-[14 <./images/efficienzasr.png> <./images/nssr.png>]
-<images/efficienzasrwr.png, id=81, 1009.7725pt x 1288.815pt>
+[69 <./images/efficienzasr.png> <./images/nssr.png>]
+<images/efficienzasrwr.png, id=340, 1009.7725pt x 1288.815pt>
 File: images/efficienzasrwr.png Graphic file (type png)
 <use images/efficienzasrwr.png>
 Package pdftex.def Info: images/efficienzasrwr.png  used on input line 693.
 (pdftex.def)             Requested size: 204.85846pt x 261.45558pt.
- [15 <./images/efficienzasrwr.png>]
-<images/confrontoprotocolli.png, id=87, 2150.0325pt x 1282.7925pt>
+ [70 <./images/efficienzasrwr.png>]
+<images/confrontoprotocolli.png, id=346, 2150.0325pt x 1282.7925pt>
 File: images/confrontoprotocolli.png Graphic file (type png)
 <use images/confrontoprotocolli.png>
 Package pdftex.def Info: images/confrontoprotocolli.png  used on input line 754.
 (pdftex.def)             Requested size: 318.66948pt x 190.12044pt.
-) [16 <./images/confrontoprotocolli.png>] (./capitoli/wan.tex
-<images/strutturaframe.png, id=91, 1844.8925pt x 180.675pt>
+) [71 <./images/confrontoprotocolli.png>] (./capitoli/wan.tex
+<images/strutturaframe.png, id=350, 1844.8925pt x 180.675pt>
 File: images/strutturaframe.png Graphic file (type png)
 <use images/strutturaframe.png>
 Package pdftex.def Info: images/strutturaframe.png  used on input line 7.
 (pdftex.def)             Requested size: 364.19667pt x 35.66568pt.
-<images/bitstuffing.png, id=92, 2258.4375pt x 766.865pt>
+<images/bitstuffing.png, id=351, 2258.4375pt x 766.865pt>
 File: images/bitstuffing.png Graphic file (type png)
 <use images/bitstuffing.png>
 Package pdftex.def Info: images/bitstuffing.png  used on input line 32.
 (pdftex.def)             Requested size: 364.19667pt x 123.66042pt.
- [17 <./images/strutturaframe.png> <./images/bitstuffing.png>]
-<images/crctrasmissione.png, id=96, 1106.1325pt x 281.05pt>
+ [72 <./images/strutturaframe.png> <./images/bitstuffing.png>]
+<images/crctrasmissione.png, id=356, 1106.1325pt x 281.05pt>
 File: images/crctrasmissione.png Graphic file (type png)
 <use images/crctrasmissione.png>
 Package pdftex.def Info: images/crctrasmissione.png  used on input line 68.
 (pdftex.def)             Requested size: 227.62206pt x 57.83432pt.
-<images/crcricezione.png, id=97, 1061.9675pt x 246.9225pt>
+<images/crcricezione.png, id=357, 1061.9675pt x 246.9225pt>
 File: images/crcricezione.png Graphic file (type png)
 <use images/crcricezione.png>
 Package pdftex.def Info: images/crcricezione.png  used on input line 76.
 (pdftex.def)             Requested size: 227.62206pt x 52.92528pt.
-<images/calcolocrc.png, id=98, 1371.1225pt x 379.4175pt>
+<images/calcolocrc.png, id=358, 1371.1225pt x 379.4175pt>
 File: images/calcolocrc.png Graphic file (type png)
 <use images/calcolocrc.png>
 Package pdftex.def Info: images/calcolocrc.png  used on input line 99.
@@ -467,30 +1017,30 @@ Underfull \hbox (badness 1603) in paragraph at lines 105--106
 []\OT1/cmr/m/n/10 Devo quindi in-serire i bit del polonomio R(x)
  []
 
-[18 <./images/crctrasmissione.png> <./images/crcricezione.png> <./images/calcolocrc.png>]
-<images/esempiocrc.png, id=103, 2306.6175pt x 1296.845pt>
+[73 <./images/crctrasmissione.png> <./images/crcricezione.png> <./images/calcolocrc.png>]
+<images/esempiocrc.png, id=362, 2306.6175pt x 1296.845pt>
 File: images/esempiocrc.png Graphic file (type png)
 <use images/esempiocrc.png>
 Package pdftex.def Info: images/esempiocrc.png  used on input line 117.
 (pdftex.def)             Requested size: 364.19667pt x 204.74887pt.
-<images/pointtopoint.png, id=104, 2254.4225pt x 636.3775pt>
+<images/pointtopoint.png, id=363, 2254.4225pt x 636.3775pt>
 File: images/pointtopoint.png Graphic file (type png)
 <use images/pointtopoint.png>
 Package pdftex.def Info: images/pointtopoint.png  used on input line 165.
 (pdftex.def)             Requested size: 386.96027pt x 109.23146pt.
- [19 <./images/esempiocrc.png>]
-<images/endian.png, id=108, 2890.8pt x 1445.4pt>
+ [74 <./images/esempiocrc.png>]
+<images/endian.png, id=367, 2890.8pt x 1445.4pt>
 File: images/endian.png Graphic file (type png)
 <use images/endian.png>
 Package pdftex.def Info: images/endian.png  used on input line 183.
 (pdftex.def)             Requested size: 364.19667pt x 182.08607pt.
- [20 <./images/pointtopoint.png> <./images/endian.png>]
-<images/bytestuffing.png, id=114, 2533.465pt x 813.0375pt>
+ [75 <./images/pointtopoint.png> <./images/endian.png>]
+<images/bytestuffing.png, id=373, 2533.465pt x 813.0375pt>
 File: images/bytestuffing.png Graphic file (type png)
 <use images/bytestuffing.png>
 Package pdftex.def Info: images/bytestuffing.png  used on input line 208.
 (pdftex.def)             Requested size: 455.24411pt x 146.09232pt.
-<images/pppencapsulation.png, id=115, 1021.8175pt x 594.22pt>
+<images/pppencapsulation.png, id=374, 1021.8175pt x 594.22pt>
 File: images/pppencapsulation.png Graphic file (type png)
 <use images/pppencapsulation.png>
 Package pdftex.def Info: images/pppencapsulation.png  used on input line 222.
@@ -500,20 +1050,20 @@ Underfull \hbox (badness 1616) in paragraph at lines 229--230
 \OT1/cmr/m/n/10 qualit^^Ra del col-lega-mento e rende pos-si-bile
  []
 
-[21 <./images/bytestuffing.png> <./images/pppencapsulation.png>]
-<images/autenticazionecapchap.png, id=119, 2511.3825pt x 542.025pt>
+[76 <./images/bytestuffing.png> <./images/pppencapsulation.png>]
+<images/autenticazionecapchap.png, id=378, 2511.3825pt x 542.025pt>
 File: images/autenticazionecapchap.png Graphic file (type png)
 <use images/autenticazionecapchap.png>
 Package pdftex.def Info: images/autenticazionecapchap.png  used on input line 239.
 (pdftex.def)             Requested size: 455.24411pt x 98.24675pt.
- [22 <./images/autenticazionecapchap.png>] [23]
-<images/alohacollisioni.png, id=126, 1142.2675pt x 546.04pt>
+ [77 <./images/autenticazionecapchap.png>] [78]
+<images/alohacollisioni.png, id=386, 1142.2675pt x 546.04pt>
 File: images/alohacollisioni.png Graphic file (type png)
 <use images/alohacollisioni.png>
 Package pdftex.def Info: images/alohacollisioni.png  used on input line 345.
 (pdftex.def)             Requested size: 364.19667pt x 174.0948pt.
- [24 <./images/alohacollisioni.png>]
-<images/periodovulnerabilita.png, id=131, 768.8725pt x 455.7025pt>
+ [79 <./images/alohacollisioni.png>]
+<images/periodovulnerabilita.png, id=390, 768.8725pt x 455.7025pt>
 File: images/periodovulnerabilita.png Graphic file (type png)
 <use images/periodovulnerabilita.png>
 Package pdftex.def Info: images/periodovulnerabilita.png  used on input line 373.
@@ -528,34 +1078,29 @@ Underfull \hbox (badness 1132) in paragraph at lines 379--380
 \OT1/cmr/m/n/10 sioni(pacchetto P col-lide con la trasmis-sione se
  []
 
-[25 <./images/periodovulnerabilita.png>]
-<images/funzionealoha.png, id=135, 1063.975pt x 692.5875pt>
+[80 <./images/periodovulnerabilita.png>]
+<images/funzionealoha.png, id=394, 1063.975pt x 692.5875pt>
 File: images/funzionealoha.png Graphic file (type png)
 <use images/funzionealoha.png>
 Package pdftex.def Info: images/funzionealoha.png  used on input line 418.
 (pdftex.def)             Requested size: 227.62206pt x 148.16364pt.
-
-Underfull \hbox (badness 1194) in paragraph at lines 419--419
-[]\OT1/cmr/m/n/10 Figure 34: An-da-mento Trough-put nor-mal-iz-zato
- []
-
-<images/poissongrafico.png, id=136, 1397.22pt x 821.0675pt>
+<images/poissongrafico.png, id=395, 1397.22pt x 821.0675pt>
 File: images/poissongrafico.png Graphic file (type png)
 <use images/poissongrafico.png>
 Package pdftex.def Info: images/poissongrafico.png  used on input line 446.
 (pdftex.def)             Requested size: 364.19667pt x 214.01123pt.
-[26 <./images/funzionealoha.png> <./images/poissongrafico.png>]
-<images/slottedaloha.png, id=140, 1146.2825pt x 606.265pt>
+ [81 <./images/funzionealoha.png> <./images/poissongrafico.png>]
+<images/slottedaloha.png, id=399, 1146.2825pt x 606.265pt>
 File: images/slottedaloha.png Graphic file (type png)
 <use images/slottedaloha.png>
 Package pdftex.def Info: images/slottedaloha.png  used on input line 464.
 (pdftex.def)             Requested size: 350.5399pt x 185.39622pt.
-<images/periodoslotted.png, id=141, 732.7375pt x 411.5375pt>
+<images/periodoslotted.png, id=400, 732.7375pt x 411.5375pt>
 File: images/periodoslotted.png Graphic file (type png)
 <use images/periodoslotted.png>
 Package pdftex.def Info: images/periodoslotted.png  used on input line 474.
 (pdftex.def)             Requested size: 195.75163pt x 109.94234pt.
-<images/slottedgrafico.png, id=142, 1003.75pt x 662.475pt>
+<images/slottedgrafico.png, id=401, 1003.75pt x 662.475pt>
 File: images/slottedgrafico.png Graphic file (type png)
 <use images/slottedgrafico.png>
 Package pdftex.def Info: images/slottedgrafico.png  used on input line 492.
@@ -565,24 +1110,90 @@ Underfull \hbox (badness 1917) in paragraph at lines 504--505
 []\OT1/cmr/m/n/10 Il pro-to-collo Slot-ted Aloha ha come con-
  []
 
-[27 <./images/slottedaloha.png> <./images/periodoslotted.png> <./images/slottedgrafico.png>]
-<images/esempiocsmacd.png, id=146, 1425.325pt x 1365.1pt>
+[82 <./images/slottedaloha.png> <./images/periodoslotted.png> <./images/slottedgrafico.png>]
+<images/esempiocsmacd.png, id=405, 1425.325pt x 1365.1pt>
 File: images/esempiocsmacd.png Graphic file (type png)
 <use images/esempiocsmacd.png>
 Package pdftex.def Info: images/esempiocsmacd.png  used on input line 541.
 (pdftex.def)             Requested size: 227.62206pt x 218.00386pt.
- [28 <./images/esempiocsmacd.png>]
-<images/dimostrazionecsma.png, id=150, 1078.0275pt x 1130.2225pt>
+ [83 <./images/esempiocsmacd.png>]
+<images/dimostrazionecsma.png, id=409, 1078.0275pt x 1130.2225pt>
 File: images/dimostrazionecsma.png Graphic file (type png)
 <use images/dimostrazionecsma.png>
 Package pdftex.def Info: images/dimostrazionecsma.png  used on input line 576.
 (pdftex.def)             Requested size: 204.85846pt x 214.76175pt.
-<images/csmaca.png, id=151, 2009.5075pt x 1108.14pt>
+<images/csmaca.png, id=410, 2009.5075pt x 1108.14pt>
 File: images/csmaca.png Graphic file (type png)
 <use images/csmaca.png>
 Package pdftex.def Info: images/csmaca.png  used on input line 621.
 (pdftex.def)             Requested size: 295.90588pt x 163.17023pt.
-) [29 <./images/dimostrazionecsma.png> <./images/csmaca.png>] (./main.aux)
+) [84 <./images/dimostrazionecsma.png> <./images/csmaca.png>] (./capitoli/standard802.tex
+<images/ieee802.png, id=415, 2294.5725pt x 748.7975pt>
+File: images/ieee802.png Graphic file (type png)
+<use images/ieee802.png>
+Package pdftex.def Info: images/ieee802.png  used on input line 25.
+(pdftex.def)             Requested size: 455.24411pt x 148.55714pt.
+) (./capitoli/nodiespostinascosti.tex [85 <./images/ieee802.png>]
+<images/infrastrutturawlan.png, id=419, 2158.0625pt x 676.5275pt>
+File: images/infrastrutturawlan.png Graphic file (type png)
+<use images/infrastrutturawlan.png>
+Package pdftex.def Info: images/infrastrutturawlan.png  used on input line 45.
+(pdftex.def)             Requested size: 431.60486pt x 135.3031pt.
+ [86 <./images/infrastrutturawlan.png>]
+<images/famigliaieee802.png, id=423, 2170.1075pt x 1341.01pt>
+File: images/famigliaieee802.png Graphic file (type png)
+<use images/famigliaieee802.png>
+Package pdftex.def Info: images/famigliaieee802.png  used on input line 68.
+(pdftex.def)             Requested size: 241.27881pt x 149.08714pt.
+<images/canali802.png, id=424, 1824.8175pt x 578.16pt>
+File: images/canali802.png Graphic file (type png)
+<use images/canali802.png>
+Package pdftex.def Info: images/canali802.png  used on input line 81.
+(pdftex.def)             Requested size: 410.59407pt x 130.0892pt.
+<images/cluster3celle.png, id=425, 742.775pt x 720.6925pt>
+File: images/cluster3celle.png Graphic file (type png)
+<use images/cluster3celle.png>
+Package pdftex.def Info: images/cluster3celle.png  used on input line 92.
+(pdftex.def)             Requested size: 159.33821pt x 154.59396pt.
+ [87 <./images/famigliaieee802.png> <./images/canali802.png> <./images/cluster3celle.png>]
+<images/dcf.png, id=429, 1868.9825pt x 957.5775pt>
+File: images/dcf.png Graphic file (type png)
+<use images/dcf.png>
+Package pdftex.def Info: images/dcf.png  used on input line 111.
+(pdftex.def)             Requested size: 467.24449pt x 239.39378pt.
+
+Overfull \hbox (12.00038pt too wide) in paragraph at lines 111--112
+ [][] 
+ []
+
+[88 <./images/dcf.png>]
+<images/nodonascosto.png, id=433, 1923.185pt x 897.3525pt>
+File: images/nodonascosto.png Graphic file (type png)
+<use images/nodonascosto.png>
+Package pdftex.def Info: images/nodonascosto.png  used on input line 139.
+(pdftex.def)             Requested size: 223.07211pt x 104.07652pt.
+<images/soluzionenodonascosto.png, id=434, 1527.7075pt x 839.135pt>
+File: images/soluzionenodonascosto.png Graphic file (type png)
+<use images/soluzionenodonascosto.png>
+Package pdftex.def Info: images/soluzionenodonascosto.png  used on input line 165.
+(pdftex.def)             Requested size: 223.07211pt x 122.52293pt.
+<images/dcfhandshake.png, id=435, 2244.385pt x 891.33pt>
+File: images/dcfhandshake.png Graphic file (type png)
+<use images/dcfhandshake.png>
+Package pdftex.def Info: images/dcfhandshake.png  used on input line 173.
+(pdftex.def)             Requested size: 448.86905pt x 178.26283pt.
+ [89 <./images/nodonascosto.png> <./images/soluzionenodonascosto.png> <./images/dcfhandshake.png>]
+<images/nodoesposto.png, id=439, 1820.8025pt x 941.5175pt>
+File: images/nodoesposto.png Graphic file (type png)
+<use images/nodoesposto.png>
+Package pdftex.def Info: images/nodoesposto.png  used on input line 187.
+(pdftex.def)             Requested size: 223.07211pt x 115.34767pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--195
+\OT1/cmr/m/n/10 sec-ondo un al-go-ritmo) a fine co-mu-ni-cazione
+ []
+
+) [90 <./images/nodoesposto.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -593,18 +1204,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3677 strings out of 476182
- 58883 string characters out of 5795595
- 1934975 words of memory out of 5000000
- 25647 multiletter control sequences out of 15000+600000
- 566873 words of font info for 70 fonts, out of 8000000 for 9000
+ 4458 strings out of 476182
+ 80309 string characters out of 5795595
+ 1940975 words of memory out of 5000000
+ 26403 multiletter control sequences out of 15000+600000
+ 569592 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,9n,65p,1137b,303s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (30 pages, 5369630 bytes).
+ 57i,11n,65p,1091b,305s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/sav/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (91 pages, 20536382 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
+ 533 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 651 words of extra memory for PDF output out of 10000 (max. 10000000)
 

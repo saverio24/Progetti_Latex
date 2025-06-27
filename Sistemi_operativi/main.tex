@@ -1,0 +1,973 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx} 
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{float} % Enables the use of the 'H' float option
+\linespread{1.2}
+
+
+\title{Sistemi operativi}
+\author{sav}
+\date{2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+\chapter{ANDROID}
+\section{Domande Android}
+\begin{enumerate}
+    \item Descrivere sinteticamente i componenti di architettura S.O Android, specificando quali componenti sono stati modificati o sostituiti rispetto al Kernel Linux e spiegarne il motivo.
+    \item Descrivere il meccanismo adottato dal S.O Android per gestire le situazioni di carico elevato della memoria RAM del dispositivo.
+    \item Descrivere i meccanismi per il risparmio energetico adottati dal S.O. Android. Si facciano degli esempi.
+    \item Spiegare sinteticamente il funzionamento del Power Manager di Android.
+    \item Spiegare sinteticamente il meccanismo di comunicazione mediante Binder su Android.
+    \item Spiegare il funzionamento del Binder IPC driver ed il suo ruolo nella gestione della sicurezza nel Sistema Operativo Android.
+    \item Spiegare sinteticamente i meccanismi di block erasing e memory wearing all’interno del SO Android.
+    \item Descrivere in dettaglio le differenze tra i due principali formati \texttt{.dex} e \texttt{.oat} delle applicazioni Android.
+    \item Descrivere sinteticamente le peculiarità di Dalvik VM. Indicare le differenze con ART.
+    \item Descrivere ruolo e funzionamento del processo ZYGOTE di Android.
+    \item Descrivere le differenze tra SDK e NDK.
+    \item Elencare brevemente le fasi del ciclo di vita di una Activity Android.
+    \item Cosa si intende per Visible Lifetime e Foreground Lifetime in Android?
+    \item Descrivere le caratteristiche di un Service Android.
+    \item Elencare e descrivere i principali metodi callback previsti dall’interfaccia di un Service Android.
+    \item Descrivere sinteticamente il funzionamento del componente Broadcast Receiver in Android.
+    \item Descrivere il funzionamento dei Content Provider in Android. Indicare inoltre la struttura del relativo URI pubblico.
+    \item Descrivere le tipologie di Intent previsti dal S.O Android.
+    \item Qual è il ruolo di \texttt{Bundle}*?
+    \item Cos’è l’\texttt{AndroidManifest.xml}?
+    \item Descrivere l’utilità dei tag \texttt{<permission>} e \texttt{<uses-permission>} nella configurazione di un'app Android.
+    \item Spiegare in dettaglio il meccanismo di sicurezza basato sui permessi del SO Android.
+    \item Spiegare ruolo e funzione dello strato JNI (Java Native Interface) nello stack Android.
+\end{enumerate}
+\section{Risposte Android}
+\begin{itemize}
+
+\item \textbf{1.1 Caratteristiche android:}
+\begin{itemize}
+    \item Android \`e un sistema operativo open source per dispositivi mobili che deve tenere conto delle loro caratteristiche limitate: risorse di calcolo limitate, affidabilit\`a delle funzionalit\`a base, energia limitata e diverse configurazioni hw.
+    \item utilizza kernel linux
+\end{itemize}
+
+\item \textbf{1. Componenti dell'architettura android:}
+\begin{itemize}
+    \item apps, framework, librerie native e runtime, hal, linux kernel e secure element
+    \item \textbf{kernel linux:}
+    \begin{itemize}
+        \item contiene tutti i driver hw fondamentali (audio, display, ecc) ma anche componenti modificate o aggiunti appositamente per gli scopi di android:
+        \item Low memory killer personalizzato (sostituisce lo swap), ottimizzato per dispositivi con poca memoria
+        \item Power management basato su wakelocks, evita che CPU e schermo vadano in sleep durante operazioni importanti
+        \item binder IPC driver per la comunicazione tra processi, esclusivo android
+        \item servizio di logging centralizzato logcat
+    \end{itemize}
+    \item \textbf{HAL (hardware abstraction layer):}
+    \begin{itemize}
+        \item Serve da ponte tra il kernel e gli altri componenti. Ogni driver (audio, fotocamera, Wi-Fi...) comunica con Android tramite la HAL.
+        \item Un HAL definisce una interfaccia standard tra driver di basso livello e i servizi di alto livello
+        \item Consente di implementare funzionalit\`a senza modificare i livelli pi\`u alti
+        \item Grazie ad HAL, Android \`e agnostico rispetto all’hardware ed \`e pi\`u semplice aggiornare la versione di Android
+    \end{itemize}
+    \item \textbf{Librerie native e android runtime (ART):}
+    \begin{itemize}
+        \item Include librerie C/C++ e la macchina virtuale ART (sostituisce Dalvik).
+        \item ART esegue il codice delle app Android, in formato .dex e .oat
+        \item \`e una Macchina virtuale register-based
+        \item Rispetto alle macchine stack-based (ad esempio JVM), il codice occupa pi\`u memoria, ma complessivamente vengono eseguite meno istruzioni
+        \item Le applicazioni sono distribuite in un pacchetto in formato .apk e contiene il codice .dex + risorse utili per l’app
+    \end{itemize}
+    \item \textbf{Framework android:}
+    \begin{itemize}
+        \item L’Application Framework e l’insieme di librerie e di software che forniscono l’ambiente e i servizi necessari per l’esecuzione delle applicazioni sviluppate con l’SDK Android
+    \end{itemize}
+\end{itemize}
+
+\item \textbf{2. Low Memory Killer (LMK):}
+\begin{itemize}
+    \item gestione memoria aggressiva basata sul concetto di pressione della memoria (vmpressure)
+    \item Tramite la vmpressure (virtual memory pressure, meccanismo kernel linux) viene monitorata la pressione sulla memoria virtuale, ossia individua quei task che provocano pi\`u ritardi, pi\`u ritardi indicano una pressione maggiore.
+    \item Quindi lmkd uccide i processi per poter alleviare la pressione, processi con minor priorit\`a / background
+\end{itemize}
+
+\item \textbf{3. Risparmio energetico e wakelocks:}
+\begin{itemize}
+    \item Le app devono richiedere esplicitamente un wakelock per poter tenere attiva una risorsa e in assenza di wakelocks, Android disattiva le risorse per risparmiare energia.
+    \item I principali sono:
+    \begin{itemize}
+        \item \texttt{PARTIAL\_WAKE\_LOCK} – Mantiene solo la CPU attiva (schermo pu\`o spegnersi) ✅ il pi\`u usato
+        \item \texttt{FULL\_WAKE\_LOCK} – Mantiene CPU + schermo + tastiera accesi (deprecato)
+        \item \texttt{SCREEN\_DIM\_WAKE\_LOCK} – Tiene acceso lo schermo a bassa luminosit\`a (deprecato)
+        \item \texttt{SCREEN\_BRIGHT\_WAKE\_LOCK} – Tiene acceso lo schermo a piena luminosit\`a (deprecato)
+    \end{itemize}
+\end{itemize}
+
+\item \textbf{4. Binder IPC:}
+\begin{itemize}
+    \item \`E un componente del kernel Android che fornisce un sistema di comunicazione tra processi.
+    \item \`E un canale di comunicazione sincrono che permette a due processi (es. A e B) di scambiarsi dati e oggetti attraverso il kernel.
+    \item I processi non condividono direttamente la memoria, ma comunicano tramite il driver Binder
+    \item Il driver gestisce autonomamente:
+    \begin{itemize}
+        \item Allocazione e deallocazione degli oggetti tramite Reference Counting
+    \end{itemize}
+    \item \textbf{Ruolo del Binder nella sicurezza android:}
+    \begin{itemize}
+        \item Isolamento tra processi
+        \item Android usa una sandbox per ogni app, e il Binder evita la condivisione diretta della memoria, proteggendo i dati tra app diverse.
+    \end{itemize}
+\end{itemize}
+
+\end{itemize}
+
+
+\chapter{IOS}
+\section{Cos'è IOS}
+IOS è un sistema operativo di proprietà di Apple ed è nato per soddisfare le richieste dei dispositivi mobili di Apple, come Iphone, Ipad, Ipod e Applewatch, nelle rispettive distribuzioni: IOS e Iwatch.
+Con IOS sono state implementate per il grande pubblico le tipiche funzionalità degli smartphone moderni, come il pinch o lo swipe. Anche il concetto di applicazioni e di interfaccia utente da smartphone nascono con IOS.
+\subsection{Componenti open e closed source}
+è un s.o. closed source con delle componenti open source, inoltre il suo kernel si basa su Darwin, un sistema operativo open source su licenza BSD.
+
+\subsection{Architettura app - modello MVC}
+La filosofia di base si basa sul concetto si sistema app-centric, cioè tutto è un’applicazione, anche
+l’interfaccia utente principale SpringBoard. Le interazioni sono tutte dirette con tocchi e gesti.
+L’interfaccia si basa il più possibile sull’accessibilità. La distribuzione del software è centralizzata(app store).
+\subsubsection{CocoaMVC vs MVC tradizionali}
+Le applicazioni IOS seguono il modello CocoaMVC, una rivisitazione di apple del modello più standard MVC(model view control).
+\begin{itemize}
+    \item model: contiene i dati dell’app e la loro logica
+    \item view: sono dei rettangoli sullo schermo e servono a gestire le interfacce utente, le gesture e possono essere composte in gerarchie
+    \item controller: è l’intermediario tra model e view, gestisce le interazioni con l'utente aggiornando le gerarchie di view in base alla logica di model
+
+\end{itemize}
+A differenza del modello MVC standard, con CocoaMVC le componenti model e view comunicano tramite il controller, perciò è possibile riutilizzare determinate view, cosa non possibile col modello MVC stardard.
+\subsubsection{Ciclo di vita di un'app}
+Il ciclo di vita è il seguente:
+\begin{itemize}
+    \item Not running: l’app non è stata lanciata o è stata terminata
+    \item Inactive, l’app è in foreground ma non riceve eventi
+    \item Active, l’app è in foreground e riceve eventi
+    \item Background, l’app è in background e sta eseguendo un’operazione, le applicazioni hanno un
+    timer disponibile per l’esecuzione
+    \item Suspended, l’app è in background ma non sta eseguendo operazioni
+\end{itemize}
+\section{Stack software}
+\subsection{CocoaTouch, media layer, core services, core os, kernel e driver*}
+\subsubsection*{CocoaTouch}
+Costituisce il principale framework di sviluppo di software su piattaforma IOS. È orientato principalmente alle interfacce utente ed all’interazione tramite tocco. Scritto in Objective-C e basato su Cocoa per macOS.
+\subsubsection{Media layer}
+Si occupa della gestione dei contenuti multimediali con un focus su: immagini, video, audio, rendering 2D/3D.
+
+Per le immagini, c’è il cosiddetto CoreImage, un manipolatore di immagini e task di visione artificiale.
+Per gli audio e i video, ci sono AVFoundation(registrazione, modifica e riproduzione di audio e video) e i CoreAudio e CoreVideo(si occupano di elaborare stream audio e video di basso livello).
+
+Per il rendering 2D si utilizzano il CoreGraphics e il CoreAnimation. CoreGraphics renderizza
+tramite CPU mentre CoreAnimation renderizza tramite OpenGL.
+
+Per il rendering 3D si utilizza OpenGL/Metal, OpenGL è cross platform mentre Metal è Apple Only ed
+offre prestazioni superiori.
+\subsubsection*{Core services}
+Servizi essenziali per le app, ma non inerenti all’interfaccia utente:
+\begin{itemize}
+    \item Foundation, la libreria standard di IOS che fornisce tipi di dato di base, collection, accesso al
+filesystem, algoritmi di filtraggio e ordinamento.
+    \item CoreData, framework per la gestione e persistenza dei dati, visti come nodi di un grafo. Può
+essere immagazzinato come un ORM (Object Relational Mapping) con funzionalità avanzata
+per la gestione del ciclo di vita dei dati.
+    \item CoreLocation, consente di ottenere la posizione GPS e l’orientazione del dispositivo.
+    \item CoreMotion, permette l’elaborazione di eventi generati da accelerometro, giroscopio,
+magnetometro, ecc
+    \item WebKit, motore di rendering di pagine web
+\end{itemize}
+\subsubsection*{Core os}
+È il livello più basso sello stack userland, comunicante direttamente con i device driver e con il kernel.
+\section{Kernel ibrido - darwin - XNU}
+Il kernel di IOS è ibrido e si basa su quello di Darwin. Darwin è un sistema operativo open source con kernel XNU(X is Not Unix); il kernel IOS è composto quindi da microkernel Mach e kernel monolitico BSD, che compongono XNU.
+(Kernel Ibrido, modularità e sicurezza derivanti dal microkernel con alcuni servizi derivanti dal monolitico)
+\subsection{Mach - microkernel}
+Mach è il microkernel che compone il kernel ibrido di ios ed offre le seguenti funzionalità:
+\begin{itemize}
+    \item CPU scheduling
+    \item supporto soft real time
+    \item IPC basato su message-passing
+    \item RPC basato su Mach IPC
+    \item memoria virtuale paginata
+    \item kernel thread
+\end{itemize}
+\subsection{BSD - monolitico}
+BSD è un kernel monolitico che compone il kernel ibrido di ios, offre le seguenti funzionalita:
+\begin{itemize}
+    \item Protezione della memoria
+    \item VFS(VIrtual FileSystem) 
+    \item Networking
+    \item Modello di sicurezza UNIX
+    \item Modello processi
+    \item Thread lato utente
+
+\end{itemize}
+\section{Apple FileSystem}
+
+Il filesystem adottato da Apple è APFS(Apple FIle System) e supporta inode numbers a 64 bit; utilizza il meccanismo del Copy On Write (i file condivisi vengono ripetuti solo se modificati), e grazie a questo meccanismo crea periodicamente una snapshot del FS per ripristinarlo in caso di crash; supporta partizioni a dimensione dinamica e protegge crittograficamente i file con una o più chiavi.
+
+Introduce:
+
+\begin{itemize}
+    \item COW(Copy On Write): quando un file viene copiato, la sua memoria non viene duplicata, quindi grazie a COW gli snapshot(istantanee dei contenuti, in modo da poter ripristinare file o interi volumi ad uno stato noto) non utilizzano spazio addizionale al momento della loro creazione
+    \item crittografia: cifratura a chiave singola univoca per file, o a chiave multipla per cifrare diverse parti dei file con una chiave diversa
+    \item supporto a partizioni di dimensione dinamica tramite condivisione di container di dimensione fissa
+\end{itemize}
+\section{Secure boot chain}
+La sicurezza nei sistemi operativi apple gioca un ruolo chiave, uno dei meccanismi che garantisce la stabilità in un dispotivo che monta ios è la secure boot chain. 
+
+Questa garantisce che l'accensione del dispositivo avvenga nel modo più sicuro possibile.
+
+L’avvio di iOS avviene per diversi stadi, ognuno dei quali è crittograficamente verificato dallo stadio precedente.
+
+Ogni stadio prosegue con l'esecuzione solo se quello precedente ha avuto successo.
+
+Inoltre i diversi stadi sono dislocati in memorie differenti.
+
+All’avvio viene eseguito del codice immutabile BootROM dalla secure ROM (memoria a sola lettura) che contiene il certificato root CA utile a verificare l'integrità degli stadi successivi.
+
+Lo stadio successivo avviene con IBoot, il bootloader di alto livello, che verifica l’integrità del kernel XNU.
+
+Se uno di questi stadi fallisce allora il sistema cerca di aggiornare il firmware o va in recovery mode.
+\subsubsection{BootROM, LLB, iBoot}
+\section{Feature di Sicurezza}
+\subsubsection{Sicurezza dei dati}
+Per quanto riguarda la sicurezza dei dati, iOS sfrutta un co-processore per la crittografia, cifrando usando una o più chiavi uniche ogni file; inoltre i dati biometrici sono salvati in un sottosistema hardware (SEP, Secure Enclaver Processor) inaccessibile a qualunque processo, kernel incluso. Mentre per quanto riguarda la sicurezza delle applicazioni, in iOS è presente il code signing ovvero ogni app dev’essere firmata crittograficamente da Apple per poter essere lanciate; oltre al sandboxing utilizzato per evitare che ogni app non acceda a file di altre app o a feature alle quali non ha autorizzazione
+\subsection{Sicurezza del kernel}
+Per la sicurezza del kernel ios sono adottati i seguenti meccanismi:
+\begin{itemize}
+    \item KPP (kernel patch protection): un check periodico per verificare l’integrità del kernel
+    \item KASLR (kernel address space layout randomization): il kernel viene caricato in memoria in indirizzi randomici
+    \item PAC (pointer authentication) : autenticazione crittografata dei puntatori alla memoria
+    \item write xor execute: alle pagine di memoria vengono assegnati permessi di scrittura o esecuzione, mai entrambi
+\end{itemize}
+\subsection{Sicurezza applicazioni}
+Tramite le seguenti feature di sicurezza:
+\begin{itemize}
+    \item code signing: le app devono essere firmate crittograficamente da Apple tramite il sistema AMFI (Apple Mobile File Integrity), una componente del Kernel
+    \item sandboxing: ciascuna app funziona in sandbox, che limita l’accesso ai file di altre app e a
+    feature per chi non ha autorizzazioni
+    \item Entitlement: l’accesso ad alcune funzionalità può essere concesso previa richiesta di
+    consenso all’utente
+\end{itemize}
+
+
+\newpage
+\section{Domande IOS}
+\begin{enumerate}
+    \item Si descrivano le peculiarità generali del sistema operativo iOS.
+    \item Descrivere il modello MVC adottato da iOS per il design delle applicazioni (architettura di un'app in iOS). Chiarire in cosa esso si differenzia rispetto al modello MVC tradizionale.
+    \item Apple File System: caratteristiche principali, prestazioni e sicurezza anche in rapporto con altri file system noti (descrivere brevemente le caratteristiche del filesystem adottato da iOS).
+    \item Descrivere il funzionamento della Secure Boot Chain di iOS.
+    \item Spiegare i meccanismi adottati da iOS per la protezione del Kernel.
+    \item Schematizzare la struttura del Kernel iOS.
+    \item Descrivere come iOS attua politiche di sicurezza per i dati e applicazioni.
+    \item Descrivere sinteticamente le funzionalità gestite dal componente Mach del kernel XNU di iOS. Spiegare i vantaggi e i possibili svantaggi della gestione delle funzionalità rispetto al kernel Linux.
+    \item Descrivere in modo schematico ma dettagliato le funzionalità gestite dal componente BSD del Kernel XNU di iOS.
+    \item Indicare le funzionalità gestite da ciascuna componente del kernel ibrido di iOS.
+\end{enumerate}
+
+
+\chapter{ROS}
+\section{Cos'è ROS - framework}
+ROS è un framework che fornisce le componenti software per lo sviluppo in ambito robotico. Non è un sistema operativo. 
+\begin{itemize}
+    \item Permette l’interazione con le componenti fisiche di robot differenti utilizzando uno stesso codice, questo poichè vengono poste delle interfacce tra hardware e software, che risolvono il problema della diversità del hardware(astrazione dell’hardware)
+    \item I robot sono sistemi asincroni perchè devono interaggire in tempo reale con l’esterno(reagendo a possibili imprevisti).
+    \item comunicazione con nodi
+    \begin{itemize}
+        \item topic
+        \item service
+    \end{itemize}
+    \item publish/subscribe
+\end{itemize}
+
+\subsection{Astrazione dell'hardware}
+\subsection{Problema asincronicità}
+
+\section{Comunicazione interprocesso - nodi}
+Alla base della comunicazione tra processi in ROS c’è il concetto di nodi(un nodo è un file eseguibile, un programma che fa una cosa specifica(nodo motore, nodo sensore)), topic e servizi, questa avviene grazie a due meccanismi: topic e service.
+
+\subsection{Topic - public/subscribe}
+I topic sono i canali di comunicazione tra i nodi molti a molti; la comunicazione avviene grazie al concetto di public/subscribe, ossia, un nodo può pubblicare dati su un topic e altri nodi possono iscriversi a quel topic per riceverli.(Per tipizzazione dei topic in ROS si intende che ad ogni topic (coda) sia assegnato un solo tipo di messaggio).
+\subsection{Service - request/reply}
+Con il service la comunicazione tra nodi che usa il concetto di request/reply;
+
+a differenza del topic, il nodo fa una richiesta ad un nodo e questo risponderà alla richiesta(perciò request/reply). I service sono costituiti da una coppia di messaggi (uno per la request e uno per la reply).
+\section{Comando: roscore}
+\subsection{Ros master - logging mode, parameter server}
+Il comando \$roscore in ROS è il primo comando eseguibile e serve ad avviare:
+\begin{itemize}
+    \item ROS MASTER: Il nodo master in ROS si occupa di stabilire una connessione per la comunicazione tra i nodi, senza di esso i nodi non potrebbero comunicare,  fornisce un meccanismo di consultazione per permettere ai processi di identificarsi l’un l’altro a runtime,il comando per avviarlo è roscore
+    \item LOGGING MODE: consente agli utenti di leggere i messaggi che i nodi si scambiano
+    \item PARAMETER SERVER: fornisce parametri di configurazione
+\end{itemize}
+
+
+
+\subsection{Comandi}
+\begin{itemize}
+    \item rosrun: rosrun package [nomefile]
+    
+    permette di avviare il file all’interno del package
+    \item rosparam list: per fornire la lista dei parametri salvati dal server 
+\item rosparam set background\_color [valore]: per aggiornare il colore del background
+\item rostopic type [nome\_topic]: mostra il tipo di messaggio di uno specifico topic
+\item rostopic pub topic/events “alarm” 
+
+rostopic pub è il comando per pubblicare su un topic, topic/events è il percorso e alarm è il messaggio
+\item rosmsg show [msg] che appunto mostra la struttura con cui è composto il messaggio passato come parametro
+
+    \item rosnode info [nome\_nodo] mostra informazioni sul nodo passato come parametro tra cui i topic su cui pubblica (publisher) e i topic a cui è sottoscritto (subscriber)
+
+\end{itemize}
+
+\section{Domande ROS}
+\begin{enumerate}
+    \item Si descrivano le peculiarità del sistema ROS.
+    \item Si descrivano sinteticamente i due principali meccanismi di comunicazione interprocesso tra nodi in ROS.
+    \item Descrivere le caratteristiche dei service ROS, indicando il meccanismo IPC (Inter Process Communication) adottato. Scrivere inoltre il comando da terminale per elencare i service attivi e spiegarne la sintassi.
+    \item Spiegare il ruolo dei messaggi nella comunicazione publish/subscribe in ROS e indicare il numero massimo di tipi di messaggi che possono essere associati ad un singolo topic.
+    \item Scrivere:
+    \begin{itemize}
+        \item Il comando da terminale per pubblicare un messaggio “alarm” di tipo stringa su \texttt{/events}.
+        \item Il comando da terminale per mostrare il tipo di messaggio di uno specifico topic.
+        \item I comandi per elencare i topic publisher/subscriber.
+    \end{itemize}
+    \item Spiegare cosa si intende per tipizzazione dei topic in ROS.
+    \item Spiegare il funzionamento dei comandi \texttt{roscore} e \texttt{rosrun} su ROS.
+    \item Spiegare il funzionamento del nodo master in ROS e indicare il comando per avviarlo dal terminale.
+    \item Descrivere cos’è il Parameter Server di ROS, specificare i comandi per:
+    \begin{itemize}
+        \item Elencare tutti i parametri.
+        \item Aggiornare il parametro \texttt{background\_color} con valore 130.
+    \end{itemize}
+    \item Quale funzione riveste il ROS Parameter Server? Si indichi almeno un comando per interagire con tale componente.
+    \item Spiegare il funzionamento delle callback in ROS, aiutandosi con degli esempi.
+    \item Si spieghi il meccanismo di storage e retrieval dei parametri a runtime previsto da ROS (ossia cos’è il ROS Parameter Server). Aiutarsi con uno schema.
+\end{enumerate}
+
+
+\chapter{NUTTX/PX4}
+\section{UAV e autopilota PX4}
+Un UAV è un aereoveicolo che vola grazie a sistemi di autopilota come PX4.
+\subsection{Layers di PX4 - flight stack e middleware}
+Il flight stack è uno dei due layer del sistema operativo open source PX4.
+
+Consta di tre componenti fondamentali: 
+\begin{itemize}
+    \item estimator: riceve dati dai sensori e definisce un setpoint
+    \item controller: tramite i dati sullo stato stimato del veicolo effettua delle correzioni, quindi rileva il setpoint riguardante l’assetto attuale e lo modifica affinchè il veivolo si muova verso la posizione desiderata
+    \item mixer: riceve dati dal controller e li traduce in comandi per i motori
+\end{itemize}
+
+Il middleware è un componente chiave che collega tutte le parti del sistema tra loro(sensori, moduli di controllo, attuatori ecc), perciò è fondamentale per la comunicazione tra i vari blocchi del flight stack. 
+
+I moduli per la comunicazione sono:
+\begin{itemize}
+    \item oURB: è un bus che permette lo scambio tra messaggi
+    \item MAVLink: permette la comunicazione tra il veivolo e la stazione di terra(GCS) e lo scambio di messaggi tra autopilota e altri componenti esterni
+\end{itemize}
+
+\subsection{Caricamento firmware PX4}
+Il caricamento del firmware (il processo per cui il PX4 viene installato) PX4 avviene tramite la cross-compilazione dei makefile, che definiscono le regole per la costruzione dei moduli caricabili. per includere tali codici compilati usiamo il tool make. 
+\subsubsection{Integrazione moduli esterni}
+Inoltre se si desidera integrare moduli esterni bisogna includerli in default.cmake, mentre nel file CMakeList.txt si specificano le istruzioni per la compilazione del codice aggiunto in default.cmake 
+\section{Sistemi operativi real-time}
+\subsection{Tipologie: hard e soft}
+Un sistema operativo real-time DEVE essere deterministico(sistema in cui tutte le variabili sono definite, di cui si possono avere informazioni in tempo reale) e la risposta di tali richieste devono essere fornite entro un certo intervallo di tempo, perciò che rispettino una deadline. 
+
+Possono essere:
+\begin{itemize}
+    \item hard real time: hai sempre delle deadline sui processi e vanno rispettate(esempi: sistemi di controllo centrali nucleari)
+    \item soft real time: ammette violazioni sulle deadline(esempi: sistemi multimediali)
+\end{itemize}
+
+
+\subsection{Algoritmi di scheduling CPU}
+Gli algoritmi di scheduling utilizzati nei RTOS sono:
+\begin{itemize}
+    \item Round robin: è un algoritmo con preemption(con preemption un processo può interrompersi e poi riprendere successivamente), in cui viene definito il tempo in cui un processo può usare la CPU, potrebbe violare le deadline
+    \item Priority based: è un algoritmo con preemption che da priorità ai processi real time, è solo per i soft real time e non tiene conto delle deadline
+    \item Rate monotonic: è adatto ai sistemi hard real time(NuttX) e da la priorità ai processi che richiedono la CPU più spesso(con preemption)
+
+\end{itemize}
+\subsubsection{Quale usa NattX?}
+NuttX è Hard real time perchè 
+\section{Cos'è NattX}
+NattX è un so hard real time scritto principalmente in linguaggio C,è composto da due layers:
+
+
+\subsection{Architettura - user layer e os layer*(driver)}
+\begin{itemize}
+    \item user layer: è il livello più vicino all’utente, che permette la comunicazione con l’utente e contiene le librerie che permettono la comunicazione con il layer inferiore
+    \item os layer: contiene i driver e la logica di base di NuttX, questo livello è a sua volta suddiviso in:
+    \begin{itemize}
+        \item upper half driver:  interagisce con lo user layer e  implementa operazioni generiche come read e write
+        \item lower half driver: interagisce con l’hardware
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{IPC - signals - POSIX - semafori}
+I meccanismi di IPC(Si tratta di un insieme di tecnologie software che consentono a diversi processi di scambiarsi dati e informazioni) in NuttX sono:
+\begin{itemize}
+    \item signals: permette ai task di inviare segnali tra loro tramite il taskID
+    \item POSIX message queue: i task comunicano tra loro tramite code, ad ogni task viene associata una coda e viene messo in pausa, quando riceve un messaggio il task si sveglia
+    \item semafori: tramite mutual exclusion e s i task vengono inizializzati come acceso e spento, 1 o 0
+\end{itemize}
+\section{Task}
+ Un task in NuttX non è altro che un processo che non gestisce uno spazio di indirizzo privato, ciò poiché molti microcontrollori non possiedono la Memory Management Unit e quindi NuttX opera solo con un flat address space. le proprietà di un task sono descritte in una struttura detta TCB, che specifica risorse associate, stato e ID. I task sono organizzati in relazioni parent-child, il task padre attende la fine del task figlio prima di essere rimossa.
+\newpage
+\section{Domande NUTTX/PX4}
+\begin{enumerate}
+    \item Descrivere i principali algoritmi di scheduling della CPU adottati dai sistemi operativi real-time. Specificare quale fra essi è impiegato nel sistema operativo NuttX e chiarire in dettaglio le motivazioni della scelta.
+    \item Descrivere brevemente l’architettura del flight stack PX4.
+    \item Descrivere gli stati previsti dallo scheduling dei task su NuttX.
+    \item Descrivere il concetto di task in NuttX, chiarendo le eventuali analogie e differenze con processi e thread di un sistema operativo general purpose.
+    \item Descrivere i principali meccanismi di IPC di NuttX.
+    \item Descrivere come avviene il caricamento del firmware di PX4 su una piattaforma.
+    \item Spiegare le principali differenze tra un sistema operativo hard e soft real-time. Indicare a quale delle due tipologie appartiene il sistema operativo NuttX e motivare la risposta.
+    \item Spiegare la struttura generale dei driver del sistema operativo NuttX.
+\end{enumerate}
+
+
+\chapter{TEORIA GENERALE}
+\section{Struttura sistema op e funzionamento pc}
+\subsection{Interrupt Handler}
+\subsection{Remote Procedure Call}
+\subsection{Fork, processo zombie e orfano}
+\subsection{Interrupt sincroni e asincroni}
+\section{Thread}
+\subsection{Modelli di programmazione multithread}
+\subsubsection{Molti a uno}
+\subsubsection{Uno a uno}
+\subsubsection{Molti a molti}
+\section{Scheduling}
+\subsection{Schedulatore a medio termine}
+\subsection{Multilevel queue}
+\subsection{Short term e long term scheduler}
+\subsection{Schedulazione con coda multilivello
+retroazionata}
+\subsection{Scheduling SJF}
+\subsubsection{serie esponenziale - next CPU burst}
+\subsection{Convoy effect}
+\subsection{Code di schedulazione}
+\section{Sincronizzazione processi}
+\subsection{Condizione necessaria semaforo}
+\subsection{Busy waiting}
+\subsection{Starvation}
+\section{DeadLock}
+\subsection{Condizioni necessarie deadlock}
+\subsection{Problematiche deadlock detection and recovery}
+\section{Memoria centrale e virtuale}
+\subsection{Allocazione linkata e contigua}
+\subsection{Frammentazione interna ed esterna memoria}
+\subsection{LRU mediante uso di stack}
+\subsection{Tecniche paginazione memoria a 64 bit}
+\subsection{Anomalia di Belady}
+\subsection{Process control block}
+\section{Struttura dischi}
+\subsection{Componenti del tempo di accesso a disco}
+\subsubsection{Time seek e latenza rotazionale}
+\newpage
+\section{Domande}
+\subsection{Struttura sistema op e funzionamento pc}
+\begin{enumerate}
+    \item Spiegare la struttura e descrivere le funzionalità dell’interrupt Handler. Chiarire in quale momento
+del processo di gestione di una interruzione esso interviene.
+\item Si spieghi brevemente a cosa serve una Remote Procedure Call e qual è la funzione del client-stub all’interno di essa.
+\item Spiegare sinteticamente il funzionamento della chiamata di sistema fork e indicare in quali casi può riscontrarsi la presenza di un processo zombie o un processo orfano
+\item chiarire le differenze (intrinseche e di gestione da parte del S.O) tra gli interrupt sincroni e asincroni.
+\end{enumerate}
+
+\subsection{Thread}
+\begin{enumerate}
+    \item Descrivere sinteticamente i tre modelli di programmazione multithread. Per ciascuno di essi
+chiarire pregi e difetti. Indicare anche quale dei modi produce il maggiore impatto sulle prestazioni della macchina
+\end{enumerate}
+
+\subsection{Scheduling}
+\begin{enumerate}
+    \item Si chiarisca il ruolo dello schedulatore a medio termine nell’ambito del processo di scheduling della CPU e se ne spieghino inoltre caratteristiche tecnologiche.
+    \item Si descrivano brevemente le caratteristiche degli algoritmi di scheduling mediante code
+multithread (multilevel queue). Si chiarisca con precisione di quale meccanismo di schedulazione esse sono una approssimazione
+\item Si chiarisca il ruolo dello schedulatore a medio termine spiegandone inoltre la funzionalità
+\item Si spieghi brevemente qual è la differenza (funzionale ed architetturale) tra lo short-term scheduler ed il long-term scheduler
+\item Rappresentare schematicamente il funzionamento della schedulazione con coda multilivello retroazionata. Spiegare perché tale meccanismo previene la starvation dei processi.
+\item Si descriva la serie esponenziale per la stima del “ next CPU burst” in un algoritmo di scheduling SJF.
+\item Cos’è il Convoy effect?
+\item Spiegare l’utilizzo del meccanismo delle code di schedulazione per gestire la distribuzione dei processi nella macchina, per l’accesso alla CPU
+\end{enumerate}
+\subsection{Sincronizzazione processi}
+\begin{enumerate}
+    \item Qual è la condizione indispensabile perché sia possibile realizzare un semaforo?
+    \item Fenomeno del busy waiting nei semafori. Da dove ha origine? Come è possibile risolverlo
+    \item Si descriva brevemente il fenomeno della starvation nell’ambito della schedulazione della coda di
+ready nel ciclo di esecuzione dei processi e si dica, motivando la risposta, con quali approcci si può limitare un effetto del genere.
+\end{enumerate}
+
+\subsection{DeadLock}
+\begin{enumerate}
+    \item Descrivere brevemente le condizioni necessarie per il verificarsi di un deadlock
+    \item Si spieghi quale è il significato del permesso di esecuzione assegnato ad un file relativo ad un device
+    \item Spiegare sinteticamente le problematiche associate al rilascio anticipato delle risorse nel caso di
+deadlock detection and recovery
+\end{enumerate}
+
+\subsection{Memoria centrale e virtuale}
+\begin{enumerate}
+    \item Descrivere il meccanismo dell’allocazione collegata (linked) di un file, evidenziando vantaggi e
+svantaggi rispetto al meccanismo di allocazione contigua
+\item Descrivere il problema della frammentazione (interna ed esterna) della memoria, con particolare
+riferimento allo schema di gestione che fa uso della segmentazione.
+Quali sono le differenze rispetto all’utilizzo della paginazione?
+\item Si illustri l’implementazione di sostituzione delle pagine LRU mediante utilizzo di stack
+\item Descrivere sinteticamente le tre principali tecniche di paginazione della memoria per architettura a 64 bit
+\item Si illustri il significato e le conseguenze della cosiddetta anomalia di Belady. Spiegare se ed eventualmente in che modo essa è superabile.
+\item Si tracci lo schema del contenuto di un Process Control Block evidenziando per ciascuna componente in quale circostanza della vita del processo viene creata/aggiornata
+\end{enumerate}
+\subsection{Struttura dischi}
+\begin{enumerate}
+    \item Quali sono le componenti del tempo di accesso a disco? Quale di esse tende ad essere dominante? È più conveniente effettuare pochi trasferimenti di blocchi di grosse dimensioni
+oppure molti trasferimenti di blocchi piccoli? Si motivino le risposte
+\end{enumerate}
+\chapter{Lista comandi utili linux}
+\section{Comandi}
+\subsection{ls, ps, cut, grep, head, sort, sed}
+\section{Domande}
+
+\begin{enumerate}
+\item Spiegare l’utilità del comando \texttt{kill} sottolineando le differenze nell’utilizzo con i due flag elencati qui sotto:
+\begin{itemize}
+    \item \texttt{kill -15 PID}
+    \item \texttt{kill -9 PID}
+\end{itemize}
+
+\item Si spieghino le differenze tra i file \texttt{/etc/shadow} e \texttt{/etc/passwd}. Si indichi come sono strutturati, qual è la rispettiva funzione e chi può accedervi.
+
+\item Chiarire le differenze esistenti tra i seguenti due comandi:
+\begin{itemize}
+    \item \texttt{chmod g+w nome.prova}
+    \item \texttt{chmod 664 nome.prova}
+\end{itemize}
+
+\item Spiegare il significato delle seguenti variabili di ambiente e chiarire preliminarmente cosa permette di fare questo strumento in Linux e in altri sistemi operativi:
+\texttt{PATH}, \texttt{HOME}, \texttt{USER}, \texttt{SHELL}, \texttt{PWD}.
+\newpage
+\item Sia assegnato il seguente albero di directory e si supponga di avere i privilegi di superutente:
+
+\begin{verbatim}
+/ 
+  var/
+    www/
+      html/
+  etc/
+    passwd
+    default/
+    shadow
+\end{verbatim}
+
+Dire come l’albero risulta modificato dopo la seguente sequenza di comandi:
+\begin{verbatim}
+cd /etc/default
+cp ../pa* ./
+cd /var/www
+mv ./html /
+touch ./html
+mkdir prova
+cd -
+touch ./file
+\end{verbatim}
+
+\item Spiegare, motivando la risposta, quali sono gli effetti del comando:
+\begin{verbatim}
+chmod 744 ./file_A
+\end{verbatim}
+relativamente al file:
+\begin{verbatim}
+-rwxrwxr-x 2 user group_a 55231 Apr 23 20:32 file_A
+\end{verbatim}
+
+\item Spiegare il significato dei campi del seguente output del comando:
+\begin{verbatim}
+$ ls -la
+drwxrwxr-x 2 pippo group_mail 52874 Feb 8 16:36 .file
+\end{verbatim}
+
+\item Si dica con precisione quali informazioni sono contenute all’interno del file \texttt{/etc/passwd} e se questo è accessibile da un utente senza privilegi di amministratore.
+
+\item Spiegare il significato dei campi del seguente output del comando \texttt{ls -la}:
+\begin{verbatim}
+drwxrwxr-x 2 user_group 34234 Feb 9 15:34 .file_name
+\end{verbatim}
+
+\item Si supponga che la CWD sia \texttt{\~{}/dir}. Descrivere la modalità per copiare il file \texttt{~/dir/file.prova} nella home directory, evitando di sovrascrivere un eventuale file esistente.
+
+\item Indicare quali sono i possibili comandi Linux che possono essere adoperati per la cancellazione di una directory.
+
+\item Disegnare l’albero di directory e file generato dalla seguente sequenza di comandi digitati, avendo i permessi di amministratore di sistema. La directory di partenza è la home directory dell’utente attualmente loggato (nome utente: \texttt{user}):
+\begin{verbatim}
+root@ubuntu:/home/user# mkdir dir1 dir2
+root@ubuntu:/home/user# cd dir1
+root@ubuntu:/home/user# touch file1.txt
+root@ubuntu:/home/user# mv file1.txt ..
+root@ubuntu:/home/user# cd ../dir2
+root@ubuntu:/home/user# touch file2.txt
+root@ubuntu:/home/user# cp ../file1.txt .
+\end{verbatim}
+
+\item Si indichi la struttura tipica dell’output del comando \texttt{ps aux}. Spiegare il significato delle flag e indicare un possibile comando alternativo. Il comando \texttt{ps} permette di visualizzare una schermata statica dei processi attivi.
+
+\item Spiegare a cosa serve il comando \texttt{top}, chiarendo le differenze principali con comandi analoghi. Specificare in dettaglio quali informazioni esso produce in output.
+
+\item Si indichi la struttura tipica dell’output del comando \texttt{man}.
+
+\item Si chiarisca la differenza di utilizzo tra i comandi \texttt{help}, \texttt{man} e \texttt{h}, riportandone la sintassi. Chiarire la differenza tra i tre diversi tipi di comandi che una shell può eseguire.
+
+\item Qual è la differenza essenziale tra i comandi \texttt{jobs}, \texttt{top} e \texttt{ps}?
+
+\item Si scriva la sinossi del comando UNIX per cambiare il gruppo di un file, specificando i prerequisiti indispensabili.
+
+\end{enumerate}
+
+\section*{Esercizi}
+
+\begin{enumerate}
+    \item Si scriva il comando complesso che permetta di contare quanti processi all’interno della macchina host hanno un PID caratterizzato da un numero pari.
+    
+    \item Si scriva un unico comando (pipeline) per fornire la lista dei file semplici all’interno della home directory per cui gli utenti ‘altri’ del sistema possiedano esclusivamente il permesso di lettura e il cui nome sia una stringa che termina con una vocale seguita da una cifra.
+    
+    \item Scrivere una sequenza di comandi che consenta di ordinare in ordine alfabetico il contenuto di un file di nome \texttt{prova.testo} e di estrarre dal file ordinato le prime 5 righe scrivendole in appendice sul file \texttt{output.txt} presente nella home directory dell’utente loggato.
+    
+    \item Si scriva un unico comando (pipeline) in grado di restituire la lista delle directory all’interno della home per le quali il gruppo proprietario ha (esclusivamente) il permesso di lettura e il cui nome è una stringa che termina con tre cifre.
+    
+    \item Si scriva il comando per mostrare sullo standard output l’elenco degli studenti che hanno una votazione maggiore o uguale a 22, con ordinamento numerico decrescente eliminando le righe ripetute:
+    \begin{itemize}
+        \item mario rossi 22
+        \item rocco verdi 24
+        \item marco rossi 23
+        \item sergio bianchi 26
+        \item mario rossi 22
+        \item rosa barbieri 28
+    \end{itemize}
+    
+    \item Contare quanti processi all’interno della macchina host non appartengono all’utente identificato dal nome \texttt{UserA}.
+    
+    \item Elaborando il contenuto del file \texttt{/etc/passwd}, si scriva il comando per mostrare sullo standard output l’elenco di tutti gli utenti del sistema diversi da \texttt{root} che utilizzano \texttt{bash} come shell di default.
+    
+    \item Scrivere il comando Linux che seleziona dal file \texttt{/etc/passwd} e stampa a video tutte le righe che contengono due cifre dispari, separate da un qualsiasi carattere.
+    
+    \item Si scriva il comando Linux che permette di aggiungere un account utente al sistema con le seguenti caratteristiche: \\
+    Nome: \texttt{mario} \\
+    Home directory: \texttt{/home/mario} \\
+    Shell: \texttt{/bin/bash} \\
+    Gruppo principale: \texttt{mario} \\
+    Altri gruppi: \texttt{users, mail, printer}
+    \newpage
+    \item Scrivere una pipeline di comandi che fornisca in output il numero di file semplici (includendo anche quelli nascosti), presenti all’interno della directory corrente, per i quali:
+    \begin{itemize}
+        \item l’utente proprietario ha almeno i permessi di lettura e scrittura;
+        \item il nome dell’utente proprietario inizia con la lettera ‘a’;
+        \item il gruppo proprietario ha solo il permesso di lettura ed il suo nome termina con ‘so’.
+    \end{itemize}
+    
+    \item Utilizzando esclusivamente i comandi \texttt{ls} e \texttt{sed} si visualizzi l’elenco in formato esteso dei file presenti all’interno della directory corrente, eliminando la colonna relativa all’ACL.
+    
+    \item Scrivere una pipeline di comandi che fornisca in output il numero di file semplici (anche nascosti), presenti all’interno della directory corrente, di cui l’utente proprietario possiede almeno i permessi di scrittura.
+    
+    \item Spiegare il comando: \\
+    \texttt{cat lista\_nomi.txt | head -4 | grep '\textbackslash (3\textbar [34])\$' -v > output.txt} \\
+    e indicare l’effetto che esso produce se il file \texttt{lista\_nomi.txt} è il seguente:
+    \begin{verbatim}
+mario rossi 080 541234
+paolo rossi 083 434232
+rocco verdi 093 3424033
+marco rossi 066 091312
+sergio bianchi 083 311234
+fabio giallo 080 123080
+rosa barbieri 081 312313
+    \end{verbatim}
+    
+    \item Spiegare qual è l’effetto del seguente comando: ls -aF1 | grep '\textasciicircum \textbackslash
+.'
+    
+    \item Si scriva il comando per inviare l’output del list della directory \texttt{/etc/var/www/html} sul file \texttt{result.txt} presente nella home directory dell’utente loggato, filtrando tutte e solo le directory di cui il gruppo proprietario ha il permesso di lettura ed esecuzione.
+    
+    \item Spiegare il comando: \\
+    \texttt{cat lista\_nomi.txt | head -3 | grep '\textbackslash<r.*i\textbackslash>.*\$' -v > output.txt} \\
+    e indicare l’effetto che esso produce se il file \texttt{lista\_nomi.txt} è il seguente:
+    \begin{verbatim}
+mario rossi 080 541234
+paolo rossi 081 434234
+luigi verdi 094 3424080
+marco rossi 066 091312
+sergio bianchi 080 311231
+fabio giallo 080 123080
+rosa barbieri 081 312313
+    \end{verbatim}
+    
+    \item Si scriva il comando per inviare l’output del list della directory \texttt{/home/utenti} sul file \texttt{lista.txt} presente nella home dell’utente attualmente loggato, filtrando solo i file standard su cui gli utenti proprietari hanno almeno i permessi di lettura e scrittura.
+    
+    \item Si scriva il comando per inviare l’output del list della directory \texttt{/etc/var/www/html} sul file \texttt{output.txt} presente nella home directory dell’utente loggato, filtrando tutti e soli gli elementi che iniziano con la lettera 'm' o 'M'.
+    
+    \item Utilizzare i comandi \texttt{sed} e \texttt{cut} per costruire il file \texttt{lista\_utente.testo}, nella home directory dell’utente attualmente loggato, in modo che contenga l’elenco di tutti i nomi degli utenti del sistema insieme alle relative home dir, separati dal carattere ‘-’ (esempio: user-/home/user).
+    
+    \item Come è possibile sapere quali utenti (esclusivamente il nome), il cui account cominci per ‘m’ o ‘M’, sono titolari di un processo denominato \texttt{gnome-terminal} su terminali diversi? Eliminare eventuali righe duplicate.
+    
+    \item Scrivere il comando Linux per visualizzare le informazioni estese di tutti i file semplici presenti all’interno della directory corrente, per i quali l’utente proprietario ed i membri del gruppo proprietario hanno almeno i privilegi di lettura e scrittura e tutti gli altri utenti possiedono solo il permesso di lettura. Le informazioni estratte devono essere salvate su un file di nome \texttt{output.txt}.
+    \newpage
+    \item Il file \texttt{elenco.txt} ha il seguente contenuto:
+    \begin{verbatim}
+Rossi Mario
+Rossi Paolo
+Verdi Giuseppe
+Bollo Franco
+Bianchi Alessandra
+Cerri Elena
+Dodi Francesco
+    \end{verbatim}
+    Si costruisca il file \texttt{risultato.txt} che contenga in ordine alfabetico tutti gli elementi con cognome che inizi per R o per B.
+    
+    \item La directory corrente contiene il file \texttt{binary.txt} le cui righe sono costituite da stringhe formate solo da combinazioni di ‘1’ e ‘0’. Si scriva il comando UNIX per estrarre da questo file solo le righe che contengono almeno tre ‘0’ consecutivi e produrre il risultato nel file \texttt{output.txt} nella home directory dell’utente loggato.
+    
+    \item Si scriva il comando per inviare l’output del list della directory \texttt{/var/www/html} sul file \texttt{web.list} presente nella home directory dell’utente loggato, filtrando tutti e soli i file o le directory nascoste.
+    
+    \item Si scriva il comando per inviare l’output del list della directory \texttt{/home/utenti} sul file \texttt{lista.txt} presente nella home dell’utente attualmente loggato, filtrando solo i file standard su cui gli utenti proprietari hanno almeno i permessi di lettura e scrittura.
+    
+    \item Scrivere il comando UNIX per visualizzare, dal più piccolo al più grande, i numeri contenuti all’interno del file \texttt{numeri} presente nella directory corrente e produrre il risultato nel file \texttt{fileA} nella home directory dell’utente attualmente loggato.
+    
+    \item Scrivere il comando UNIX per visualizzare in ordine alfabetico i file contenuti nella directory corrente e produrre il risultato nel file \texttt{fileA} nella directory dell’utente attualmente loggato.
+
+    \item Scrivere il comando per leggere dal file ./lista un elenco di nomi, cognomi e codici fiscali mostrando a schermo soltanto le righe relative agli utenti nati nel 1982.
+
+    \item Estrarre dalle ultime 6 righe del file matricole.txt Contenuto nella home directory dell’utente loggato tutte le righe che contengono almeno 3 cifre pari consecutive
+
+    \item Scrivere il comando linux per montare il dispositivo a blocchi /dev/sdb1 con i permessi di lettura e scrittura in ~/media
+
+    \item Scrivere una sequenza di comandi che consenta di ordinare in ordine alfabetico il contenuto di un
+file di nome prova.testo e di estrarre dal file ordinato le ultime 3 righe scrivendole in appendice sul file output.txt presente nella home directory dell’utente loggato.
+
+
+    \item Scrivere il comando che consenti di sostituire all'interno del file matricole.txt nelle prime 8 righe
+tutte le occorrenze che iniziano per ‘abb’ con la stringa ‘cbb’.
+
+\item Scrivere il comando UNIX per creare nella home directory dell’utente attualmente loggato un link simbolico di nome slink\_studenti al file studente.testo  Esso deve essere presente nella directory corrente
+\end{enumerate}
+\newpage
+\section{Risposte domande esame}
+
+
+\begin{enumerate}
+
+\item 
+\begin{verbatim}
+ps | grep -E '[[:blank:]]*[[:digit:]]*[02468]\>'
+\end{verbatim}
+Non uso flag di ps perché il primo campo dell'output standard ha come primo campo, seguito da un numero non ben definito di spazi o tabulazioni, l’ID del PID. Inoltre specifico che la parola (cioè il codice PID) finisca con un numero pari.
+
+\item 
+\begin{verbatim}
+ls -l | grep -E '^-.{6}r--.*[aeiou][[:digit:]]$'
+\end{verbatim}
+Non è necessario specificare che \texttt{aeiou} e \texttt{digit} siano l'ultima parola perché il dollaro \texttt{\$} indica proprio la fine della stringa.
+
+\item 
+\begin{verbatim}
+sort prova.testo | head -5 >> ~/output.txt
+\end{verbatim}
+\texttt{sort} ordina alfabeticamente, \texttt{head} prende le prime 5 righe, \texttt{>>} scrive in appendice.
+
+\item 
+\begin{verbatim}
+ls -l ~/ | grep -E '^d.{3}r--.*[[:digit:]]{3}$'
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+grep -E '(2[2-9] | 30)' risultati_esame.txt | sort -nr | uniq
+\end{verbatim}
+\texttt{sort -n} ordina numericamente crescente, \texttt{r} inverte il sort, \texttt{uniq} elimina duplicati.
+
+\item 
+\begin{verbatim}
+ps -u ~/ | grep -cv 'UserA'
+\end{verbatim}
+\texttt{ps -u} mostra processi con nome utente all’inizio; \texttt{grep -cv} conta tutte le righe che NON contengono UserA.
+
+\item 
+\begin{verbatim}
+grep -Ev 'root' /etc/passwd | grep -E 'bash$'
+\end{verbatim}
+Struttura del file \texttt{/etc/passwd} → \texttt{user:password:uid:gid:info:home:shell}
+
+\item 
+\begin{verbatim}
+grep -E '[13579].[13579]' /etc/passwd
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+sudo useradd -m -d /home/mario -s /bin/bash -g mario -G users,mail,printer mario
+\end{verbatim}
+\texttt{sudo} è necessario. Flag usati: \texttt{-m} crea home, \texttt{-d} la specifica, \texttt{-s} specifica la shell, \texttt{-g} gruppo principale, \texttt{-G} gruppi secondari.
+
+\item 
+\begin{verbatim}
+ls -la | grep -cE '^rw.r--.*/<a.*/>.*/<.*so/>.*$'
+ls -la | grep -cE '^rw.r--.{3}[[:blank:]]+[[:digit:]]+[[:blank:]]+/<a.*/>[[:blank:]]+/<.*so/>.*$'
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ls -l | sed 's/^-.\{9\}/ /'
+\end{verbatim}
+\begin{verbatim}
+sed 's/testo da sostituire/nuovo testo/'
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ls -la | grep -cE '^-.w'
+\end{verbatim}
+\newpage
+\item 
+\texttt{cat lista\_nomi.txt | head -4 | grep '\ (3\textbar{}[34])\$' -v > output.txt} \\
+Tramite \texttt{cat} e \texttt{head} prendo le prime 4 righe. \texttt{grep -v} esclude righe che finiscono per 33 o 34. Risultato:
+\begin{verbatim}
+paolo rossi 083 434232
+marco rossi 066 091312
+\end{verbatim}
+
+\item 
+\texttt{ls -aF1} mostra file e directory (anche nascosti) uno per riga, con simboli di tipo. \texttt{grep '\textasciicircum\textbackslash
+.'} filtra quelli che iniziano con punto.
+ 
+\item 
+\begin{verbatim}
+grep -E '^d.{3}r.x' /etc/var/www/html > ~/result.txt
+\end{verbatim}
+
+\item 
+\texttt{cat lista\_nomi.txt | head -3 | grep '\textbackslash<r.*i\textbackslash>.*\$' -v > output.txt} \\
+Estrae le prime 3 righe e poi esclude le parole che iniziano con \texttt{r} e finiscono con \texttt{i}. Risultato:
+\begin{verbatim}
+luigi verdi 094 3424080
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ls -l /home/utenti | grep -E '^-rw' > ~/lista.txt
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ls -l /etc/var/www/html | grep -E '/<[mM].*/>' > ~/output.txt
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+cut -f1,6 -d':' /etc/passwd | sed 's/\:/\-/' > ~/lista_utente.testo
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ps ax -f | grep -E '^[mM].*gnome-terminal$' | cut -f1 | uniq
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ls -l | grep -E '^-rw.rw.r--' > output.txt
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+grep '^[RB]' elenco.txt | sort > risultato.txt
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+grep '000' binary.txt > ~/output.txt
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ls -a1 /var/www/html | grep -E '^\.' > ~/web.list
+\end{verbatim}
+Uso \texttt{-a1} per mostrare file nascosti uno per riga, senza dettagli.
+
+\item 
+\begin{verbatim}
+ls -l /home/utenti | grep -E '^-rw' > ~/lista.txt
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+sort -n numeri.txt > ~/fileA.txt
+\end{verbatim}
+
+\item 
+\begin{verbatim}
+ls | sort > ~/fileA.txt
+\end{verbatim}
+\end{enumerate}
+\newpage
+\section{Domande comandi linux ChatGPT}
+\begin{enumerate}
+    \item Scrivere un comando per contare i file nella directory corrente che siano leggibili solo dal proprietario e scrivibili da tutti.
+    \item Trovare i file nascosti nella home directory che terminano con \texttt{.conf} e contengono almeno una cifra nel nome.
+    \item Visualizzare l’elenco degli utenti presenti nel file \texttt{/etc/passwd} che utilizzano \texttt{/bin/sh} come shell.
+    \item Visualizzare il PID di tutti i processi che contengono la parola \texttt{ssh} nel comando e appartengono all’utente corrente.
+    \item Estrarre dal file \texttt{studenti.txt} tutte le righe contenenti nomi che iniziano per vocale e voti superiori a 25.
+    \item Scrivere un comando per elencare i file nella directory corrente ordinati per dimensione decrescente.
+    \item Visualizzare le directory nella home il cui nome termina con \texttt{\_backup} e che siano scrivibili solo dal proprietario.
+    \item Estrarre dal file \texttt{log.txt} le righe che contengono tre lettere maiuscole consecutive.
+    \item Cercare i file nella home che abbiano permessi \texttt{r--r-----} (solo lettura per owner e gruppo).
+    \item Elencare tutti i processi avviati da utenti il cui nome inizia con la lettera \texttt{s}.
+    \item Scrivere un comando per sostituire in un file tutte le parole che iniziano per \texttt{temp} con \texttt{TMP\_}.
+    \item Creare una pipeline per contare le directory il cui nome contiene un numero.
+    \item Trovare i file che hanno permessi di esecuzione per tutti e dimensione maggiore di 1 MB.
+    \item Mostrare il contenuto del file \texttt{/etc/group} limitandolo ai gruppi che contengono più di due membri.
+    \item Ordinare alfabeticamente un file chiamato \texttt{prodotti.txt} ed estrarre le ultime 5 righe.
+    \item Cercare tra i file \texttt{.log} nella directory corrente quelli che contengono almeno 5 occorrenze della parola \texttt{error}.
+    \item Estrarre solo i nomi utente dal file \texttt{/etc/passwd} usando \texttt{cut} e salvarli su \texttt{utenti.txt}.
+    \item Stampare a video tutte le righe di \texttt{esami.txt} che non terminano con un numero.
+    \item Contare quanti file nella directory corrente hanno un numero dispari di caratteri nel nome.
+    \item Sostituire tutte le vocali accentate con quelle non accentate nel file \texttt{documento.txt}.
+    \item Mostrare le righe duplicate presenti in \texttt{log\_accessi.txt}.
+    \item Scrivere una pipeline per mostrare le 10 righe più lunghe del file \texttt{testo.txt}.
+    \item Creare nella home un link simbolico a un file chiamato \texttt{riservato.dat} presente nella directory corrente.
+    \item Cercare tra i file \texttt{.sh} quelli che iniziano con \texttt{\#!/bin/bash} e che contengano la funzione \texttt{main()}.
+    \item Ordinare un file contenente voti e nomi degli studenti in base al voto, in ordine crescente.
+    \item Creare un comando che seleziona gli utenti dal file \texttt{/etc/passwd} con ID maggiore di 1000 e shell \texttt{/bin/bash}.
+    \item Scrivere un comando per visualizzare l’elenco dei file presenti nella directory \texttt{/home/docenti} che siano directory, il cui nome inizia con una consonante seguita da una cifra, e per i quali il gruppo proprietario abbia solo permessi di lettura.
+    
+    \item Scrivere un comando per salvare in \texttt{output.txt}, nella home directory dell’utente loggato, la lista dei file (anche nascosti) della directory corrente che siano eseguibili dal proprietario, leggibili dal gruppo e non accessibili dagli altri utenti.
+    
+    \item Utilizzare esclusivamente i comandi \texttt{sed} e \texttt{cut} per costruire il file \texttt{utenti\_group.txt} nella home directory dell’utente loggato, contenente le coppie \texttt{nomeutente:gruppo} prese dai file \texttt{/etc/passwd} e \texttt{/etc/group}.
+    
+    \item Scrivere un comando che restituisca i nomi degli utenti del sistema che non hanno una home directory personale, elaborando il file \texttt{/etc/passwd}.
+    
+    \item Scrivere un comando per contare quanti file semplici nella directory corrente sono scrivibili dal proprietario, non hanno permessi per il gruppo, e il cui nome termina con \texttt{.log}.
+    
+    \item Scrivere un comando per ottenere l’elenco delle directory all’interno di \texttt{/var/log} che iniziano con una lettera maiuscola e per le quali il proprietario ha permessi di lettura e scrittura.
+    
+    \item Scrivere un comando per creare nella home directory dell’utente loggato un file contenente i nomi delle directory presenti in \texttt{/tmp} il cui nome inizia con \texttt{temp} e che siano leggibili da tutti gli utenti.
+    
+    \item Scrivere un comando per salvare nel file \texttt{accessi.txt}, presente nella home directory dell’utente loggato, tutte le righe del file \texttt{auth.log} che contengono almeno tre indirizzi IP.
+    
+    \item Scrivere un comando per elencare i file nella home directory che sono leggibili dal gruppo e il cui nome contiene esattamente 6 caratteri, dei quali il terzo è una cifra.
+    
+    \item Scrivere un comando per cercare all’interno della directory \texttt{/etc} i file il cui nome termina con \texttt{.conf} e che siano scrivibili solo dal proprietario. L’output deve essere salvato nel file \texttt{conf\_files.txt} nella home directory.
+\end{enumerate}
+
+
+\end{document}

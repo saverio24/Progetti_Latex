@@ -107,8 +107,8 @@ Nello pseudoheader sono presenti informazioni come il campo Protocol Type viene 
 
 Il checksum è la somma di controllo, è una tecnica di verifica veloce di controllo errore, non è affidabile al 100\%, è comunque ottimo perchè è veloce  
 \begin{itemize}
-    \item Se il checksum è 0, significa che non ci sono errori, non affidabile.
-    \item Se il checksum è diverso da 0, significa che ci sono errori, sicuramente(condizione necessaria).
+    \item Se il checksum calcolato è 0xFF(111111111), significa che non ci sono errori, non affidabile.
+    \item Se il checksum è diverso da 0xFF, significa che ci sono errori, sicuramente(condizione necessaria).
 \end{itemize}
 \subsection{Calcolo checksum}
 Il valore del checksum prima della trasmissione è impostato a 0.
@@ -119,7 +119,7 @@ In ricezione viene ricevuto il datagram, con all'interno il checksum calcolato p
 
 Viene calcolato nuovamente il checksum del datagram ricevuto, sommando in binario tutte le righe(mezze righe da 16 bit) del datagram, e sommandolo al checksum ricevuto. 
 
-Se il risultato è diverso da 0 significa che i due valori calcolati in ricezione e trasmissione sono differenti, perciò c'è un errore.
+Se il risultato è diverso da 1 significa che i due valori calcolati in ricezione e trasmissione sono differenti, perciò c'è un errore.
 
 
 \begin{figure}[h!]
@@ -239,8 +239,8 @@ La chiusura della connessione avviene tramite due mezze chiusure:
 \begin{itemize}
     \item prima mezza chiusura:
     \begin{itemize}
-            \item Il client invia un segmento con il flag FIN a 1, per indicare che non invierà più dati al server.(inizio I mezza chiusura) 
-            \item Il server continua ad inviare i dati finchè non termina e invia un segmento con flag FIN settato.(fine I mezza chiusura)
+            \item Il client invia un segmento VUOTO con il flag FIN a 1, per indicare che non invierà più dati al server.(inizio I mezza chiusura) 
+            \item Il server  ivnia un segmento VUOTO con il flag ACK per confermare la prima mezza chiusura; allora il server continua ad inviare i dati finchè non termina, pronto per inziare con la seconda mezza chiusura(fine I mezza chiusura)
     \end{itemize}
     \item seconda mezza chiusura:
     \begin{itemize}
@@ -273,6 +273,9 @@ succedere, infatti, che il segmento ACK vada
 perso e il server ritrasmetta il suo FIN. Il client
 deve quindi essere ancora in grado di poter
 ritrasmettere l'ACK finale.
+
+\paragraph{Piggybacking} è la trasmissione di riscontri in
+pacchetti che trasportano anche dati, quindi non c'è bisogno di riscontrare utilizzando pacchetti vuoti ma si può fare anche con pacchetti con dati 
 \newpage
 \subsection{TCP sequenze di stati}
 \subsubsection{TCP client}
@@ -369,7 +372,7 @@ Si assume che un segmento sia stato perso se si verificano: 3 dupack, RTO.
 Per ogni segmento inviato, viene avviato un RTO, ossia un timer che scade dopo un certo intervallo di tempo. Se il timer scade prima di ricevere l'ACK, il mittente ritrasmette il segmento.
 \paragraph{Calcolo del RTO}
 
-?
+
 
 \newpage
 \subsubsection{3 Dupack(three duplicate ACK)}
@@ -414,9 +417,9 @@ La variabile cwnd ha il vantaggio di poter essere controllata, perciò se c'è u
 \subsubsection{Algoritmo di controllo di congestione}
 
 \paragraph{Additive Increase Multiplicative Decrease (AIMD)}
-TCP aumenta la finestra di ricezione rallentando "addittivamente" la velocità di invio dei segmenti(inzialmente è molto veloce, piano piano questa velocità tende a diminuire in modo additivo). 
-
-Quando però avviene una congestione, la finestra non viene rallentata in modo additivo, ma anzi, viene ridotta drasticamente in modo moltiplicativo, moltiplicando la finestra per un fattore frazionario. 
+TCP aumenta la finestra di ricezione aumentando "addittivamente" la cwnd. 
+\paragraph{Probing}
+Quando però avviene una congestione, la finestra non viene aumentata in modo additivo, ma anzi, viene ridotta drasticamente in modo moltiplicativo, moltiplicando la finestra per un fattore frazionario. 
 
 
 \subsubsection{Evoluzione della cwnd}
@@ -442,7 +445,7 @@ Quando però avviene una congestione, la finestra non viene rallentata in modo a
   
         \begin{figure}[h!]
         \centering
-        \includegraphics[width=0.75\textwidth]{images/graficocongestione.png}
+        \includegraphics[width=0.7\textwidth]{images/graficocongestione.png}
         \caption{Andamento della finestra di congestione}
         \label{fig:graficocongestione}
         \end{figure}

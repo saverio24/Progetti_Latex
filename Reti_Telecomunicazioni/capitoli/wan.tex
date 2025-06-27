@@ -126,7 +126,7 @@ Vedi operatore XOR appendice basi.
 \subsubsection{Verifica CRC}
 
 C'è la necessità di verificare se il CRC calcolato ed inserito nel FCS sia corretto.
-\paragraph{Polinomio relativo} è necessario calcolare il polonomio relativo $P^{Rx}(x)$ per verificare CRC; questo polinomio non è altro che la trama di d+r bit ricevuti in ricezione.
+\paragraph{Polinomio relativo} è necessario calcolare il polonomio relativo $P^{Rx}(x)$ per verificare CRC; questo polinomio non è altro che la trama di (d+r-1) bit ricevuti in ricezione.
 \paragraph{Condizione necessaria}
 Infine per verificare CRC c'è da tenere a mente la condizione necessaria affinchè il CSC sia corretto, ossia che il resto della divisione tra polinomio relativo[$P^{Rx}(x)$] e polonomio generatore[G(x)] sia nullo:
 
@@ -338,7 +338,7 @@ ALOHA è un protocollo di accesso multiplo casuale senza rilevazione del canale.
 
 Questo protocollo non prevede vincoli all'invio di dati e quindi all'occupazione della banda. Quando una postazione ha dati da trasmettere, li trasmette.
 
-Poiché ogni stazione agisce indipendentemente dalle altre, il successo è determinato unicamente dalla mancata collisione con altre trasmissioni da parte di altre stazioni. Poiché i canali broadcast danno la possibilità di verificare (feedback) se il frame trasmesso è stato ricevuto correttamente oppure se si sono verificate collisioni, la stazione trasmittente ascolta il canale e determina il successo o l'insuccesso della trasmissione. Qualora non sia possibile ascoltare il canale le stazioni si mettono in attesa di un riscontro (ack) da parte del ricevente. Se ci sono collisioni (o se l'ack non arriva entro un tempo di attesa stabilito), i frame corrotti vengono distrutti. Ciò indipendentemente dal livello di corruzione dei dati; quando un frame è stato interessato da collisione, viene eliminato. In questo caso la postazione mittente reinvia il frame dopo un'attesa casuale e si rimette in ascolto sul canale (o attende un ack) fino a quando non stabilisce che il frame è stato ricevuto correttamente.
+Poiché ogni stazione agisce indipendentemente dalle altre, il successo è determinato unicamente dalla mancata collisione con altre trasmissioni da parte di altre stazioni. Poiché i canali broadcast danno la possibilità di verificare (feedback) se il frame trasmesso è stato ricevuto correttamente oppure se si sono verificate collisioni, la stazione trasmittente ascolta il canale e determina il successo o l'insuccesso della trasmissione. Le stazioni si mettono in attesa di un riscontro (ack) da parte del ricevente. Se ci sono collisioni (o se l'ack non arriva entro un tempo di attesa stabilito), i frame corrotti vengono distrutti. Ciò indipendentemente dal livello di corruzione dei dati; quando un frame è stato interessato da collisione, viene eliminato. In questo caso la postazione mittente reinvia il frame dopo un'attesa casuale e si rimette in ascolto sul canale (o attende un ack) fino a quando non stabilisce che il frame è stato ricevuto correttamente.
 \subsubsection{Collisioni nel canale condiviso}
 \begin{figure}[htbp]
     \centering

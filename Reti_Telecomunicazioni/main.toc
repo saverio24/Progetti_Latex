@@ -1,85 +1,236 @@
-\contentsline {section}{\numberline {0.1}Strategie di controllo errore}{1}{}%
-\contentsline {subsection}{\numberline {0.1.1}Protocolli ARQ (Automatic Repeat-reQuest)}{1}{}%
-\contentsline {subsubsection}{Stop-and-Wait ($W_S = W_R = 1$)}{3}{}%
-\contentsline {subsection}{\numberline {0.1.2}Efficienza di stop and wait in assenza di errori}{3}{}%
-\contentsline {subsection}{\numberline {0.1.3}Efficienza di stop and wait in presenza di errori}{4}{}%
-\contentsline {paragraph}{Calcolo di $\overline {N_S}$}{5}{}%
-\contentsline {paragraph}{Spiegazione}{5}{}%
-\contentsline {subsubsection}{Errore sul bit ed errore sul frame}{6}{}%
-\contentsline {paragraph}{Frame error rate (FER)}{6}{}%
-\contentsline {subsubsection}{Calcolo dell'efficienza}{6}{}%
-\contentsline {paragraph}{Dipendenza dell'efficienza dal ritardo di propagazione normalizzato}{6}{}%
-\contentsline {subsection}{\numberline {0.1.4}Protocolli Continuous ARQ}{7}{}%
-\contentsline {subsubsection}{Protocollo Go-Back-N ($W_S > 1$ e $W_R$ = 1)}{7}{}%
-\contentsline {paragraph}{Senza errori - efficienza massima}{7}{}%
-\contentsline {subsubsection}{Go back N - con errori}{8}{}%
-\contentsline {paragraph}{Errore trasmissione del frame}{8}{}%
-\contentsline {paragraph}{Errore ACK non ricevuto ($T_{out}$)}{8}{}%
-\contentsline {subsubsection}{Go back N - ACK equivocato($T_{out}$)}{9}{}%
-\contentsline {paragraph}{Analisi del problema}{9}{}%
-\contentsline {paragraph}{Soluzione}{9}{}%
-\contentsline {subsubsection}{Protocollo selective repeat}{10}{}%
-\contentsline {paragraph}{In assenza di errori}{10}{}%
-\contentsline {paragraph}{In presenza di errori sul frame}{10}{}%
-\contentsline {subsubsection}{Selective repeat - equivocazione dei riscontri e soluzione ($T_{out}$)}{11}{}%
-\contentsline {paragraph}{Problema equivocazione ACK}{11}{}%
-\contentsline {paragraph}{Soluzione}{11}{}%
-\contentsline {subsection}{\numberline {0.1.5}Dimensione delle finestre di trasmissione/ricezione}{12}{}%
-\contentsline {subsubsection}{Dimensione finestre GBN ed efficienza massima}{12}{}%
-\contentsline {subsubsection}{Dimensione finestre SR ed efficienza massima}{12}{}%
-\contentsline {subsection}{\numberline {0.1.6}Effcienza GBN $\&$ SR}{12}{}%
-\contentsline {paragraph}{Efficienza Go-Back-N}{12}{}%
-\contentsline {paragraph}{Calcolo del valor medio di $N_S$}{13}{}%
-\contentsline {subsubsection}{Quanto vale K}{13}{}%
-\contentsline {paragraph}{Efficienza Selective Repeat}{14}{}%
-\contentsline {subsection}{\numberline {0.1.7}Efficienza con riscontri fuori dalla finestra di trasmissione $W_s$}{15}{}%
-\contentsline {subsection}{\numberline {0.1.8}Confronto tra protocolli di linea}{16}{}%
-\contentsline {paragraph}{Confronto tra protocolli}{16}{}%
-\contentsline {section}{\numberline {0.2}Livello 2 Frame DHLC}{17}{}%
-\contentsline {subsection}{\numberline {0.2.1}Struttura del frame}{17}{}%
-\contentsline {subsection}{\numberline {0.2.2}Bit stuffing}{17}{}%
-\contentsline {subsection}{\numberline {0.2.3}Controllo degli errori casuali con CRC}{18}{}%
-\contentsline {paragraph}{Polinomio generatore}{18}{}%
-\contentsline {subsubsection}{Cosa avviene in trasmissione}{18}{}%
-\contentsline {paragraph}{Calcolo e verifica del CRC in trasmissione}{18}{}%
-\contentsline {subsubsection}{Esempio calcolo CRC}{19}{}%
-\contentsline {subsubsection}{Verifica CRC}{19}{}%
-\contentsline {paragraph}{Polinomio relativo}{19}{}%
-\contentsline {paragraph}{Condizione necessaria}{19}{}%
-\contentsline {paragraph}{Dimostrazione condizione necessaria}{19}{}%
-\contentsline {subsection}{\numberline {0.2.4}Protocollo point to point (PPP)}{20}{}%
-\contentsline {paragraph}{Network bit order - Big Endian e Little Endian}{20}{}%
-\contentsline {subsubsection}{Byte stuffing}{21}{}%
-\contentsline {paragraph}{Sequenza di flag 0x7d}{21}{}%
-\contentsline {subsubsection}{Struttura PPP}{21}{}%
-\contentsline {subsubsection}{Autenticazioni}{22}{}%
-\contentsline {paragraph}{Autenticazione PAP}{22}{}%
-\contentsline {paragraph}{Autenticazione CHAP}{22}{}%
-\contentsline {section}{\numberline {0.3}Protocolli di accesso}{22}{}%
-\contentsline {subsection}{\numberline {0.3.1}Troughput di rete}{23}{}%
-\contentsline {subsubsection}{Calcolo del Troughput}{23}{}%
-\contentsline {paragraph}{Troughput medio packet/s}{23}{}%
-\contentsline {paragraph}{Troughput medio bit/s}{23}{}%
-\contentsline {paragraph}{Troughput adimensionale}{23}{}%
-\contentsline {subsection}{\numberline {0.3.2}Protocollo ALOHA puro}{24}{}%
-\contentsline {subsubsection}{Collisioni nel canale condiviso}{24}{}%
-\contentsline {subsubsection}{Calcolo del Troughput di ALOHA puro}{25}{}%
-\contentsline {paragraph}{Troughput in packet/s}{25}{}%
-\contentsline {paragraph}{Troughput in bit/s}{25}{}%
-\contentsline {paragraph}{Troughput adimensionale}{25}{}%
-\contentsline {subsubsection}{Prestazioni ALOHA puro}{26}{}%
-\contentsline {paragraph}{Andamento funzione $G(e^{-2\Lambda _s T})$}{26}{}%
-\contentsline {subsubsection}{Appendice matematica - distribuzione di Poisson}{26}{}%
-\contentsline {paragraph}{Esempio}{26}{}%
-\contentsline {subsection}{\numberline {0.3.3}Protocollo ALOHA slotted - prestazioni}{27}{}%
-\contentsline {paragraph}{Probabilità di collisione}{27}{}%
-\contentsline {paragraph}{Troughput normalizzato}{27}{}%
-\contentsline {subsection}{\numberline {0.3.4}Protocolli Carrier Sense Multiple Access - CSMA (rilevazione canale)}{28}{}%
-\contentsline {subsubsection}{CSMA/CD - CSMA with collision detection}{28}{}%
-\contentsline {paragraph}{Listening while talking}{28}{}%
-\contentsline {paragraph}{Rilevazione collisione}{28}{}%
-\contentsline {paragraph}{Exponential backoff}{28}{}%
-\contentsline {subsubsection}{Dimostrazione funzionamento collision detection}{29}{}%
-\contentsline {subsubsection}{CSMA/CA - CSMA with collision avoidance}{29}{}%
-\contentsline {paragraph}{Duration}{29}{}%
-\contentsline {paragraph}{Network allocation vector(NAV) - virtual sensing}{29}{}%
+\contentsline {chapter}{\numberline {1}Conoscenze di base}{3}{}%
+\contentsline {section}{\numberline {1.1}Informatica}{3}{}%
+\contentsline {subsection}{\numberline {1.1.1}Conversione binario esadecimale}{3}{}%
+\contentsline {subsection}{\numberline {1.1.2}Tipologia reti}{3}{}%
+\contentsline {subsubsection}{Nodi e rami}{4}{}%
+\contentsline {paragraph}{Modalità di invio dati}{4}{}%
+\contentsline {subsubsection}{Reti di accesso e reti di trasporto}{4}{}%
+\contentsline {section}{\numberline {1.2}Matematica}{5}{}%
+\contentsline {subsection}{\numberline {1.2.1}Potenza di due}{5}{}%
+\contentsline {subsection}{\numberline {1.2.2}Complemento a 1 - NOT}{6}{}%
+\contentsline {subsection}{\numberline {1.2.3}Aritmetica a 2 - XOR}{6}{}%
+\contentsline {section}{\numberline {1.3}Fisica}{7}{}%
+\contentsline {subsection}{\numberline {1.3.1}Comunicazione radio, cablata e ottica}{7}{}%
+\contentsline {paragraph}{Pro e contro del canale radio}{7}{}%
+\contentsline {paragraph}{Canale radio e ostacoli fisici}{7}{}%
+\contentsline {paragraph}{Mezzi guidati}{7}{}%
+\contentsline {section}{\numberline {1.4}Reti di telecomunicazioni - basi}{8}{}%
+\contentsline {subsection}{\numberline {1.4.1}Commutazione di circuito e commutazione di pacchetto}{8}{}%
+\contentsline {paragraph}{Commutazione di circuito}{8}{}%
+\contentsline {paragraph}{Commutazione di pacchetto}{8}{}%
+\contentsline {subsection}{\numberline {1.4.2}Ritardo end-to-end}{9}{}%
+\contentsline {chapter}{\numberline {2}Architetture di protocolli}{11}{}%
+\contentsline {section}{\numberline {2.1}Modello ISO-OSI}{11}{}%
+\contentsline {paragraph}{Entità e pacchetti(PDU, PCI, SDU)}{12}{}%
+\contentsline {subsection}{\numberline {2.1.1}Segmentazione e riassemblaggio (incapsulamento e decapsulamento)}{12}{}%
+\contentsline {section}{\numberline {2.2}Modello ibrido}{13}{}%
+\contentsline {subsection}{\numberline {2.2.1}Enc/decapsulation dati nel modello ibrido}{13}{}%
+\contentsline {subsection}{\numberline {2.2.2}Comunicazione tra sistemi}{14}{}%
+\contentsline {section}{\numberline {2.3}Modello TCP/IP}{15}{}%
+\contentsline {subsubsection}{Confronto tra i modelli}{15}{}%
+\contentsline {chapter}{\numberline {3}Livello 4 trasporto TCP/UDP}{16}{}%
+\contentsline {section}{\numberline {3.1}Nozioni preliminari}{16}{}%
+\contentsline {paragraph}{Funzioni principali UDP}{16}{}%
+\contentsline {paragraph}{Funzioni principali TCP}{16}{}%
+\contentsline {subsection}{\numberline {3.1.1}Sock e ports}{16}{}%
+\contentsline {section}{\numberline {3.2}UDP - datagram}{18}{}%
+\contentsline {paragraph}{Struttura del datagram UDP}{18}{}%
+\contentsline {subsection}{\numberline {3.2.1}Calcolo checksum}{19}{}%
+\contentsline {paragraph}{In trasmissione}{19}{}%
+\contentsline {paragraph}{In ricezione}{19}{}%
+\contentsline {section}{\numberline {3.3}TCP - segmento}{20}{}%
+\contentsline {subsection}{\numberline {3.3.1}Apertura connessione client-server (3way handshake)}{21}{}%
+\contentsline {subsection}{\numberline {3.3.2}Chiusura connessione}{22}{}%
+\contentsline {paragraph}{Chiusura con half-close}{22}{}%
+\contentsline {paragraph}{Chiusura con 3way handshake}{23}{}%
+\contentsline {paragraph}{TIMEWAIT}{23}{}%
+\contentsline {paragraph}{Piggybacking}{23}{}%
+\contentsline {subsection}{\numberline {3.3.3}TCP sequenze di stati}{24}{}%
+\contentsline {subsubsection}{TCP client}{24}{}%
+\contentsline {subsubsection}{TCP server}{24}{}%
+\contentsline {subsection}{\numberline {3.3.4}Trasmissione dei segmenti - sliding window}{25}{}%
+\contentsline {subsubsection}{Round trip time - RTT}{25}{}%
+\contentsline {subsection}{\numberline {3.3.5}Finestre di trasmissione e ricezione}{26}{}%
+\contentsline {subsection}{\numberline {3.3.6}Controllo di flusso - come gestisce il TCP il flusso dei dati?}{26}{}%
+\contentsline {subsection}{\numberline {3.3.7}Perdita di segmenti - RTO e 3 dupack}{27}{}%
+\contentsline {subsubsection}{Retransmission Time Out - RTO}{27}{}%
+\contentsline {paragraph}{Calcolo del RTO}{27}{}%
+\contentsline {subsubsection}{3 Dupack(three duplicate ACK)}{28}{}%
+\contentsline {subsection}{\numberline {3.3.8}Controllo di congestione TCP}{28}{}%
+\contentsline {subsubsection}{Algoritmo di controllo di congestione}{29}{}%
+\contentsline {paragraph}{Additive Increase Multiplicative Decrease (AIMD)}{29}{}%
+\contentsline {paragraph}{Probing}{29}{}%
+\contentsline {subsubsection}{Evoluzione della cwnd}{29}{}%
+\contentsline {paragraph}{Slow start}{29}{}%
+\contentsline {paragraph}{Congestion avoidance}{29}{}%
+\contentsline {subsubsection}{TCP Tahoe}{30}{}%
+\contentsline {subsubsection}{TCP Reno}{30}{}%
+\contentsline {subsubsection}{TCP New Reno}{30}{}%
+\contentsline {chapter}{\numberline {4}Livello 3 rete}{31}{}%
+\contentsline {section}{\numberline {4.1}Internet Protocol (IP) version 4}{31}{}%
+\contentsline {subsection}{\numberline {4.1.1}Datagramma IP}{32}{}%
+\contentsline {subsubsection}{Struttura indirizzo IP}{34}{}%
+\contentsline {subsection}{\numberline {4.1.2}Indirizzo IP - classful}{34}{}%
+\contentsline {subsection}{\numberline {4.1.3}Indirizzo IP - classless CIDR}{34}{}%
+\contentsline {subsection}{\numberline {4.1.4}Address Resolution Protocol (ARP) - mappatura IP a MAC}{35}{}%
+\contentsline {subsubsection}{Esempio ARP all'interno di una rete}{36}{}%
+\contentsline {subsubsection}{Esempio ARP in reti diverse}{37}{}%
+\contentsline {paragraph}{Default gateway e tabelle di routing}{37}{}%
+\contentsline {paragraph}{ARP nella stessa rete}{37}{}%
+\contentsline {subsection}{\numberline {4.1.5}Dynamic Host Configuration Protocol (DHCP) - configurazione automatica degli indirizzi IP tramite server DHCP}{38}{}%
+\contentsline {paragraph}{DHCP relay - inoltro delle richieste DHCP}{38}{}%
+\contentsline {paragraph}{DHCP - funzionamento}{38}{}%
+\contentsline {subsection}{\numberline {4.1.6}Zero-configuration networking}{39}{}%
+\contentsline {paragraph}{Link-Local Address}{39}{}%
+\contentsline {paragraph}{ARP probe}{39}{}%
+\contentsline {paragraph}{ARP announcement}{39}{}%
+\contentsline {subsection}{\numberline {4.1.7}Network Address Translation (NAT) - da IP privato a IP pubblico}{39}{}%
+\contentsline {paragraph}{Funzionamento del NAT e tabelle di traduzione}{39}{}%
+\contentsline {subsection}{\numberline {4.1.8}Internet control message protocol (ICMP) - diagnostica della rete}{40}{}%
+\contentsline {paragraph}{Esempio utilizzo di ICMP - ping}{40}{}%
+\contentsline {paragraph}{Esempio utilizzo di ICMP - traceroute}{40}{}%
+\contentsline {section}{\numberline {4.2}Algoritmi di routing}{41}{}%
+\contentsline {subsection}{\numberline {4.2.1}Introduzione agli algoritmi di routing - tipologie}{41}{}%
+\contentsline {subsection}{\numberline {4.2.2}Metriche per il costo del percorso}{42}{}%
+\contentsline {paragraph}{Cosa fa il router?}{42}{}%
+\contentsline {paragraph}{Funzionamento della tabella di routing}{42}{}%
+\contentsline {subsection}{\numberline {4.2.3}Instradamento gerarchico - protocolli intra e inter AS}{43}{}%
+\contentsline {subsection}{\numberline {4.2.4}Distance Vector}{43}{}%
+\contentsline {subsection}{\numberline {4.2.5}Algoritmo Bellman-Ford}{44}{}%
+\contentsline {paragraph}{Variabili}{44}{}%
+\contentsline {paragraph}{Fasi dell'algoritmo}{44}{}%
+\contentsline {paragraph}{Esempio}{45}{}%
+\contentsline {subsection}{\numberline {4.2.6}Link State e Dijkstra}{48}{}%
+\contentsline {paragraph}{Flooding(routing senza tabella)}{48}{}%
+\contentsline {subsubsection}{Algoritmo di Dijkstra}{48}{}%
+\contentsline {subsubsection}{Esempio Dijkstra}{49}{}%
+\contentsline {subsubsection}{Albero dei cammini minimi}{50}{}%
+\contentsline {subsection}{\numberline {4.2.7}Problemi di routing - loop}{51}{}%
+\contentsline {paragraph}{Una rete va giù (down)}{51}{}%
+\contentsline {paragraph}{Inizio del loop}{51}{}%
+\contentsline {paragraph}{Loop infinito}{52}{}%
+\contentsline {subsubsection}{Soluzioni: split horizon, poison reverse, hold-down}{52}{}%
+\contentsline {subsection}{\numberline {4.2.8}Protocolli di routing intra AS (RIP - OSPF)}{52}{}%
+\contentsline {subsubsection}{RIP (Distance Vector)(UDP)}{52}{}%
+\contentsline {paragraph}{Caratteristiche principali}{52}{}%
+\contentsline {paragraph}{RIPv1 e RIPv2 - routing information protocol}{53}{}%
+\contentsline {subsubsection}{OSPF - open shortest path first (Link State) e Link State Advertisement (LSA)}{54}{}%
+\contentsline {paragraph}{Area border routers}{54}{}%
+\contentsline {paragraph}{LSA e pacchetti LSP}{54}{}%
+\contentsline {paragraph}{Tipologie di pacchetti LSP}{54}{}%
+\contentsline {paragraph}{Tipologie di LSA}{54}{}%
+\contentsline {paragraph}{Differenza tra LSA e pacchetto OSPF}{55}{}%
+\contentsline {paragraph}{Autenticazione}{55}{}%
+\contentsline {paragraph}{Pacchetto OSPF}{55}{}%
+\contentsline {paragraph}{Utilizzo di Dijkstra in diverse aree}{55}{}%
+\contentsline {subsubsection}{Pacchetti OSPF}{55}{}%
+\contentsline {subsection}{\numberline {4.2.9}Protocolli di routing inter-AS - (BGP)}{56}{}%
+\contentsline {subsubsection}{Approccio Path Vector}{56}{}%
+\contentsline {paragraph}{Attributi BGP}{56}{}%
+\contentsline {chapter}{\numberline {5}Livello 2 Data link}{57}{}%
+\contentsline {section}{\numberline {5.1}Strategie di controllo errore}{57}{}%
+\contentsline {subsection}{\numberline {5.1.1}Protocolli ARQ (Automatic Repeat-reQuest)}{57}{}%
+\contentsline {subsubsection}{Stop-and-Wait ($W_S = W_R = 1$)}{58}{}%
+\contentsline {subsection}{\numberline {5.1.2}Efficienza di stop and wait in assenza di errori}{58}{}%
+\contentsline {subsection}{\numberline {5.1.3}Efficienza di stop and wait in presenza di errori}{59}{}%
+\contentsline {paragraph}{Calcolo di $\overline {N_S}$}{60}{}%
+\contentsline {paragraph}{Spiegazione}{60}{}%
+\contentsline {subsubsection}{Errore sul bit ed errore sul frame}{61}{}%
+\contentsline {paragraph}{Frame error rate (FER)}{61}{}%
+\contentsline {subsubsection}{Calcolo dell'efficienza}{61}{}%
+\contentsline {paragraph}{Dipendenza dell'efficienza dal ritardo di propagazione normalizzato}{61}{}%
+\contentsline {subsection}{\numberline {5.1.4}Protocolli Continuous ARQ}{62}{}%
+\contentsline {subsubsection}{Protocollo Go-Back-N ($W_S > 1$ e $W_R$ = 1)}{62}{}%
+\contentsline {paragraph}{Senza errori - efficienza massima}{62}{}%
+\contentsline {subsubsection}{Go back N - con errori}{63}{}%
+\contentsline {paragraph}{Errore trasmissione del frame}{63}{}%
+\contentsline {paragraph}{Errore ACK non ricevuto ($T_{out}$)}{63}{}%
+\contentsline {subsubsection}{Go back N - ACK equivocato($T_{out}$)}{64}{}%
+\contentsline {paragraph}{Analisi del problema}{64}{}%
+\contentsline {paragraph}{Soluzione}{64}{}%
+\contentsline {subsubsection}{Protocollo selective repeat}{65}{}%
+\contentsline {paragraph}{In assenza di errori}{65}{}%
+\contentsline {paragraph}{In presenza di errori sul frame}{65}{}%
+\contentsline {subsubsection}{Selective repeat - equivocazione dei riscontri e soluzione ($T_{out}$)}{66}{}%
+\contentsline {paragraph}{Problema equivocazione ACK}{66}{}%
+\contentsline {paragraph}{Soluzione}{66}{}%
+\contentsline {subsection}{\numberline {5.1.5}Dimensione delle finestre di trasmissione/ricezione}{67}{}%
+\contentsline {subsubsection}{Dimensione finestre GBN ed efficienza massima}{67}{}%
+\contentsline {subsubsection}{Dimensione finestre SR ed efficienza massima}{67}{}%
+\contentsline {subsection}{\numberline {5.1.6}Effcienza GBN $\&$ SR}{67}{}%
+\contentsline {paragraph}{Efficienza Go-Back-N}{67}{}%
+\contentsline {paragraph}{Calcolo del valor medio di $N_S$}{68}{}%
+\contentsline {subsubsection}{Quanto vale K}{68}{}%
+\contentsline {paragraph}{Efficienza Selective Repeat}{69}{}%
+\contentsline {subsection}{\numberline {5.1.7}Efficienza con riscontri fuori dalla finestra di trasmissione $W_s$}{70}{}%
+\contentsline {subsection}{\numberline {5.1.8}Confronto tra protocolli di linea}{71}{}%
+\contentsline {paragraph}{Confronto tra protocolli}{71}{}%
+\contentsline {section}{\numberline {5.2}Livello 2 Frame DHLC}{72}{}%
+\contentsline {subsection}{\numberline {5.2.1}Struttura del frame}{72}{}%
+\contentsline {subsection}{\numberline {5.2.2}Bit stuffing}{72}{}%
+\contentsline {subsection}{\numberline {5.2.3}Controllo degli errori casuali con CRC}{73}{}%
+\contentsline {paragraph}{Polinomio generatore}{73}{}%
+\contentsline {subsubsection}{Cosa avviene in trasmissione}{73}{}%
+\contentsline {paragraph}{Calcolo e verifica del CRC in trasmissione}{73}{}%
+\contentsline {subsubsection}{Esempio calcolo CRC}{74}{}%
+\contentsline {subsubsection}{Verifica CRC}{74}{}%
+\contentsline {paragraph}{Polinomio relativo}{74}{}%
+\contentsline {paragraph}{Condizione necessaria}{74}{}%
+\contentsline {paragraph}{Dimostrazione condizione necessaria}{74}{}%
+\contentsline {subsection}{\numberline {5.2.4}Protocollo point to point (PPP)}{75}{}%
+\contentsline {paragraph}{Network bit order - Big Endian e Little Endian}{75}{}%
+\contentsline {subsubsection}{Byte stuffing}{76}{}%
+\contentsline {paragraph}{Sequenza di flag 0x7d}{76}{}%
+\contentsline {subsubsection}{Struttura PPP}{76}{}%
+\contentsline {subsubsection}{Autenticazioni}{77}{}%
+\contentsline {paragraph}{Autenticazione PAP}{77}{}%
+\contentsline {paragraph}{Autenticazione CHAP}{77}{}%
+\contentsline {section}{\numberline {5.3}Protocolli di accesso}{77}{}%
+\contentsline {subsection}{\numberline {5.3.1}Troughput di rete}{78}{}%
+\contentsline {subsubsection}{Calcolo del Troughput}{78}{}%
+\contentsline {paragraph}{Troughput medio packet/s}{78}{}%
+\contentsline {paragraph}{Troughput medio bit/s}{78}{}%
+\contentsline {paragraph}{Troughput adimensionale}{78}{}%
+\contentsline {subsection}{\numberline {5.3.2}Protocollo ALOHA puro}{79}{}%
+\contentsline {subsubsection}{Collisioni nel canale condiviso}{79}{}%
+\contentsline {subsubsection}{Calcolo del Troughput di ALOHA puro}{80}{}%
+\contentsline {paragraph}{Troughput in packet/s}{80}{}%
+\contentsline {paragraph}{Troughput in bit/s}{80}{}%
+\contentsline {paragraph}{Troughput adimensionale}{80}{}%
+\contentsline {subsubsection}{Prestazioni ALOHA puro}{81}{}%
+\contentsline {paragraph}{Andamento funzione $G(e^{-2\Lambda _s T})$}{81}{}%
+\contentsline {subsubsection}{Appendice matematica - distribuzione di Poisson}{81}{}%
+\contentsline {paragraph}{Esempio}{81}{}%
+\contentsline {subsection}{\numberline {5.3.3}Protocollo ALOHA slotted - prestazioni}{82}{}%
+\contentsline {paragraph}{Probabilità di collisione}{82}{}%
+\contentsline {paragraph}{Troughput normalizzato}{82}{}%
+\contentsline {subsection}{\numberline {5.3.4}Protocolli Carrier Sense Multiple Access - CSMA (rilevazione canale)}{83}{}%
+\contentsline {subsubsection}{CSMA/CD - CSMA with collision detection}{83}{}%
+\contentsline {paragraph}{Listening while talking}{83}{}%
+\contentsline {paragraph}{Rilevazione collisione}{83}{}%
+\contentsline {paragraph}{Exponential backoff}{83}{}%
+\contentsline {subsubsection}{Dimostrazione funzionamento collision detection}{84}{}%
+\contentsline {subsubsection}{CSMA/CA - CSMA with collision avoidance}{84}{}%
+\contentsline {paragraph}{Duration}{84}{}%
+\contentsline {paragraph}{Network allocation vector(NAV) - virtual sensing}{84}{}%
+\contentsline {section}{\numberline {5.4}Il Progetto IEEE 802}{85}{}%
+\contentsline {section}{\numberline {5.5}Reti wireless}{86}{}%
+\contentsline {subsection}{\numberline {5.5.1}Wireless LAN - WLAN}{86}{}%
+\contentsline {subsubsection}{Infrastruttura WLAN}{86}{}%
+\contentsline {paragraph}{Access point}{86}{}%
+\contentsline {paragraph}{Famiglia 802.11x}{87}{}%
+\contentsline {subsection}{\numberline {5.5.2}Struttura dei canali 802.11b}{87}{}%
+\contentsline {paragraph}{Cluster}{87}{}%
+\contentsline {subsubsection}{Distributed Coordination Function (DCF)}{88}{}%
+\contentsline {subsection}{\numberline {5.5.3}Nodi nascosti ed esposti}{89}{}%
+\contentsline {paragraph}{Nodo nascosto}{89}{}%
+\contentsline {paragraph}{Nodo nascosto}{89}{}%
+\contentsline {subsubsection}{Soluzione nodo nascosto}{89}{}%
+\contentsline {paragraph}{Request to send RTS - 20 byte}{89}{}%
+\contentsline {paragraph}{Clear to send CTS - 14 byte}{89}{}%
+\contentsline {paragraph}{Nodo esposto}{90}{}%
+\contentsline {subsection}{\numberline {5.5.4}Dispositivi wireless}{90}{}%
+\contentsline {subsubsection}{Hub}{90}{}%
+\contentsline {subsubsection}{Bridge}{90}{}%
+\contentsline {subsubsection}{Switch}{90}{}%
+\contentsline {subsubsection}{Modalità di funzionamento di uno switch}{90}{}%
